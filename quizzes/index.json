@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Sample Quiz",
+    "file": "sample-quiz.json"
+  },
+  {
+    "name": "Week 2 - HTML, CSS & Responsive Design",
+    "file": "week2.json"
+  },
+  {
+    "name": "Week 3 - HTTP & REST",
+    "file": "week3.json"
+  },
+  {
+    "name": "Week 4 - TypeScript",
+    "file": "week4.json"
+  },
+  {
+    "name": "Week 5 - Functional Programming & TypeScript",
+    "file": "week5.json"
+  },
+  {
+    "name": "Week 6 - React",
+    "file": "week6.json"
+  },
+  {
+    "name": "Week 7 - Async JavaScript",
+    "file": "week7.json"
+  },
+  {
+    "name": "Week 8 - React Router",
+    "file": "week8.json"
+  },
+  {
+    "name": "Week 9 - Databases & EF Core",
+    "file": "week9.json"
+  },
+  {
+    "name": "Week 10 - Repository & Minimal APIs",
+    "file": "week10.json"
+  },
+  {
+    "name": "Week 11 - Controllers & DI",
+    "file": "week11.json"
+  },
+  {
+    "name": "Week 12 - Self-study (Revision)",
+    "file": "week12.json"
+  },
+  {
+    "name": "Week 13 - Middleware & Filters",
+    "file": "week13.json"
+  },
+  {
+    "name": "Week 14 - Full-stack Integration",
+    "file": "week14.json"
+  }
+]

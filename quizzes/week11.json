@@ -1,0 +1,302 @@
+[
+  {
+    "id": "w11_01",
+    "question": "In the layered design described, what is the recommended flow of responsibilities?",
+    "choices": [
+      "Repository → Controller → Service → DbContext",
+      "Controller → Service → Repository → DbContext",
+      "Controller → Repository → DbContext → Service",
+      "DbContext → Controller → Service → Repository"
+    ],
+    "answerIndex": 1,
+    "explanation": "The notes emphasize clean layering: Controller handles HTTP, Service handles business logic, Repository handles data access, DbContext is persistence."
+  },
+  {
+    "id": "w11_02",
+    "question": "Why is it considered a bad example for a controller to use IRepository<T> directly for business logic?",
+    "choices": [
+      "Because repositories cannot be injected",
+      "Because business logic leaks into controllers (violates SRP and hurts testability)",
+      "Because controllers cannot return IActionResult",
+      "Because EF Core requires Minimal APIs"
+    ],
+    "answerIndex": 1,
+    "explanation": "The “bad example” highlights SRP violations and mixing routing/validation/business rules in the controller."
+  },
+  {
+    "id": "w11_03",
+    "question": "What does the [ApiController] attribute add to ASP.NET Core controllers (as described)?",
+    "choices": [
+      "Automatic model validation and better binding errors",
+      "Automatic database migrations",
+      "Automatic React rendering",
+      "Automatic CORS for all origins"
+    ],
+    "answerIndex": 0,
+    "explanation": "[ApiController] improves parameter binding, validation behavior, and error responses for APIs."
+  },
+  {
+    "id": "w11_04",
+    "question": "What does [Route(\"[controller]\")] do?",
+    "choices": [
+      "Hardcodes the route to /api",
+      "Uses the controller class name (minus 'Controller') as the base route",
+      "Creates a route only for GET",
+      "Disables attribute routing"
+    ],
+    "answerIndex": 1,
+    "explanation": "[controller] is replaced by the controller name without the 'Controller' suffix."
+  },
+  {
+    "id": "w11_05",
+    "question": "Which attribute maps an action to HTTP GET requests?",
+    "choices": [
+      "[HttpGet]",
+      "[HttpPost]",
+      "[FromBody]",
+      "[ApiController]"
+    ],
+    "answerIndex": 0,
+    "explanation": "[HttpGet] indicates the action responds to GET requests."
+  },
+  {
+    "id": "w11_06",
+    "question": "What does a route constraint like {id:int} ensure?",
+    "choices": [
+      "That id is always a GUID",
+      "That id matches only integer values",
+      "That id is read from the request body",
+      "That id is optional"
+    ],
+    "answerIndex": 1,
+    "explanation": "{id:int} enforces that the route parameter must be an integer."
+  },
+  {
+    "id": "w11_07",
+    "question": "What is the difference between ControllerBase and Controller?",
+    "choices": [
+      "ControllerBase supports Views, Controller does not",
+      "Controller is for MVC apps with Views; ControllerBase is lighter for Web APIs",
+      "They are identical types",
+      "ControllerBase cannot return IActionResult"
+    ],
+    "answerIndex": 1,
+    "explanation": "ControllerBase is intended for APIs; Controller includes view-related features for MVC apps."
+  },
+  {
+    "id": "w11_08",
+    "question": "Which return type represents a general HTTP response (200/404/500, etc.)?",
+    "choices": [
+      "IActionResult",
+      "IEnumerable<T>",
+      "DbSet<T>",
+      "TaskRunner"
+    ],
+    "answerIndex": 0,
+    "explanation": "IActionResult is a general abstraction for HTTP results returned by controller actions."
+  },
+  {
+    "id": "w11_09",
+    "question": "What is ActionResult<T> useful for?",
+    "choices": [
+      "Returning only status codes",
+      "Returning either a typed value (T) or a status code result",
+      "Preventing async operations",
+      "Registering services in DI"
+    ],
+    "answerIndex": 1,
+    "explanation": "ActionResult<T> lets you return T on success or a status result like NotFound/BadRequest."
+  },
+  {
+    "id": "w11_10",
+    "question": "Why can Minimal API endpoints become problematic in larger projects (per the notes)?",
+    "choices": [
+      "They cannot handle JSON",
+      "They become messy and harder to organize/test as the project grows",
+      "They disable routing",
+      "They require React"
+    ],
+    "answerIndex": 1,
+    "explanation": "The notes list organization and testability concerns as projects scale."
+  },
+  {
+    "id": "w11_11",
+    "question": "What is the main purpose of introducing services in the controller/service/repository approach?",
+    "choices": [
+      "To render Views",
+      "To contain business logic like validation and rules",
+      "To replace dependency injection",
+      "To store database connection strings"
+    ],
+    "answerIndex": 1,
+    "explanation": "Services centralize business rules, validation, and mapping to keep controllers clean."
+  },
+  {
+    "id": "w11_12",
+    "question": "Which DI lifetime creates a new instance every time it is requested?",
+    "choices": [
+      "Singleton",
+      "Scoped",
+      "Transient",
+      "Static"
+    ],
+    "answerIndex": 2,
+    "explanation": "Transient services are created anew each time they are requested."
+  },
+  {
+    "id": "w11_13",
+    "question": "Which DI lifetime is most common for repositories and DbContext in web apps?",
+    "choices": [
+      "Singleton",
+      "Scoped",
+      "Transient",
+      "ThreadLocal"
+    ],
+    "answerIndex": 1,
+    "explanation": "Scoped creates one instance per HTTP request, which fits DbContext/repository usage."
+  },
+  {
+    "id": "w11_14",
+    "question": "Why should DbContext not be registered as a Singleton?",
+    "choices": [
+      "Because it cannot connect to SQLite",
+      "Because it is not thread-safe and should be request-scoped",
+      "Because it disables controllers",
+      "Because it requires React Router"
+    ],
+    "answerIndex": 1,
+    "explanation": "DbContext is designed for scoped usage; singleton can cause concurrency issues and stale state."
+  },
+  {
+    "id": "w11_15",
+    "question": "Which attribute indicates a parameter should be bound from the JSON request body?",
+    "choices": [
+      "[FromBody]",
+      "[FromQuery]",
+      "[FromRoute]",
+      "[ServiceFilter]"
+    ],
+    "answerIndex": 0,
+    "explanation": "[FromBody] binds from the request body (typically JSON)."
+  },
+  {
+    "id": "w11_16",
+    "question": "Which attribute indicates a parameter should be bound from the query string?",
+    "choices": [
+      "[FromRoute]",
+      "[FromBody]",
+      "[FromQuery]",
+      "[HttpGet]"
+    ],
+    "answerIndex": 2,
+    "explanation": "[FromQuery] binds values from the query string (e.g., ?min=10&max=20)."
+  },
+  {
+    "id": "w11_17",
+    "question": "Which attribute indicates a parameter should be bound from the route path?",
+    "choices": [
+      "[FromRoute]",
+      "[FromQuery]",
+      "[FromBody]",
+      "[HttpPost]"
+    ],
+    "answerIndex": 0,
+    "explanation": "[FromRoute] binds values from URL segments like /product/14."
+  },
+  {
+    "id": "w11_18",
+    "question": "Why are DTOs recommended instead of accepting raw entity objects from API requests?",
+    "choices": [
+      "DTOs automatically generate migrations",
+      "DTOs help control what the API accepts/returns and reduce coupling",
+      "Entities cannot be serialized",
+      "DTOs are required for routing"
+    ],
+    "answerIndex": 1,
+    "explanation": "DTOs prevent over-posting and keep API contracts stable without exposing persistence models directly."
+  },
+  {
+    "id": "w11_19",
+    "question": "In the notes, why is injecting IRepository<T> directly into controllers “harder to test”?",
+    "choices": [
+      "Because controllers cannot be unit tested",
+      "Because business rules and data access are mixed, increasing dependencies",
+      "Because repositories cannot be mocked",
+      "Because DI only works with Minimal APIs"
+    ],
+    "answerIndex": 1,
+    "explanation": "When the controller contains business logic and persistence calls, tests become more complex and brittle."
+  },
+  {
+    "id": "w11_20",
+    "question": "Which is a typical use case for singleton services (per the notes)?",
+    "choices": [
+      "DbContext",
+      "Repositories",
+      "Caching/configuration-like services",
+      "Per-request business logic"
+    ],
+    "answerIndex": 2,
+    "explanation": "Singletons are good for caching or configuration; they live for the entire app lifetime."
+  },
+  {
+    "id": "w11_21",
+    "question": "Which statement best describes a controller’s responsibility in the recommended design?",
+    "choices": [
+      "Implement all validation, business rules, and data access",
+      "Handle HTTP routing/binding and delegate business logic to services",
+      "Write SQL queries directly",
+      "Store application state globally"
+    ],
+    "answerIndex": 1,
+    "explanation": "Controllers should stay thin: accept requests, delegate to services, and return HTTP responses."
+  },
+  {
+    "id": "w11_22",
+    "question": "Which statement best matches what a service typically contains?",
+    "choices": [
+      "Only HTML templates",
+      "Business rules, validation, and coordination across repositories",
+      "Only routing and attributes",
+      "Only DbContext configuration"
+    ],
+    "answerIndex": 1,
+    "explanation": "Services encapsulate domain rules, validation, mapping, and orchestration."
+  },
+  {
+    "id": "w11_23",
+    "question": "Why is dependency injection valuable in this architecture?",
+    "choices": [
+      "It prevents you from writing interfaces",
+      "It allows swapping implementations and improves testability",
+      "It forces all classes to be static",
+      "It disables async/await"
+    ],
+    "answerIndex": 1,
+    "explanation": "DI supports decoupling by injecting abstractions, enabling mocking and modular design."
+  },
+  {
+    "id": "w11_24",
+    "question": "In the recap, EF Core queries were practiced in which two LINQ styles?",
+    "choices": [
+      "Hook syntax and component syntax",
+      "Query syntax and method syntax",
+      "Promise syntax and callback syntax",
+      "Route syntax and middleware syntax"
+    ],
+    "answerIndex": 1,
+    "explanation": "The notes show both query syntax (from/where/select) and method syntax (.Where().ToList())."
+  },
+  {
+    "id": "w11_25",
+    "question": "What is a common reason controllers use async return types like Task<IActionResult>?",
+    "choices": [
+      "To avoid routing",
+      "To support asynchronous I/O operations such as database calls",
+      "To compile TypeScript",
+      "To force microtasks"
+    ],
+    "answerIndex": 1,
+    "explanation": "Database/network I/O is asynchronous; Task-based actions avoid blocking threads while waiting."
+  }
+]

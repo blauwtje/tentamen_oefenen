@@ -1,0 +1,302 @@
+[
+  {
+    "id": "ts_week04_1",
+    "question": "What is TypeScript primarily designed to add to JavaScript?",
+    "choices": [
+      "A new runtime environment",
+      "Static typing and better tooling",
+      "Built-in database support",
+      "Automatic UI rendering"
+    ],
+    "answerIndex": 1,
+    "explanation": "TypeScript adds a type system and tooling on top of JavaScript to catch mistakes earlier."
+  },
+  {
+    "id": "ts_week04_2",
+    "question": "What happens to TypeScript code before it runs in a browser or Node.js?",
+    "choices": [
+      "It runs directly as TypeScript",
+      "It is compiled/transpiled to JavaScript",
+      "It is converted to WebAssembly",
+      "It is executed only inside VS Code"
+    ],
+    "answerIndex": 1,
+    "explanation": "TypeScript compiles to JavaScript; the JavaScript is what actually runs."
+  },
+  {
+    "id": "ts_week04_3",
+    "question": "Why would you install TypeScript with `npm install typescript -D`?",
+    "choices": [
+      "Because TypeScript must ship to production as a runtime dependency",
+      "Because the TS compiler is used during development/build, not at runtime",
+      "Because `-D` makes TypeScript faster",
+      "Because `-D` installs TypeScript globally"
+    ],
+    "answerIndex": 1,
+    "explanation": "TypeScript is a build tool (compiler). The output JavaScript runs in production."
+  },
+  {
+    "id": "ts_week04_4",
+    "question": "Which command generates a `tsconfig.json` in a TypeScript project?",
+    "choices": [
+      "`npm init`",
+      "`tsc -init`",
+      "`node init`",
+      "`npx ts-node init`"
+    ],
+    "answerIndex": 1,
+    "explanation": "`tsc -init` creates a starter `tsconfig.json` configuration file."
+  },
+  {
+    "id": "ts_week04_5",
+    "question": "What is the purpose of `rootDir` and `outDir` in `tsconfig.json`?",
+    "choices": [
+      "They control the HTTP server port",
+      "They define where TS sources live and where compiled JS is written",
+      "They enable Jest test discovery",
+      "They force the use of React"
+    ],
+    "answerIndex": 1,
+    "explanation": "`rootDir` points to source files (e.g., `src`), `outDir` to compiled output (e.g., `dist`)."
+  },
+  {
+    "id": "ts_week04_6",
+    "question": "What does `sourceMap: true` enable during debugging?",
+    "choices": [
+      "Running TypeScript without compiling",
+      "Mapping compiled JavaScript back to original TypeScript sources",
+      "Automatic unit test generation",
+      "Stricter type inference"
+    ],
+    "answerIndex": 1,
+    "explanation": "Source maps let debuggers show TypeScript line numbers while executing compiled JavaScript."
+  },
+  {
+    "id": "ts_week04_7",
+    "question": "What is the main effect of `target: \"esnext\"` in TypeScript?",
+    "choices": [
+      "It enforces React Hooks",
+      "It chooses which JavaScript language features TS emits",
+      "It turns off type checking",
+      "It forces CommonJS modules"
+    ],
+    "answerIndex": 1,
+    "explanation": "The `target` controls the JavaScript version/features used in the emitted output."
+  },
+  {
+    "id": "ts_week04_8",
+    "question": "What does `noImplicitAny: true` do?",
+    "choices": [
+      "Disables the `any` type entirely",
+      "Errors when a value would be inferred as `any` without an explicit type",
+      "Automatically converts `any` to `unknown`",
+      "Allows implicit `any` only in arrays"
+    ],
+    "answerIndex": 1,
+    "explanation": "It prevents accidental `any` by requiring types instead of silently falling back to `any`."
+  },
+  {
+    "id": "ts_week04_9",
+    "question": "Which statement best describes the TypeScript type `any`?",
+    "choices": [
+      "A safe type that prevents runtime errors",
+      "A type that disables type checking for a value",
+      "A type that means “nullable string”",
+      "A type used only for arrays"
+    ],
+    "answerIndex": 1,
+    "explanation": "`any` opts out of type checking, which removes many of TypeScript’s benefits."
+  },
+  {
+    "id": "ts_week04_10",
+    "question": "Which primitive type names should you prefer in TypeScript?",
+    "choices": [
+      "`String`, `Number`, `Boolean`",
+      "`string`, `number`, `boolean`",
+      "`text`, `float`, `bool`",
+      "`char`, `int`, `bool`"
+    ],
+    "answerIndex": 1,
+    "explanation": "Use the lowercase primitives (`string`, `number`, `boolean`) in TypeScript code."
+  },
+  {
+    "id": "ts_week04_11",
+    "question": "What is type inference in TypeScript?",
+    "choices": [
+      "The ability to run TS code without compiling",
+      "TypeScript automatically deducing types from assigned values and usage",
+      "A runtime feature that changes variable types while running",
+      "A way to generate UML diagrams"
+    ],
+    "answerIndex": 1,
+    "explanation": "TypeScript can infer types so you don’t always need to write explicit annotations."
+  },
+  {
+    "id": "ts_week04_12",
+    "question": "Which statement about `const` is correct?",
+    "choices": [
+      "`const` variables cannot be read",
+      "`const` prevents re-assignment to the variable identifier",
+      "`const` variables are always global",
+      "`const` means the value is immutable in all cases"
+    ],
+    "answerIndex": 1,
+    "explanation": "`const` prevents re-assignment; object contents may still be mutable unless you enforce immutability."
+  },
+  {
+    "id": "ts_week04_13",
+    "question": "What does “block scope” mean for `let` and `const`?",
+    "choices": [
+      "They are only available inside the `{ ... }` block where they are declared",
+      "They can only be used in `if` statements",
+      "They are hoisted to the top of the file",
+      "They can only store numbers"
+    ],
+    "answerIndex": 0,
+    "explanation": "`let`/`const` are scoped to the nearest block, which helps avoid accidental variable reuse."
+  },
+  {
+    "id": "ts_week04_14",
+    "question": "Why is `var` generally discouraged in modern TypeScript/JavaScript?",
+    "choices": [
+      "It cannot store strings",
+      "It uses function scope and hoisting, which can lead to confusing bugs",
+      "It makes code run slower by default",
+      "It is required only in Node.js"
+    ],
+    "answerIndex": 1,
+    "explanation": "`var` is function-scoped and hoisted, while `let`/`const` have clearer block scoping."
+  },
+  {
+    "id": "ts_week04_15",
+    "question": "How are `number` values represented in TypeScript at runtime (in JavaScript)?",
+    "choices": [
+      "As 32-bit integers",
+      "As 64-bit double-precision floating point numbers",
+      "As arbitrary-precision decimals",
+      "As `bigint` by default"
+    ],
+    "answerIndex": 1,
+    "explanation": "JavaScript (and therefore TypeScript) uses IEEE 754 double-precision floats for `number`."
+  },
+  {
+    "id": "ts_week04_16",
+    "question": "Which literal syntax creates a `bigint` in TypeScript/JavaScript?",
+    "choices": [
+      "`3.0`",
+      "`3n`",
+      "`bigint(3)`",
+      "`'3'`"
+    ],
+    "answerIndex": 1,
+    "explanation": "A `bigint` literal uses the `n` suffix, like `3n`."
+  },
+  {
+    "id": "ts_week04_17",
+    "question": "Which is a valid way to type an array of numbers?",
+    "choices": [
+      "`number()`",
+      "`number[]`",
+      "`numbers<number>`",
+      "`int[]`"
+    ],
+    "answerIndex": 1,
+    "explanation": "Common array typings are `number[]` and `Array<number>`."
+  },
+  {
+    "id": "ts_week04_18",
+    "question": "What does the non-null assertion operator `!` do in TypeScript (e.g., `arr[i]!`)?",
+    "choices": [
+      "Negates a boolean value",
+      "Tells TypeScript you are sure the value is not `null`/`undefined`",
+      "Converts a number to a bigint",
+      "Throws an error if the value is null"
+    ],
+    "answerIndex": 1,
+    "explanation": "`!` is a compile-time assertion to silence “possibly undefined” errors; it does not add runtime checks."
+  },
+  {
+    "id": "ts_week04_19",
+    "question": "Why would you explicitly add a return type to a function (e.g., `: number`)?",
+    "choices": [
+      "To speed up execution",
+      "To make the intended return type clear and catch incorrect returns",
+      "Because TypeScript requires it for all functions",
+      "To enable JSX"
+    ],
+    "answerIndex": 1,
+    "explanation": "Explicit return types improve clarity and help TypeScript catch wrong return values."
+  },
+  {
+    "id": "ts_week04_20",
+    "question": "What is the key difference between these arrow forms: `a => a + 1` vs `a => { return a + 1; }`?",
+    "choices": [
+      "Only the second one can return a value",
+      "The first has an implicit return; the second requires an explicit `return`",
+      "The first is async; the second is sync",
+      "They are compiled differently and behave differently"
+    ],
+    "answerIndex": 1,
+    "explanation": "Arrow functions without braces implicitly return the expression result."
+  },
+  {
+    "id": "ts_week04_21",
+    "question": "Which annotation correctly types a function variable that takes two numbers and returns a number?",
+    "choices": [
+      "`const add: number = (a, b) => a + b;`",
+      "`const add: (a: number, b: number) => number = (a, b) => a + b;`",
+      "`const add: (number, number) => number = (a, b) => a + b;`",
+      "`const add: (a, b): number = a + b;`"
+    ],
+    "answerIndex": 1,
+    "explanation": "Function types describe parameter and return types: `(a: number, b: number) => number`."
+  },
+  {
+    "id": "ts_week04_22",
+    "question": "What is an `enum` commonly used for in TypeScript?",
+    "choices": [
+      "To declare a mutable array",
+      "To define a set of named constant values",
+      "To automatically generate unit tests",
+      "To replace all `if` statements"
+    ],
+    "answerIndex": 1,
+    "explanation": "Enums represent a finite set of named options (e.g., operations like add/mul/gt/lt)."
+  },
+  {
+    "id": "ts_week04_23",
+    "question": "What makes a function a “higher-order function” (HoF)?",
+    "choices": [
+      "It must be defined with `function` keyword",
+      "It takes a function as an argument and/or returns a function",
+      "It always uses recursion",
+      "It can only work with numbers"
+    ],
+    "answerIndex": 1,
+    "explanation": "Higher-order functions accept functions and/or return functions to make behavior configurable."
+  },
+  {
+    "id": "ts_week04_24",
+    "question": "What is the main purpose of generics like `<T>` in TypeScript?",
+    "choices": [
+      "To make code run faster by default",
+      "To make functions/classes work with multiple types while keeping type safety",
+      "To turn TypeScript into a runtime language",
+      "To automatically convert values between types"
+    ],
+    "answerIndex": 1,
+    "explanation": "Generics let you parameterize types (e.g., `T`) so one implementation works for many types safely."
+  },
+  {
+    "id": "ts_week04_25",
+    "question": "Which setup best describes how to run TypeScript tests with Jest (as in the lecture notes)?",
+    "choices": [
+      "Install only `jest` and run `node test.js`",
+      "Install `jest`, `ts-jest`, `@types/jest`, initialize with `ts-jest config:init`, then run `npx jest`",
+      "Install `mocha` and run `npm test`",
+      "Use `tsc -w` and tests run automatically"
+    ],
+    "answerIndex": 1,
+    "explanation": "The typical TS+Jest stack uses `ts-jest` and types, plus a generated Jest config."
+  }
+]

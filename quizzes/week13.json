@@ -1,0 +1,302 @@
+[
+  {
+    "id": "w13_01",
+    "question": "In ASP.NET Core, what is middleware?",
+    "choices": [
+      "A database table",
+      "A component in the HTTP request pipeline that can inspect/modify requests and responses",
+      "A React hook",
+      "A TypeScript compiler option"
+    ],
+    "answerIndex": 1,
+    "explanation": "Middleware sits in the pipeline and can run code before/after the next component, or short-circuit."
+  },
+  {
+    "id": "w13_02",
+    "question": "Which capability is NOT listed as something middleware can do?",
+    "choices": [
+      "Inspect requests",
+      "Modify responses",
+      "Block requests",
+      "Automatically generate database schema without EF"
+    ],
+    "answerIndex": 3,
+    "explanation": "Middleware can inspect/modify/block, but schema generation is an EF/migrations concern, not middleware."
+  },
+  {
+    "id": "w13_03",
+    "question": "Which method registers the most common middleware that can call the next component?",
+    "choices": [
+      "app.Use()",
+      "app.Run()",
+      "app.Stop()",
+      "builder.Map()"
+    ],
+    "answerIndex": 0,
+    "explanation": "app.Use(...) is the common middleware registration that typically calls next()."
+  },
+  {
+    "id": "w13_04",
+    "question": "What is special about app.Run() middleware?",
+    "choices": [
+      "It always calls next()",
+      "It never calls next() and ends the pipeline",
+      "It only runs in development",
+      "It only runs for GET requests"
+    ],
+    "answerIndex": 1,
+    "explanation": "Run is terminal middleware: it does not call next and ends request processing."
+  },
+  {
+    "id": "w13_05",
+    "question": "What does app.Map() do in middleware registration?",
+    "choices": [
+      "Branches the pipeline based on URL",
+      "Maps DTOs to entities",
+      "Maps database migrations",
+      "Maps React routes"
+    ],
+    "answerIndex": 0,
+    "explanation": "Map creates pipeline branches depending on a path segment or predicate."
+  },
+  {
+    "id": "w13_06",
+    "question": "In an inline middleware with (context, next), what does calling await next() mean?",
+    "choices": [
+      "Stop the pipeline immediately",
+      "Continue to the next middleware/component in the pipeline",
+      "Restart the request",
+      "Skip routing"
+    ],
+    "answerIndex": 1,
+    "explanation": "await next() passes control to the next pipeline component, then resumes when it completes."
+  },
+  {
+    "id": "w13_07",
+    "question": "If you remove await _next(context) from a middleware class, what happens?",
+    "choices": [
+      "Controllers still run as normal",
+      "The pipeline stops early (terminal behavior) and later components won’t run",
+      "CORS is automatically enabled",
+      "The app crashes at startup"
+    ],
+    "answerIndex": 1,
+    "explanation": "Without calling next, the request won’t reach later middleware/controllers."
+  },
+  {
+    "id": "w13_08",
+    "question": "Which built-in concept is suggested for logging output levels in appsettings.json?",
+    "choices": [
+      "Logging:LogLevel",
+      "Routing:Endpoints",
+      "EF:Migrations",
+      "React:Router"
+    ],
+    "answerIndex": 0,
+    "explanation": "The notes show configuring logging via appsettings.json under Logging/LogLevel."
+  },
+  {
+    "id": "w13_09",
+    "question": "What is the main goal of CORS middleware?",
+    "choices": [
+      "Allow a backend to accept browser requests from specific other origins",
+      "Encrypt database files",
+      "Generate JWT tokens",
+      "Render React pages"
+    ],
+    "answerIndex": 0,
+    "explanation": "CORS controls which front-end origins can call the API from the browser."
+  },
+  {
+    "id": "w13_10",
+    "question": "Why does the notes emphasize “CORS MUST BE BEFORE AUTH”?",
+    "choices": [
+      "Because CORS is only for databases",
+      "Because preflight/headers must be handled before authentication/authorization runs",
+      "Because authentication runs only in the browser",
+      "Because controllers cannot run otherwise"
+    ],
+    "answerIndex": 1,
+    "explanation": "If CORS headers aren’t applied early, browsers may block requests before auth even matters."
+  },
+  {
+    "id": "w13_11",
+    "question": "Which is the correct high-level ordering mentioned?",
+    "choices": [
+      "UseAuthorization → UseCors → UseAuthentication → MapControllers",
+      "UseRouting → UseCors → UseAuthentication → UseAuthorization → MapControllers",
+      "MapControllers → UseCors → UseRouting",
+      "UseCors → UseRouting → UseAuthorization"
+    ],
+    "answerIndex": 1,
+    "explanation": "The notes list: UseRouting, UseCors, UseAuthentication, UseAuthorization, MapControllers."
+  },
+  {
+    "id": "w13_12",
+    "question": "What is a cookie in the context of ASP.NET Core examples?",
+    "choices": [
+      "A database record",
+      "A small piece of data stored in the browser and sent with requests",
+      "A C# attribute",
+      "A React state value"
+    ],
+    "answerIndex": 1,
+    "explanation": "Cookies are stored client-side and sent to the server on subsequent requests (for the same site/path rules)."
+  },
+  {
+    "id": "w13_13",
+    "question": "How do you write a cookie in the example code?",
+    "choices": [
+      "ctx.Request.Cookies.Append(...)",
+      "ctx.Response.Cookies.Append(...)",
+      "app.Cookies.Add(...)",
+      "builder.Services.AddCookies(...)"
+    ],
+    "answerIndex": 1,
+    "explanation": "The example uses ctx.Response.Cookies.Append(\"theme\", \"dark\")."
+  },
+  {
+    "id": "w13_14",
+    "question": "What is a session (in the middleware section)?",
+    "choices": [
+      "A CSS session for styling",
+      "Server-side state associated with a client over multiple requests",
+      "A .NET migration",
+      "A React Router route"
+    ],
+    "answerIndex": 1,
+    "explanation": "Sessions store per-user data server-side, usually keyed by a cookie."
+  },
+  {
+    "id": "w13_15",
+    "question": "Which calls enable sessions in ASP.NET Core (per the notes)?",
+    "choices": [
+      "builder.Services.AddSession(); app.UseSession();",
+      "builder.Services.AddControllers(); app.MapControllers();",
+      "builder.Services.AddCors(); app.UseCors();",
+      "builder.Services.AddDbContext(); app.UseDbContext();"
+    ],
+    "answerIndex": 0,
+    "explanation": "The notes show adding session services then enabling session middleware in the pipeline."
+  },
+  {
+    "id": "w13_16",
+    "question": "What are filters in ASP.NET Core (as described)?",
+    "choices": [
+      "They only apply to minimal APIs",
+      "They run inside the MVC pipeline (controllers) for cross-cutting concerns",
+      "They are database queries",
+      "They are CSS selectors"
+    ],
+    "answerIndex": 1,
+    "explanation": "Filters apply to MVC controllers/actions, not to minimal APIs, and run inside MVC pipeline."
+  },
+  {
+    "id": "w13_17",
+    "question": "Which filter type runs code before and after an action executes, often for logging?",
+    "choices": [
+      "Action Filter",
+      "Routing Filter",
+      "Database Filter",
+      "CSS Filter"
+    ],
+    "answerIndex": 0,
+    "explanation": "Action filters can run code before and after a controller action."
+  },
+  {
+    "id": "w13_18",
+    "question": "Which filter type is used to allow/block access before model binding?",
+    "choices": [
+      "Exception Filter",
+      "Authorization Filter",
+      "Result Filter",
+      "Action Filter"
+    ],
+    "answerIndex": 1,
+    "explanation": "Authorization filters can short-circuit unauthorized requests early."
+  },
+  {
+    "id": "w13_19",
+    "question": "How can an Action Filter be applied globally to all controllers (per the notes)?",
+    "choices": [
+      "builder.Services.AddControllers(options => options.Filters.Add<LogActionFilter>())",
+      "app.UseMiddleware<LogActionFilter>()",
+      "app.MapGet(\"/filter\")",
+      "builder.Services.AddSingleton<LogActionFilter>() only"
+    ],
+    "answerIndex": 0,
+    "explanation": "The notes show adding filters in AddControllers options to apply globally."
+  },
+  {
+    "id": "w13_20",
+    "question": "What is the purpose of ServiceFilter(typeof(LogActionFilter))?",
+    "choices": [
+      "To apply a filter using DI at controller/action level",
+      "To enable CORS",
+      "To register controllers",
+      "To create a database migration"
+    ],
+    "answerIndex": 0,
+    "explanation": "ServiceFilter applies a filter that can be resolved via DI (often for non-global filters)."
+  },
+  {
+    "id": "w13_21",
+    "question": "What is a common way middleware can implement simple request blocking (as shown)?",
+    "choices": [
+      "Set StatusCode and return early before calling next()",
+      "Throw an exception in Program.cs only",
+      "Change the tsconfig target",
+      "Disable the event loop"
+    ],
+    "answerIndex": 0,
+    "explanation": "The example checks a header token and returns 401 without continuing the pipeline."
+  },
+  {
+    "id": "w13_22",
+    "question": "What is the strict contract for a middleware class mentioned in the notes?",
+    "choices": [
+      "It must inherit from ControllerBase",
+      "It takes RequestDelegate in the constructor and exposes Invoke or InvokeAsync",
+      "It must be static",
+      "It must return ActionResult<T>"
+    ],
+    "answerIndex": 1,
+    "explanation": "ASP.NET Core recognizes middleware classes by the RequestDelegate + Invoke/InvokeAsync pattern."
+  },
+  {
+    "id": "w13_23",
+    "question": "Why can CORS not be fully tested in a REST client (per the notes)?",
+    "choices": [
+      "REST clients don’t send HTTP requests",
+      "CORS is a browser security mechanism enforced by browsers, not the server",
+      "CORS requires SQLite",
+      "CORS only works with GET"
+    ],
+    "answerIndex": 1,
+    "explanation": "CORS restrictions are enforced by the browser; REST clients aren’t subject to those same rules."
+  },
+  {
+    "id": "w13_24",
+    "question": "Which statement is true about filters vs middleware?",
+    "choices": [
+      "Filters apply to minimal APIs, middleware applies to controllers",
+      "Filters run inside MVC pipeline; middleware runs in the overall HTTP pipeline",
+      "They are the same feature with different names",
+      "Middleware only runs after the response is sent"
+    ],
+    "answerIndex": 1,
+    "explanation": "Filters are MVC-specific; middleware is general pipeline processing for all requests."
+  },
+  {
+    "id": "w13_25",
+    "question": "Which is the most accurate description of “pipeline ordering”?",
+    "choices": [
+      "Only the last middleware runs",
+      "Middleware runs in the order registered, affecting what executes and when",
+      "Ordering is random",
+      "Ordering matters only for CSS"
+    ],
+    "answerIndex": 1,
+    "explanation": "ASP.NET Core executes middleware in registration order; earlier middleware can short-circuit or modify requests/responses."
+  }
+]

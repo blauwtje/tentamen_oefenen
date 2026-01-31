@@ -1,0 +1,302 @@
+[
+  {
+    "id": "w10_01",
+    "question": "Why is the Repository Pattern introduced when using Entity Framework?",
+    "choices": [
+      "To tightly couple controllers to DbContext",
+      "To create an abstraction layer between business logic and data persistence",
+      "To replace the database with localStorage",
+      "To prevent using LINQ"
+    ],
+    "answerIndex": 1,
+    "explanation": "A repository hides EF details behind an interface, improving separation of concerns and testability."
+  },
+  {
+    "id": "w10_02",
+    "question": "Which is listed as a benefit of the Repository Pattern?",
+    "choices": [
+      "Harder to unit test",
+      "Consistency across CRUD operations via a common interface",
+      "Forces all code into Program.cs",
+      "Disables dependency injection"
+    ],
+    "answerIndex": 1,
+    "explanation": "The notes mention testability and consistent CRUD operations behind a common interface."
+  },
+  {
+    "id": "w10_03",
+    "question": "What does SRP stand for in SOLID, referenced in the notes?",
+    "choices": [
+      "Single Routing Principle",
+      "Single Responsibility Principle",
+      "Simple Repository Pattern",
+      "Scoped Runtime Provider"
+    ],
+    "answerIndex": 1,
+    "explanation": "SRP: each class/module should have one reason to change."
+  },
+  {
+    "id": "w10_04",
+    "question": "In many repository examples, why does Add/Update/Delete not immediately commit changes?",
+    "choices": [
+      "Because EF Core cannot save changes",
+      "Because SaveChanges() is the explicit commit step",
+      "Because controllers automatically save changes",
+      "Because repositories must be singletons"
+    ],
+    "answerIndex": 1,
+    "explanation": "The notes explain that SaveChanges commits pending changes as a unit/transaction."
+  },
+  {
+    "id": "w10_05",
+    "question": "Why might a repository expose a Query() method returning IQueryable<T>?",
+    "choices": [
+      "To enable advanced LINQ operations like joins/grouping",
+      "To force all queries to execute immediately",
+      "To disable filtering",
+      "To return only JSON strings"
+    ],
+    "answerIndex": 0,
+    "explanation": "IQueryable enables composing LINQ queries (projection, joins, grouping) before execution."
+  },
+  {
+    "id": "w10_06",
+    "question": "In the repository interface, why does Find often take Expression<Func<T,bool>> instead of Func<T,bool>?",
+    "choices": [
+      "So EF can translate the expression into SQL",
+      "So JavaScript can execute it",
+      "So it becomes a macrotask",
+      "So it can only run in memory"
+    ],
+    "answerIndex": 0,
+    "explanation": "Expressions can be translated by EF to SQL; a plain Func typically cannot be translated and may force client-side evaluation."
+  },
+  {
+    "id": "w10_07",
+    "question": "What is a Minimal API in ASP.NET Core (as shown in Program.cs)?",
+    "choices": [
+      "A React component",
+      "A lightweight way to define endpoints directly in Program.cs",
+      "A SQL migration tool",
+      "A type of middleware only"
+    ],
+    "answerIndex": 1,
+    "explanation": "Minimal APIs define routes with app.MapGet/MapPost etc. without controllers."
+  },
+  {
+    "id": "w10_08",
+    "question": "Which method maps a GET endpoint in a Minimal API?",
+    "choices": [
+      "app.MapGet",
+      "app.MapPut",
+      "app.UseGet",
+      "builder.MapGet"
+    ],
+    "answerIndex": 0,
+    "explanation": "Minimal APIs use app.MapGet for GET routes."
+  },
+  {
+    "id": "w10_09",
+    "question": "In a route template like /user/{id}/details/{code}, what are {id} and {code}?",
+    "choices": [
+      "Query string parameters",
+      "Route parameters",
+      "HTTP headers",
+      "Database primary keys only"
+    ],
+    "answerIndex": 1,
+    "explanation": "Curly-brace tokens in the path are route parameters bound from the URL path."
+  },
+  {
+    "id": "w10_10",
+    "question": "In Minimal APIs, what is the typical format for query parameters?",
+    "choices": [
+      "/search/{term}/{limit}",
+      "/search?term=apple&limit=5",
+      "/search#term=apple",
+      "/search(term=apple,limit=5)"
+    ],
+    "answerIndex": 1,
+    "explanation": "Query parameters are appended after '?' and separated with '&'."
+  },
+  {
+    "id": "w10_11",
+    "question": "Which attribute is used in Minimal APIs to explicitly bind a parameter from the request body?",
+    "choices": [
+      "[FromBody]",
+      "[FromRoute]",
+      "[FromServices]",
+      "[FromHeader]"
+    ],
+    "answerIndex": 0,
+    "explanation": "The example shows [FromBody] OrderItem item for JSON body binding."
+  },
+  {
+    "id": "w10_12",
+    "question": "Which attribute is used in the example to bind a parameter from the query string?",
+    "choices": [
+      "[FromQuery]",
+      "[FromBody]",
+      "[FromForm]",
+      "[FromFile]"
+    ],
+    "answerIndex": 0,
+    "explanation": "The example includes [FromQuery] decimal discount."
+  },
+  {
+    "id": "w10_13",
+    "question": "How do you read form data in a Minimal API example shown in the notes?",
+    "choices": [
+      "req.ReadFormAsync()",
+      "req.ReadJsonAsync()",
+      "req.ReadBodyTextSync()",
+      "req.ParseUrlEncoded()"
+    ],
+    "answerIndex": 0,
+    "explanation": "The example uses await req.ReadFormAsync() to read x-www-form-urlencoded data."
+  },
+  {
+    "id": "w10_14",
+    "question": "Why do the notes suggest using `dotnet new web` instead of `dotnet new webapi` for Minimal API demos?",
+    "choices": [
+      "webapi is not supported on Windows",
+      "webapi adds extra scaffolding that isn’t needed for the minimal example",
+      "web cannot host endpoints",
+      "web forces MVC views"
+    ],
+    "answerIndex": 1,
+    "explanation": "The notes say webapi adds a lot of scaffolding; the minimal web template keeps it simpler."
+  },
+  {
+    "id": "w10_15",
+    "question": "What is the purpose of creating a .rest file in the Minimal API section?",
+    "choices": [
+      "To define database schema",
+      "To test endpoints with REST Client (or Postman)",
+      "To enable TypeScript strict mode",
+      "To configure React Router"
+    ],
+    "answerIndex": 1,
+    "explanation": "A .rest file contains sample HTTP requests to quickly test endpoints."
+  },
+  {
+    "id": "w10_16",
+    "question": "Which packages are listed for adding EF Core + SQLite support?",
+    "choices": [
+      "Microsoft.EntityFrameworkCore, Microsoft.EntityFrameworkCore.Sqlite, Microsoft.EntityFrameworkCore.Tools",
+      "react, react-dom, vite",
+      "axios, express, cors",
+      "Newtonsoft.Json only"
+    ],
+    "answerIndex": 0,
+    "explanation": "The notes list EFCore, EFCore.Sqlite, and EFCore.Tools packages."
+  },
+  {
+    "id": "w10_17",
+    "question": "In the controller example, what does [ApiController] mainly enable?",
+    "choices": [
+      "Automatic model binding/validation behaviors for APIs",
+      "React component rendering",
+      "Database migration generation",
+      "CORS headers by default"
+    ],
+    "answerIndex": 0,
+    "explanation": "[ApiController] turns on helpful API conventions like automatic binding and validation responses."
+  },
+  {
+    "id": "w10_18",
+    "question": "What does app.MapControllers() do?",
+    "choices": [
+      "Registers DI services",
+      "Maps attribute-routed controllers into the request pipeline",
+      "Creates migrations",
+      "Runs the React dev server"
+    ],
+    "answerIndex": 1,
+    "explanation": "MapControllers enables controller endpoints to handle requests."
+  },
+  {
+    "id": "w10_19",
+    "question": "Why is injecting DbContext directly into many controllers considered risky as an app grows?",
+    "choices": [
+      "Because controllers cannot use EF",
+      "Because it couples your API layer tightly to EF/data access details",
+      "Because it forces all queries to be synchronous",
+      "Because it disables routing"
+    ],
+    "answerIndex": 1,
+    "explanation": "The repository pattern helps prevent controllers from being tightly coupled to EF Core."
+  },
+  {
+    "id": "w10_20",
+    "question": "In the minimal API routing/binding examples, what is the main idea being demonstrated?",
+    "choices": [
+      "How to design CSS modules",
+      "How route, query, body, and form inputs bind to handler parameters",
+      "How to write unit tests for React",
+      "How to transpile TypeScript"
+    ],
+    "answerIndex": 1,
+    "explanation": "The examples show binding from route params, query strings, JSON bodies, and form data."
+  },
+  {
+    "id": "w10_21",
+    "question": "What is a common route prefix pattern shown for controllers?",
+    "choices": [
+      "[Route(\"api/[controller]\")]",
+      "[Route(\"/\")]",
+      "[Route(\"hooks\")]",
+      "[Route(\"db/[context]\")]"
+    ],
+    "answerIndex": 0,
+    "explanation": "The notes show [Route(\"api/[controller]\")] for API controllers."
+  },
+  {
+    "id": "w10_22",
+    "question": "In the controller CRUD example, what is CreatedAtAction used for?",
+    "choices": [
+      "Returning a 201 response with a link to the new resource",
+      "Returning a 404 for missing resources",
+      "Adding a new database migration",
+      "Enabling CORS"
+    ],
+    "answerIndex": 0,
+    "explanation": "CreatedAtAction returns 201 Created and points clients to the endpoint to retrieve the created resource."
+  },
+  {
+    "id": "w10_23",
+    "question": "What is the expected behavior of SaveChanges() in a repository?",
+    "choices": [
+      "It marks changes but doesn’t commit",
+      "It commits pending changes as one unit/transaction",
+      "It automatically retries forever",
+      "It runs only on application shutdown"
+    ],
+    "answerIndex": 1,
+    "explanation": "SaveChanges commits pending changes to the database."
+  },
+  {
+    "id": "w10_24",
+    "question": "Which statement best matches the reason to use interfaces like IRepository<T>?",
+    "choices": [
+      "To make all code static",
+      "To allow swapping implementations and mocking in tests",
+      "To force all queries to use raw SQL",
+      "To avoid dependency injection"
+    ],
+    "answerIndex": 1,
+    "explanation": "Interfaces enable dependency inversion: different implementations and easier unit testing."
+  },
+  {
+    "id": "w10_25",
+    "question": "In the Minimal API example, what does app.Urls.Add(\"http://localhost:5555\") do?",
+    "choices": [
+      "Adds a database connection string",
+      "Configures the server to listen on a specific URL",
+      "Defines a React route",
+      "Starts the Vite dev server"
+    ],
+    "answerIndex": 1,
+    "explanation": "It configures Kestrel to listen on that URL/port for incoming requests."
+  }
+]

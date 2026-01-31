@@ -1,0 +1,302 @@
+[
+  {
+    "id": "fp_1",
+    "question": "What is the primary purpose of the map() function in functional programming?",
+    "choices": [
+      "To filter elements based on a condition",
+      "To transform each element in an array and create a new array",
+      "To combine all elements into a single value",
+      "To sort elements in an array"
+    ],
+    "answerIndex": 1,
+    "explanation": "map() transforms each element in an array by applying a function and returns a new array of the same length with the transformed values."
+  },
+  {
+    "id": "fp_2",
+    "question": "Which function would you use to create a new array containing only elements that pass a specific test?",
+    "choices": [
+      "map()",
+      "reduce()",
+      "filter()",
+      "forEach()"
+    ],
+    "answerIndex": 2,
+    "explanation": "filter() creates a new array containing only elements that satisfy a given condition (predicate)."
+  },
+  {
+    "id": "fp_3",
+    "question": "What does the reduce() function do in functional programming?",
+    "choices": [
+      "Reduces the size of an array by removing elements",
+      "Aggregates array values into a single value",
+      "Reduces the execution time of code",
+      "Filters out duplicate values"
+    ],
+    "answerIndex": 1,
+    "explanation": "reduce() accumulates or aggregates values from an array into a single result by applying a function repeatedly."
+  },
+  {
+    "id": "fp_4",
+    "question": "What is a key characteristic of recursive solutions compared to iterative ones?",
+    "choices": [
+      "They are always faster",
+      "They use more memory",
+      "They are more declarative (describe 'what' rather than 'how')",
+      "They cannot handle large inputs"
+    ],
+    "answerIndex": 2,
+    "explanation": "Recursive solutions tend to be more declarative, focusing on what needs to be done rather than the step-by-step process of how to do it."
+  },
+  {
+    "id": "fp_5",
+    "question": "What is the 'base case' in a recursive function?",
+    "choices": [
+      "The first line of the function",
+      "The condition that stops the recursion",
+      "The return type declaration",
+      "The most complex part of the recursion"
+    ],
+    "answerIndex": 1,
+    "explanation": "The base case is the condition that terminates the recursion, preventing infinite loops."
+  },
+  {
+    "id": "fp_6",
+    "question": "In TypeScript, what is the purpose of the 'readonly' modifier?",
+    "choices": [
+      "Prevents a value from being read",
+      "Prevents reassignment of a property in TypeScript code",
+      "Makes a property optional",
+      "Hides the property from other classes"
+    ],
+    "answerIndex": 1,
+    "explanation": "In TypeScript, 'readonly' prevents assigning to that property in your code (compile-time). It helps model immutability." 
+  },
+  {
+    "id": "fp_7",
+    "question": "What is the main difference between a class and an interface in TypeScript?",
+    "choices": [
+      "Interfaces can have implementations, classes cannot",
+      "Classes are for runtime, interfaces are compile-time contracts",
+      "Interfaces are faster than classes",
+      "Classes cannot be extended, interfaces can"
+    ],
+    "answerIndex": 1,
+    "explanation": "Interfaces define contracts (shapes/types) that classes must implement, while classes provide actual implementations and exist at runtime."
+  },
+  {
+    "id": "fp_8",
+    "question": "What is a discriminated union in TypeScript?",
+    "choices": [
+      "A union type where each member has a common property to distinguish them",
+      "A type that combines multiple interfaces",
+      "A union of primitive types only",
+      "A type that cannot be discriminated"
+    ],
+    "answerIndex": 0,
+    "explanation": "A discriminated union is a union type where each member has a common property (discriminant) that can be used to distinguish between them at runtime."
+  },
+  {
+    "id": "fp_9",
+    "question": "What is a literal type in TypeScript?",
+    "choices": [
+      "A type that can only contain string values",
+      "A type that represents a specific value rather than a range of values",
+      "A type for literal programming constructs",
+      "A type that cannot be changed"
+    ],
+    "answerIndex": 1,
+    "explanation": "A literal type is a type that represents a single specific value (like 'OK' or 'Fail'), rather than a range of possible values."
+  },
+  {
+    "id": "fp_10",
+    "question": "Why might you return a custom ReturnType (Success/Fail) instead of throwing exceptions?",
+    "choices": [
+      "To make code run faster",
+      "To avoid crashing the program and handle errors gracefully",
+      "To reduce code size",
+      "Exceptions are deprecated in TypeScript"
+    ],
+    "answerIndex": 1,
+    "explanation": "Returning custom result types allows for graceful error handling without stopping program execution, making code more robust."
+  },
+  {
+    "id": "fp_11",
+    "question": "What is function composition?",
+    "choices": [
+      "Combining two or more functions to produce a new function",
+      "Splitting one function into multiple unrelated functions",
+      "Running two functions in parallel threads",
+      "Calling a function from inside itself (recursion)"
+    ],
+    "answerIndex": 0,
+    "explanation": "Function composition combines functions so that the output of one becomes the input of the next (e.g., f(g(x)))."
+  },
+  {
+    "id": "fp_12",
+    "question": "In the expression 'f(g(x))', what does this represent in function composition?",
+    "choices": [
+      "Parallel execution of f and g",
+      "g is applied first, then f to the result",
+      "f is applied first, then g to the result",
+      "Both functions are applied simultaneously"
+    ],
+    "answerIndex": 1,
+    "explanation": "In 'f(g(x))', function g is applied first to x, then function f is applied to the result of g(x)."
+  },
+  {
+    "id": "fp_13",
+    "question": "What is currying in functional programming?",
+    "choices": [
+      "A technique for parallelizing function calls",
+      "Transforming a function with multiple arguments into a sequence of single-argument functions",
+      "Making code more complex",
+      "A type of loop optimization"
+    ],
+    "answerIndex": 1,
+    "explanation": "Currying transforms a function that takes multiple arguments into a series of functions that each take a single argument."
+  },
+  {
+    "id": "fp_14",
+    "question": "What is immutability in functional programming?",
+    "choices": [
+      "The ability to mutate objects freely",
+      "Objects that cannot change after creation",
+      "Functions that never return",
+      "Variables that can only be used once"
+    ],
+    "answerIndex": 1,
+    "explanation": "Immutability means objects/data structures cannot be changed after they are created, leading to more predictable code."
+  },
+  {
+    "id": "fp_15",
+    "question": "What defines a pure function?",
+    "choices": [
+      "A function with no parameters",
+      "A function that always returns the same output for the same inputs and has no side effects",
+      "A function that only uses mathematical operations",
+      "A function that is written in a single line"
+    ],
+    "answerIndex": 1,
+    "explanation": "A pure function always returns the same result given the same arguments and has no side effects (doesn't modify external state)."
+  },
+  {
+    "id": "fp_16",
+    "question": "Why are pure functions advantageous?",
+    "choices": [
+      "They run faster",
+      "They are easier to test, understand, and debug due to predictability",
+      "They use less memory",
+      "They can access global variables"
+    ],
+    "answerIndex": 1,
+    "explanation": "Pure functions are predictable, easier to test, debug, and reason about since they don't depend on or modify external state."
+  },
+  {
+    "id": "fp_17",
+    "question": "In the code 'products.filter(x=>x.price<=1000).filter(x=>x.inStock)', why is this inefficient?",
+    "choices": [
+      "It uses arrow functions",
+      "It creates intermediate arrays for each filter operation",
+      "Filter cannot be chained",
+      "It doesn't handle errors"
+    ],
+    "answerIndex": 1,
+    "explanation": "Chaining filters creates intermediate arrays, which can be inefficient with large datasets. Combining conditions in a single filter is more efficient."
+  },
+  {
+    "id": "fp_18",
+    "question": "What does the 'extends' keyword do in TypeScript classes?",
+    "choices": [
+      "Extends the length of an array",
+      "Creates a subclass that inherits from a parent class",
+      "Extends the functionality of a function",
+      "Makes a class abstract"
+    ],
+    "answerIndex": 1,
+    "explanation": "The 'extends' keyword creates inheritance, allowing a child class to inherit properties and methods from a parent class."
+  },
+  {
+    "id": "fp_19",
+    "question": "What is the purpose of the 'super()' call in a constructor?",
+    "choices": [
+      "To call a superior function",
+      "To call the parent class constructor",
+      "To make the class super",
+      "To initialize super variables"
+    ],
+    "answerIndex": 1,
+    "explanation": "super() calls the constructor of the parent class, ensuring proper initialization of inherited properties."
+  },
+  {
+    "id": "fp_20",
+    "question": "What is type algebra in TypeScript?",
+    "choices": [
+      "Mathematical operations on types",
+      "Creating new types by combining existing types using union, intersection, etc.",
+      "Using types in mathematical functions",
+      "A deprecated feature"
+    ],
+    "answerIndex": 1,
+    "explanation": "Type algebra refers to creating new types by combining existing types using operators like union (|), intersection (&), etc."
+  },
+  {
+    "id": "fp_21",
+    "question": "Which of these is NOT a benefit of using custom return types (Success/Fail) over exceptions?",
+    "choices": [
+      "Better type safety",
+      "Forces explicit error handling",
+      "Makes code run significantly faster",
+      "Errors become part of the function signature"
+    ],
+    "answerIndex": 2,
+    "explanation": "While custom return types improve type safety and force error handling, they don't necessarily make code run significantly faster."
+  },
+  {
+    "id": "fp_22",
+    "question": "What does the 'implements' keyword do in TypeScript?",
+    "choices": [
+      "Implements a function from an interface",
+      "Indicates a class provides implementations for all members of an interface",
+      "Implements a design pattern",
+      "Creates an implementation of an abstract class"
+    ],
+    "answerIndex": 1,
+    "explanation": "The 'implements' keyword indicates that a class provides concrete implementations for all members defined in an interface."
+  },
+  {
+    "id": "fp_23",
+    "question": "In the chain 'apiUsers.filter(x=>x.kind==\"member\").map(x=>x.points).reduce((acc,x)=>acc+x,0)', what is the final result?",
+    "choices": [
+      "An array of member points",
+      "The total points of all members",
+      "The average points of members",
+      "A filtered array of members"
+    ],
+    "answerIndex": 1,
+    "explanation": "This chain filters members, extracts their points, then sums all points using reduce, resulting in the total points."
+  },
+  {
+    "id": "fp_24",
+    "question": "What is the purpose of the 'And' and 'Or' higher-order functions in the products example?",
+    "choices": [
+      "To perform logical operations on boolean values",
+      "To compose multiple filter conditions into single predicates",
+      "To combine arrays",
+      "To create type unions"
+    ],
+    "answerIndex": 1,
+    "explanation": "These functions compose multiple predicate functions into single predicates that can be used with filter()."
+  },
+  {
+    "id": "fp_25",
+    "question": "Which concept emphasizes that functions should not modify external state or variables?",
+    "choices": [
+      "Currying",
+      "Immutability",
+      "Pure functions",
+      "Recursion"
+    ],
+    "answerIndex": 2,
+    "explanation": "Pure functions emphasize no side effects - they don't modify external state and only depend on their inputs."
+  }
+]

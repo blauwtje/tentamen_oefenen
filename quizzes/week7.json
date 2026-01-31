@@ -1,0 +1,302 @@
+[
+  {
+    "id": "w07_01",
+    "question": "In JavaScript, what does it mean when an operation is asynchronous?",
+    "choices": [
+      "It executes on a separate JavaScript thread",
+      "It blocks the call stack until it completes",
+      "It can complete later while the rest of the code keeps running",
+      "It only works inside React components"
+    ],
+    "answerIndex": 2,
+    "explanation": "Async operations return control immediately so the program can continue, and they finish later (e.g., timers, network calls)."
+  },
+  {
+    "id": "w07_02",
+    "question": "JavaScript executes code primarily in which way?",
+    "choices": [
+      "Multi-threaded parallel execution",
+      "Sequentially on a single thread",
+      "Only in microtasks",
+      "Only in macrotasks"
+    ],
+    "answerIndex": 1,
+    "explanation": "JS runs code line-by-line on a single thread; concurrency comes from the runtime (browser/Node) and the event loop."
+  },
+  {
+    "id": "w07_03",
+    "question": "Where do long-running tasks like timers and network requests run (not on the JS call stack)?",
+    "choices": [
+      "Inside the React Virtual DOM",
+      "Inside Web APIs / Node APIs provided by the runtime",
+      "Inside the TypeScript compiler",
+      "Inside the microtask queue"
+    ],
+    "answerIndex": 1,
+    "explanation": "The browser (Web APIs) or Node.js APIs perform work off the call stack and later schedule callbacks."
+  },
+  {
+    "id": "w07_04",
+    "question": "What is the call stack responsible for in the JavaScript runtime model?",
+    "choices": [
+      "Storing HTTP responses",
+      "Executing function calls",
+      "Rendering JSX to the DOM",
+      "Persisting state to localStorage"
+    ],
+    "answerIndex": 1,
+    "explanation": "The call stack is where JS executes function frames; it must be empty before queued tasks can run."
+  },
+  {
+    "id": "w07_05",
+    "question": "Which component decides when queued callbacks can run?",
+    "choices": [
+      "The TypeScript type checker",
+      "The event loop",
+      "The garbage collector",
+      "The CSSOM"
+    ],
+    "answerIndex": 1,
+    "explanation": "The event loop monitors the call stack and moves tasks from queues to the stack when it is empty."
+  },
+  {
+    "id": "w07_06",
+    "question": "Which queue typically contains Promise callbacks?",
+    "choices": [
+      "Microtask queue",
+      "Macrotask (callback) queue",
+      "Render queue",
+      "Heap queue"
+    ],
+    "answerIndex": 0,
+    "explanation": "Promise reactions (.then/.catch) are scheduled as microtasks."
+  },
+  {
+    "id": "w07_07",
+    "question": "What is true about microtasks vs macrotasks when the call stack becomes empty?",
+    "choices": [
+      "Macrotasks always run before microtasks",
+      "Microtasks run before macrotasks",
+      "They run in random order",
+      "Neither runs unless React is mounted"
+    ],
+    "answerIndex": 1,
+    "explanation": "After the current stack clears, the runtime drains the microtask queue before processing macrotasks like setTimeout callbacks."
+  },
+  {
+    "id": "w07_08",
+    "question": "In the example with two setTimeout calls (1000ms and 2000ms) and logs 'Start' and 'End', which logs first?",
+    "choices": [
+      "Start",
+      "Timeout done",
+      "Timeout done 2",
+      "End"
+    ],
+    "answerIndex": 0,
+    "explanation": "Synchronous code runs immediately: it logs Start, schedules timers, then logs End; timers fire later."
+  },
+  {
+    "id": "w07_09",
+    "question": "What does “concurrency” mean in JavaScript as described in the notes?",
+    "choices": [
+      "Two JS instructions executing at the same time on multiple CPU cores",
+      "Multiple tasks in progress coordinated by the event loop (not true parallelism)",
+      "A Promise that resolves instantly",
+      "A function that runs recursively"
+    ],
+    "answerIndex": 1,
+    "explanation": "JS concurrency is coordination: async tasks progress outside the call stack while JS continues running."
+  },
+  {
+    "id": "w07_10",
+    "question": "What is a callback function?",
+    "choices": [
+      "A function returned by reduce()",
+      "A function passed to another function to be executed later",
+      "A function that always throws an error",
+      "A function that can only be used in TypeScript"
+    ],
+    "answerIndex": 1,
+    "explanation": "Callbacks are functions provided as arguments (e.g., to setTimeout or custom APIs) and invoked later."
+  },
+  {
+    "id": "w07_11",
+    "question": "What is a Promise in JavaScript?",
+    "choices": [
+      "A synchronous return value",
+      "A placeholder for a value that may be available now, later, or never",
+      "A special kind of array",
+      "A React hook"
+    ],
+    "answerIndex": 1,
+    "explanation": "Promises represent future completion (fulfilled/rejected) and are commonly returned from async operations."
+  },
+  {
+    "id": "w07_12",
+    "question": "Which chaining pattern is typical for handling a Promise result?",
+    "choices": [
+      "promise.map().filter()",
+      "promise.then(...).catch(...)",
+      "promise.forEach(...)",
+      "promise.switch(...)"
+    ],
+    "answerIndex": 1,
+    "explanation": "Promises are commonly handled with then/catch (and optionally finally)."
+  },
+  {
+    "id": "w07_13",
+    "question": "What is async/await described as in the notes?",
+    "choices": [
+      "A different runtime than Promises",
+      "Syntactic sugar over Promises",
+      "A replacement for the event loop",
+      "A TypeScript-only feature that doesn’t compile"
+    ],
+    "answerIndex": 1,
+    "explanation": "async/await is syntax built on Promises that makes async code read more like synchronous code."
+  },
+  {
+    "id": "w07_14",
+    "question": "Inside an async function, what does the await keyword do?",
+    "choices": [
+      "Blocks the entire JavaScript engine",
+      "Pauses that function’s execution until the awaited Promise settles",
+      "Turns a value into a Promise permanently",
+      "Moves the code to the macrotask queue"
+    ],
+    "answerIndex": 1,
+    "explanation": "await pauses the async function until the Promise resolves/rejects, without blocking the whole program’s event loop."
+  },
+  {
+    "id": "w07_15",
+    "question": "Why is try/catch commonly used with async/await?",
+    "choices": [
+      "To prevent TypeScript from compiling",
+      "To handle errors from awaited Promises in a structured way",
+      "To make the code run in parallel",
+      "To force microtasks to run last"
+    ],
+    "answerIndex": 1,
+    "explanation": "Awaited Promise rejections can be caught with try/catch, similar to synchronous exceptions."
+  },
+  {
+    "id": "w07_16",
+    "question": "What does the Fetch API return immediately when called?",
+    "choices": [
+      "The final JSON data",
+      "A Promise",
+      "An HTTP status code number",
+      "A DOM element"
+    ],
+    "answerIndex": 1,
+    "explanation": "fetch() returns a Promise that resolves to a Response object."
+  },
+  {
+    "id": "w07_17",
+    "question": "In a fetch().then(...).then(...) chain, what typically happens in the first then?",
+    "choices": [
+      "You call response.json() to parse the response body",
+      "You update the DOM directly with innerHTML",
+      "You create a new Promise constructor",
+      "You must call setTimeout"
+    ],
+    "answerIndex": 0,
+    "explanation": "A common pattern is: fetch(url).then(r => r.json()).then(data => ...)."
+  },
+  {
+    "id": "w07_18",
+    "question": "Axios is described as an alternative to fetch(). Which is listed as a benefit?",
+    "choices": [
+      "It eliminates the event loop",
+      "Automatic JSON parsing",
+      "It makes JavaScript multi-threaded",
+      "It replaces useEffect"
+    ],
+    "answerIndex": 1,
+    "explanation": "Axios is a promise-based HTTP client; benefits mentioned include automatic JSON parsing and cancellation/interceptors."
+  },
+  {
+    "id": "w07_19",
+    "question": "Which Web API is referenced for request cancellation (used with Axios examples)?",
+    "choices": [
+      "AbortController",
+      "MutationObserver",
+      "IntersectionObserver",
+      "ServiceWorker"
+    ],
+    "answerIndex": 0,
+    "explanation": "AbortController can cancel in-flight requests."
+  },
+  {
+    "id": "w07_20",
+    "question": "What is a custom hook in React?",
+    "choices": [
+      "A CSS selector used for styling",
+      "A reusable function that encapsulates hook-based logic",
+      "A React class component",
+      "A special kind of Promise"
+    ],
+    "answerIndex": 1,
+    "explanation": "Custom hooks package reusable stateful logic, typically using built-in hooks like useState/useEffect."
+  },
+  {
+    "id": "w07_21",
+    "question": "Which rule of hooks is emphasized for custom hooks?",
+    "choices": [
+      "Hook names must start with 'use'",
+      "Hooks can be called conditionally",
+      "Hooks can only be called in class components",
+      "Hooks must return JSX"
+    ],
+    "answerIndex": 0,
+    "explanation": "Custom hook names must start with 'use', and hooks must only be called from function components or other hooks."
+  },
+  {
+    "id": "w07_22",
+    "question": "In the provided useFetch example, what is the purpose of the dependency array [url] in useEffect?",
+    "choices": [
+      "It prevents fetch from ever running",
+      "It reruns the effect when url changes",
+      "It forces the effect to run on every render",
+      "It makes the request synchronous"
+    ],
+    "answerIndex": 1,
+    "explanation": "With [url], the effect runs initially and again whenever the url value changes."
+  },
+  {
+    "id": "w07_23",
+    "question": "In an async data-fetching hook, why do we often store “loading” state?",
+    "choices": [
+      "To block the browser UI until the request finishes",
+      "To render different UI while the request is in progress",
+      "To make Promises resolve faster",
+      "To force React Router navigation"
+    ],
+    "answerIndex": 1,
+    "explanation": "Loading state lets the UI display progress (e.g., “Loading…”) while awaiting network responses."
+  },
+  {
+    "id": "w07_24",
+    "question": "Which statement best describes the relationship between Promises and the event loop?",
+    "choices": [
+      "Promises bypass the event loop entirely",
+      "Promise handlers are scheduled as microtasks processed by the event loop",
+      "Promise handlers are always macrotasks",
+      "Promises run only after a repaint"
+    ],
+    "answerIndex": 1,
+    "explanation": "Promise callbacks go to the microtask queue, which is drained before the macrotask queue when the stack clears."
+  },
+  {
+    "id": "w07_25",
+    "question": "What is the main reason async code helps keep apps responsive?",
+    "choices": [
+      "It makes all code execute faster",
+      "It prevents the call stack from being blocked by slow operations",
+      "It removes the need for error handling",
+      "It disables rendering"
+    ],
+    "answerIndex": 1,
+    "explanation": "Async work is handled outside the call stack, so the JS thread can keep processing user interactions and updates."
+  }
+]

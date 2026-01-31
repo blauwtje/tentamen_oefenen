@@ -1,0 +1,302 @@
+[
+  {
+    "id": "w12_01",
+    "question": "Week 12 is labeled as a self-study week. What is the best study approach for this week?",
+    "choices": [
+      "Skip previous topics and only learn new tools",
+      "Review and practice prior weeks’ theory with exercises and small projects",
+      "Only memorize code without understanding",
+      "Only watch videos and avoid coding"
+    ],
+    "answerIndex": 1,
+    "explanation": "Since Week 12 is self-study, it’s most effective to consolidate earlier topics by practicing and revisiting the theory."
+  },
+  {
+    "id": "w12_02",
+    "question": "Which statement best describes the difference between client-side routing and server-side routing in an SPA setup?",
+    "choices": [
+      "Client-side routing changes views without full page reloads",
+      "Server-side routing always uses React Router",
+      "Client-side routing requires a database",
+      "Server-side routing is impossible with APIs"
+    ],
+    "answerIndex": 0,
+    "explanation": "SPAs often use client-side routing (e.g., React Router) to swap UI without reloading the document."
+  },
+  {
+    "id": "w12_03",
+    "question": "When reviewing TypeScript, what does “type inference” mean?",
+    "choices": [
+      "TypeScript guesses types based on assigned values and usage",
+      "Types are decided at runtime by the browser",
+      "Types are always 'any'",
+      "Types only exist in JSON"
+    ],
+    "answerIndex": 0,
+    "explanation": "TypeScript can infer a variable’s type from initialization/usage without an explicit annotation."
+  },
+  {
+    "id": "w12_04",
+    "question": "A key reason to practice functional programming patterns (map/filter/reduce) is:",
+    "choices": [
+      "They are required to use CSS modules",
+      "They help write readable transformations of arrays without mutating data",
+      "They replace all loops in JavaScript engines",
+      "They only work in C#"
+    ],
+    "answerIndex": 1,
+    "explanation": "map/filter/reduce enable expressive data transformations and often align with immutability."
+  },
+  {
+    "id": "w12_05",
+    "question": "When reviewing React, what is the key difference between props and state?",
+    "choices": [
+      "Props are local component data; state is passed from parent",
+      "Props are read-only inputs; state is local and can change over time",
+      "Props are always numbers; state is always strings",
+      "There is no difference"
+    ],
+    "answerIndex": 1,
+    "explanation": "Props flow from parent to child; state is internal component data that changes and triggers re-renders."
+  },
+  {
+    "id": "w12_06",
+    "question": "Why is immutability important when updating React state?",
+    "choices": [
+      "React only accepts frozen objects",
+      "React state updates are detected more reliably when you create new values",
+      "It prevents JSX from compiling",
+      "It makes JavaScript multi-threaded"
+    ],
+    "answerIndex": 1,
+    "explanation": "Creating new objects/arrays helps React compare changes and avoids hard-to-debug side effects."
+  },
+  {
+    "id": "w12_07",
+    "question": "When reviewing async JavaScript, what does the event loop do?",
+    "choices": [
+      "Transforms TypeScript into JavaScript",
+      "Moves queued tasks to the call stack when it is empty",
+      "Compiles CSS",
+      "Creates database migrations"
+    ],
+    "answerIndex": 1,
+    "explanation": "The event loop coordinates when queued callbacks/microtasks are executed."
+  },
+  {
+    "id": "w12_08",
+    "question": "In general, why should you handle errors in async fetch calls?",
+    "choices": [
+      "Because fetch always throws on non-2xx status",
+      "Because network and parsing failures can happen and the UI should react gracefully",
+      "Because it disables caching",
+      "Because it makes requests synchronous"
+    ],
+    "answerIndex": 1,
+    "explanation": "Requests can fail; robust apps handle errors and show useful feedback instead of crashing or silently failing."
+  },
+  {
+    "id": "w12_09",
+    "question": "When reviewing EF Core, what is a migration for?",
+    "choices": [
+      "Generating schema changes from your model and applying them to the database",
+      "Creating React routes",
+      "Creating CSS modules",
+      "Scheduling microtasks"
+    ],
+    "answerIndex": 0,
+    "explanation": "Migrations evolve the database schema based on your model changes."
+  },
+  {
+    "id": "w12_10",
+    "question": "What is the practical goal of the Repository Pattern (review topic)?",
+    "choices": [
+      "Make controllers directly depend on EF Core",
+      "Abstract data access behind an interface for cleaner architecture and testing",
+      "Remove the need for DbContext",
+      "Replace DTOs"
+    ],
+    "answerIndex": 1,
+    "explanation": "Repositories separate data access from business logic and help with maintainability and testability."
+  },
+  {
+    "id": "w12_11",
+    "question": "In a clean API architecture, where should business rules like “price must be >= 0” typically live?",
+    "choices": [
+      "In CSS",
+      "In controllers only",
+      "In services (business layer)",
+      "In HTML templates"
+    ],
+    "answerIndex": 2,
+    "explanation": "Business rules belong in the service layer, keeping controllers thin."
+  },
+  {
+    "id": "w12_12",
+    "question": "What is a DTO most commonly used for in a Web API?",
+    "choices": [
+      "Changing database schema",
+      "Defining the request/response shape separate from entity models",
+      "Rendering a view",
+      "Replacing routing"
+    ],
+    "answerIndex": 1,
+    "explanation": "DTOs define the API contract and reduce coupling to persistence models."
+  },
+  {
+    "id": "w12_13",
+    "question": "If you want to plan self-study effectively, which is the best sequence?",
+    "choices": [
+      "Read theory → try small exercises → build a small integrated mini-project",
+      "Skip theory → start random project → never test",
+      "Only copy-paste full solutions",
+      "Only practice without reading any explanations"
+    ],
+    "answerIndex": 0,
+    "explanation": "A good loop is learn → practice → integrate (build something that combines concepts)."
+  },
+  {
+    "id": "w12_14",
+    "question": "When integrating front-end and back-end, why does CORS matter?",
+    "choices": [
+      "It allows cross-origin browser requests when front-end and API run on different origins",
+      "It speeds up SQL queries",
+      "It is required for TypeScript compilation",
+      "It replaces authentication"
+    ],
+    "answerIndex": 0,
+    "explanation": "Browsers restrict cross-origin requests; CORS policies allow the intended front-end origin to call the API."
+  },
+  {
+    "id": "w12_15",
+    "question": "In dependency injection, what does 'scoped' lifetime usually mean?",
+    "choices": [
+      "One instance per application",
+      "One instance per HTTP request",
+      "A new instance on every injection",
+      "An instance shared across all servers"
+    ],
+    "answerIndex": 1,
+    "explanation": "Scoped services are created once per request and shared within that request."
+  },
+  {
+    "id": "w12_16",
+    "question": "What does “pure function” mean (review topic from functional programming)?",
+    "choices": [
+      "A function with no parameters",
+      "A function with deterministic output and no side effects",
+      "A function that always throws",
+      "A function that runs on the GPU"
+    ],
+    "answerIndex": 1,
+    "explanation": "Pure functions always return the same output for the same inputs and do not modify external state."
+  },
+  {
+    "id": "w12_17",
+    "question": "When reviewing React Router, what does a wildcard route (path='*') typically implement?",
+    "choices": [
+      "A protected route",
+      "A 404/NotFound page",
+      "A route parameter",
+      "A query string parser"
+    ],
+    "answerIndex": 1,
+    "explanation": "Wildcard routes catch unmatched paths and usually render a NotFound component."
+  },
+  {
+    "id": "w12_18",
+    "question": "What is a good way to practice LINQ with EF Core during self-study?",
+    "choices": [
+      "Write queries and verify results with ToList/Count and database inspection",
+      "Avoid querying and only create entities",
+      "Only write SQL and never use LINQ",
+      "Only use migrations"
+    ],
+    "answerIndex": 0,
+    "explanation": "Practice by composing queries and materializing them to verify the results."
+  },
+  {
+    "id": "w12_19",
+    "question": "What should you usually avoid when learning async JavaScript?",
+    "choices": [
+      "Understanding the call stack",
+      "Ignoring error handling and loading states",
+      "Using Promises",
+      "Using try/catch"
+    ],
+    "answerIndex": 1,
+    "explanation": "Ignoring error/loading states often leads to brittle apps; handle them explicitly."
+  },
+  {
+    "id": "w12_20",
+    "question": "What is one practical self-study deliverable that demonstrates understanding across weeks?",
+    "choices": [
+      "A static HTML page only",
+      "A small full-stack app: React UI calling an API and storing data in a database",
+      "A single console.log statement",
+      "A CSS reset file"
+    ],
+    "answerIndex": 1,
+    "explanation": "A small integrated project proves you can connect UI, async calls, API endpoints, and persistence."
+  },
+  {
+    "id": "w12_21",
+    "question": "When revising TypeScript, why are union types useful?",
+    "choices": [
+      "They allow a value to be one of several types and require narrowing",
+      "They force values to be only numbers",
+      "They exist only at runtime",
+      "They disable autocomplete"
+    ],
+    "answerIndex": 0,
+    "explanation": "Unions model multiple possible shapes and encourage safe narrowing (e.g., discriminated unions)."
+  },
+  {
+    "id": "w12_22",
+    "question": "When integrating APIs, why is it useful to test endpoints with tools like REST Client/Postman?",
+    "choices": [
+      "It replaces unit tests entirely",
+      "It verifies request/response behavior independent of the front-end",
+      "It forces CORS to allow all origins",
+      "It converts JSON to XML"
+    ],
+    "answerIndex": 1,
+    "explanation": "It helps confirm the API works before wiring it into the UI."
+  },
+  {
+    "id": "w12_23",
+    "question": "Which practice best helps avoid “spaghetti code” during self-study?",
+    "choices": [
+      "Put everything in one file",
+      "Separate concerns (UI, services, data access) and keep functions focused",
+      "Avoid naming conventions",
+      "Only use global variables"
+    ],
+    "answerIndex": 1,
+    "explanation": "Separation of concerns and small focused modules keeps code maintainable and testable."
+  },
+  {
+    "id": "w12_24",
+    "question": "When reviewing middleware concepts (coming later), what should you remember about ordering?",
+    "choices": [
+      "Ordering doesn’t matter",
+      "Ordering matters because earlier middleware can affect later processing",
+      "Middleware only runs after controllers",
+      "Middleware only runs in the browser"
+    ],
+    "answerIndex": 1,
+    "explanation": "ASP.NET Core middleware runs in order; earlier components can short-circuit or modify requests/responses."
+  },
+  {
+    "id": "w12_25",
+    "question": "What is the best definition of “side effect” (important for pure functions and React effects)?",
+    "choices": [
+      "A value returned from a function",
+      "A change to something outside a function’s local scope (I/O, mutation, logging)",
+      "A TypeScript type annotation",
+      "A CSS class"
+    ],
+    "answerIndex": 1,
+    "explanation": "Side effects include mutating external state, performing I/O, or anything beyond returning a value."
+  }
+]

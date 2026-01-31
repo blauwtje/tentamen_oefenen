@@ -1,0 +1,217 @@
+[
+  {
+    "id": "wad_1",
+    "question": "Which HTTP method is intended to be safe and idempotent when retrieving a resource?",
+    "choices": ["POST", "GET", "PATCH", "CONNECT"],
+    "answerIndex": 1,
+    "explanation": "GET is defined as a safe (no state change) and idempotent method used to retrieve representations of resources."
+  },
+  {
+    "id": "wad_2",
+    "question": "Which HTTP status code indicates that a new resource was successfully created?",
+    "choices": ["200 OK", "201 Created", "204 No Content", "304 Not Modified"],
+    "answerIndex": 1,
+    "explanation": "201 Created is used when the server successfully creates a new resource, typically after a POST request."
+  },
+  {
+    "id": "wad_3",
+    "question": "Which HTTP status code is most appropriate when the client is not authenticated?",
+    "choices": ["401 Unauthorized", "403 Forbidden", "404 Not Found", "409 Conflict"],
+    "answerIndex": 0,
+    "explanation": "401 indicates authentication is required or has failed; it often comes with a WWW-Authenticate header."
+  },
+  {
+    "id": "wad_4",
+    "question": "Which HTTP status code is most appropriate when the client is authenticated but not allowed to access the resource?",
+    "choices": ["400 Bad Request", "401 Unauthorized", "403 Forbidden", "500 Internal Server Error"],
+    "answerIndex": 2,
+    "explanation": "403 Forbidden means the server understood the request and the user is authenticated, but access is denied."
+  },
+  {
+    "id": "wad_5",
+    "question": "In a RESTful design, what does a URI primarily identify?",
+    "choices": ["A server-side method", "A resource", "A database table", "A UI page"],
+    "answerIndex": 1,
+    "explanation": "In REST, URIs identify resources (nouns), while HTTP methods specify actions on those resources."
+  },
+  {
+    "id": "wad_6",
+    "question": "What is the main difference between PUT and PATCH?",
+    "choices": [
+      "PUT is for partial updates and PATCH is for full replacements",
+      "PUT replaces the full resource representation while PATCH applies a partial modification",
+      "PUT is not idempotent and PATCH is idempotent",
+      "PUT can only be used for collections"
+    ],
+    "answerIndex": 1,
+    "explanation": "PUT generally sends a complete representation (replace), while PATCH applies partial changes to a resource."
+  },
+  {
+    "id": "wad_7",
+    "question": "Which HTTP header is commonly used for content negotiation to request a specific response format?",
+    "choices": ["Accept", "Content-Type", "Host", "Referer"],
+    "answerIndex": 0,
+    "explanation": "The Accept header indicates which media types (e.g., application/json) the client can process."
+  },
+  {
+    "id": "wad_8",
+    "question": "Which header describes the media type of the request body being sent to the server?",
+    "choices": ["Accept", "ETag", "Content-Type", "Cache-Control"],
+    "answerIndex": 2,
+    "explanation": "Content-Type specifies the format of the payload the client sends (e.g., application/json)."
+  },
+  {
+    "id": "wad_9",
+    "question": "What is the purpose of an ETag in HTTP?",
+    "choices": [
+      "To encrypt the response body",
+      "To uniquely identify a user session",
+      "To provide a validator for caching and conditional requests",
+      "To redirect the client to another URL"
+    ],
+    "answerIndex": 2,
+    "explanation": "ETags are response validators used for cache validation (e.g., with If-None-Match) and concurrency patterns."
+  },
+  {
+    "id": "wad_10",
+    "question": "Which status code is commonly returned for a successful DELETE when no response body is needed?",
+    "choices": ["200 OK", "202 Accepted", "204 No Content", "301 Moved Permanently"],
+    "answerIndex": 2,
+    "explanation": "204 No Content indicates success with an intentionally empty response body."
+  },
+  {
+    "id": "wad_11",
+    "question": "What does 'stateless' mean in the context of HTTP?",
+    "choices": [
+      "The server never stores any data at all",
+      "Each request contains all information needed to process it; server doesn't rely on stored client context between requests",
+      "The client cannot store cookies",
+      "Responses must not be cached"
+    ],
+    "answerIndex": 1,
+    "explanation": "Statelessness means the server does not depend on previous requests; the client sends necessary context each time."
+  },
+  {
+    "id": "wad_12",
+    "question": "Which cookie attribute helps mitigate CSRF by restricting cross-site sending of cookies?",
+    "choices": ["HttpOnly", "SameSite", "Domain", "Path"],
+    "answerIndex": 1,
+    "explanation": "SameSite limits when cookies are sent on cross-site requests, reducing CSRF risk."
+  },
+  {
+    "id": "wad_13",
+    "question": "Which cookie attribute prevents JavaScript from reading the cookie via document.cookie?",
+    "choices": ["Secure", "HttpOnly", "SameSite", "Max-Age"],
+    "answerIndex": 1,
+    "explanation": "HttpOnly cookies are not accessible to JavaScript, reducing the impact of XSS on session theft."
+  },
+  {
+    "id": "wad_14",
+    "question": "Which mechanism primarily protects confidentiality and integrity of data in transit on the web?",
+    "choices": ["TLS (HTTPS)", "Base64 encoding", "HTML escaping", "Minification"],
+    "answerIndex": 0,
+    "explanation": "TLS (used by HTTPS) encrypts traffic and provides integrity checks, protecting data in transit."
+  },
+  {
+    "id": "wad_15",
+    "question": "What is the key security difference between authentication and authorization?",
+    "choices": [
+      "Authentication decides what you can do; authorization verifies who you are",
+      "Authentication verifies who you are; authorization decides what you can do",
+      "They are the same concept",
+      "Authorization only applies to databases"
+    ],
+    "answerIndex": 1,
+    "explanation": "Authentication is identity verification; authorization is permission checking."
+  },
+  {
+    "id": "wad_16",
+    "question": "Which HTTP status code is appropriate when the client sends invalid input (e.g., missing required field)?",
+    "choices": ["400 Bad Request", "401 Unauthorized", "502 Bad Gateway", "503 Service Unavailable"],
+    "answerIndex": 0,
+    "explanation": "400 indicates the server cannot process the request due to a client error such as invalid syntax or input."
+  },
+  {
+    "id": "wad_17",
+    "question": "Which HTTP status code indicates a resource could not be found?",
+    "choices": ["404 Not Found", "405 Method Not Allowed", "406 Not Acceptable", "412 Precondition Failed"],
+    "answerIndex": 0,
+    "explanation": "404 is returned when the server cannot find the requested resource."
+  },
+  {
+    "id": "wad_18",
+    "question": "Which status code is most appropriate when the client uses an unsupported HTTP method on an endpoint?",
+    "choices": ["404 Not Found", "405 Method Not Allowed", "409 Conflict", "415 Unsupported Media Type"],
+    "answerIndex": 1,
+    "explanation": "405 indicates the method is known but not allowed for the target resource (often with an Allow header)."
+  },
+  {
+    "id": "wad_19",
+    "question": "Which status code is most appropriate when the request body format is not supported by the server?",
+    "choices": ["406 Not Acceptable", "415 Unsupported Media Type", "422 Unprocessable Entity", "500 Internal Server Error"],
+    "answerIndex": 1,
+    "explanation": "415 is used when the server refuses the request because the payload media type (Content-Type) is unsupported."
+  },
+  {
+    "id": "wad_20",
+    "question": "What is the main purpose of CORS in browsers?",
+    "choices": [
+      "To speed up API requests",
+      "To allow or restrict cross-origin requests made by web pages",
+      "To encrypt API responses",
+      "To prevent SQL injection"
+    ],
+    "answerIndex": 1,
+    "explanation": "CORS is a browser security mechanism that controls whether cross-origin requests are permitted."
+  },
+  {
+    "id": "wad_21",
+    "question": "Which header is typically used by a server to indicate which origins are allowed for CORS?",
+    "choices": ["Access-Control-Allow-Origin", "Origin", "Allow", "Access-Control-Request-Method"],
+    "answerIndex": 0,
+    "explanation": "Access-Control-Allow-Origin is sent in responses to indicate which origin(s) may access the resource."
+  },
+  {
+    "id": "wad_22",
+    "question": "Which HTTP method is commonly used for a CORS preflight request?",
+    "choices": ["OPTIONS", "HEAD", "TRACE", "PUT"],
+    "answerIndex": 0,
+    "explanation": "Browsers use an OPTIONS preflight to check permitted methods/headers for certain cross-origin requests."
+  },
+  {
+    "id": "wad_23",
+    "question": "Which statement best describes XSS (Cross-Site Scripting)?",
+    "choices": [
+      "An attack where the attacker tricks the browser into executing malicious scripts in a trusted site context",
+      "An attack that guesses passwords by trying many combinations",
+      "An attack that floods a server with traffic to make it unavailable",
+      "An attack that changes DNS records to redirect traffic"
+    ],
+    "answerIndex": 0,
+    "explanation": "XSS happens when untrusted input is rendered as executable code (e.g., JavaScript) in the victim's browser."
+  },
+  {
+    "id": "wad_24",
+    "question": "Which statement best describes CSRF (Cross-Site Request Forgery)?",
+    "choices": [
+      "Stealing cookies via injected JavaScript",
+      "Forcing a victim's browser to make an unwanted authenticated request to a site",
+      "Intercepting traffic using a man-in-the-middle proxy",
+      "Uploading a malicious file to the server"
+    ],
+    "answerIndex": 1,
+    "explanation": "CSRF exploits the fact that browsers automatically send credentials (like cookies) with requests."
+  },
+  {
+    "id": "wad_25",
+    "question": "Which technique is most appropriate to prevent SQL injection when using a SQL database?",
+    "choices": [
+      "String concatenation of user input into queries",
+      "Parameterized queries / prepared statements",
+      "Storing passwords in plaintext for simplicity",
+      "Disabling database permissions"
+    ],
+    "answerIndex": 1,
+    "explanation": "Prepared statements separate code from data, preventing user input from being interpreted as SQL syntax."
+  }
+]

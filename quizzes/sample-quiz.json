@@ -1,0 +1,15 @@
+[
+  {
+    "id": "math_1",
+    "question": "What is 2 + 2?",
+    "choices": ["3", "4", "5", "22"],
+    "answerIndex": 1,
+    "explanation": "2 + 2 = 4."
+  },
+  {
+    "id": "geo_1",
+    "question": "What is the capital of France?",
+    "choices": ["Berlin", "Madrid", "Paris", "Rome"],
+    "answerIndex": 2
+  }
+]

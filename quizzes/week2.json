@@ -1,0 +1,277 @@
+[
+  {
+    "id": "html_1",
+    "question": "What is the main purpose of HTML?",
+    "choices": [
+      "Styling the page",
+      "Structuring the content",
+      "Storing data in a database",
+      "Running server code"
+    ],
+    "answerIndex": 1,
+    "explanation": "HTML provides the structure and meaning of web content."
+  },
+  {
+    "id": "css_2",
+    "question": "What does CSS primarily control?",
+    "choices": [
+      "Page structure",
+      "Page behavior/logic",
+      "Page presentation (layout/visuals)",
+      "Network requests"
+    ],
+    "answerIndex": 2,
+    "explanation": "CSS controls how content looks and is laid out."
+  },
+  {
+    "id": "dom_3",
+    "question": "What is the DOM?",
+    "choices": [
+      "A database for websites",
+      "A programming language",
+      "A tree representation of the page built from HTML",
+      "A CSS framework"
+    ],
+    "answerIndex": 2,
+    "explanation": "The DOM represents the HTML document as a tree structure."
+  },
+  {
+    "id": "html_4",
+    "question": "Which is an example of a semantic HTML element?",
+    "choices": ["div", "span", "article", "b"],
+    "answerIndex": 2,
+    "explanation": "Semantic elements describe their meaning, like <article>."
+  },
+  {
+    "id": "html_5",
+    "question": "Why use semantic HTML?",
+    "choices": [
+      "It makes JavaScript run faster",
+      "It improves meaning/structure for accessibility and SEO",
+      "It prevents CSS from being overridden",
+      "It removes the need for CSS"
+    ],
+    "answerIndex": 1,
+    "explanation": "Semantic HTML improves accessibility and search engine understanding."
+  },
+  {
+    "id": "css_6",
+    "question": "Which statement about block vs inline is correct?",
+    "choices": [
+      "Inline elements always start on a new line",
+      "Block elements ignore width/height",
+      "Block elements typically start on a new line and can take full width",
+      "Inline elements can contain block elements by default"
+    ],
+    "answerIndex": 2,
+    "explanation": "Block elements naturally start on a new line and expand horizontally."
+  },
+  {
+    "id": "css_7",
+    "question": "The CSS box model consists of (from inside to outside):",
+    "choices": [
+      "margin, border, padding, content",
+      "content, padding, border, margin",
+      "padding, content, margin, border",
+      "border, margin, content, padding"
+    ],
+    "answerIndex": 1,
+    "explanation": "The correct order is content → padding → border → margin."
+  },
+  {
+    "id": "css_8",
+    "question": "What does padding affect?",
+    "choices": [
+      "Space outside the border",
+      "Space between content and border",
+      "Border thickness",
+      "Text color"
+    ],
+    "answerIndex": 1,
+    "explanation": "Padding adds space inside the border, around the content."
+  },
+  {
+    "id": "css_9",
+    "question": "What does margin affect?",
+    "choices": [
+      "Space between content and border",
+      "Space outside the border (between elements)",
+      "Border color",
+      "Font size"
+    ],
+    "answerIndex": 1,
+    "explanation": "Margin controls space between elements."
+  },
+  {
+    "id": "css_10",
+    "question": "What does box-sizing: border-box; do?",
+    "choices": [
+      "Adds a border automatically",
+      "Includes padding and border in the element’s set width/height",
+      "Makes the element inline",
+      "Disables margins"
+    ],
+    "answerIndex": 1,
+    "explanation": "It changes how width and height are calculated."
+  },
+  {
+    "id": "css_11",
+    "question": "Which selector has higher specificity?",
+    "choices": [".menu", "#menu", "div", "*"],
+    "answerIndex": 1,
+    "explanation": "ID selectors have higher specificity than class or element selectors."
+  },
+  {
+    "id": "css_12",
+    "question": "If two CSS rules have the same specificity, what decides the winner?",
+    "choices": [
+      "The rule written later in the CSS",
+      "The rule written earlier in the CSS",
+      "The one with the shorter selector",
+      "The one in the smallest file"
+    ],
+    "answerIndex": 0,
+    "explanation": "Later rules override earlier ones when specificity is equal."
+  },
+  {
+    "id": "css_13",
+    "question": "Which unit is relative to the root (html) font size?",
+    "choices": ["em", "rem", "px", "pt"],
+    "answerIndex": 1,
+    "explanation": "rem is relative to the root element’s font size."
+  },
+  {
+    "id": "css_14",
+    "question": "Which unit is relative to the current element’s font size?",
+    "choices": ["rem", "px", "em", "vh"],
+    "answerIndex": 2,
+    "explanation": "em is relative to the element’s own font size."
+  },
+  {
+    "id": "css_15",
+    "question": "What does display: inline generally do?",
+    "choices": [
+      "Starts on a new line and stretches full width",
+      "Allows width/height to apply normally",
+      "Flows within a line; width/height usually don’t apply",
+      "Turns the element into a flex container"
+    ],
+    "answerIndex": 2,
+    "explanation": "Inline elements flow with text and ignore width/height."
+  },
+  {
+    "id": "css_16",
+    "question": "What does display: inline-block allow compared to inline?",
+    "choices": [
+      "It forces a new line",
+      "It allows setting width/height while still flowing inline",
+      "It disables padding",
+      "It removes whitespace"
+    ],
+    "answerIndex": 1,
+    "explanation": "Inline-block combines inline flow with block sizing."
+  },
+  {
+    "id": "flex_17",
+    "question": "What is Flexbox mainly used for?",
+    "choices": [
+      "Writing database queries",
+      "One-dimensional layout (row OR column) alignment/distribution",
+      "Two-dimensional grid layouts only",
+      "Compressing images"
+    ],
+    "answerIndex": 1,
+    "explanation": "Flexbox is designed for one-dimensional layouts."
+  },
+  {
+    "id": "flex_18",
+    "question": "In Flexbox, justify-content aligns items along:",
+    "choices": [
+      "The cross axis",
+      "The main axis",
+      "The z-axis",
+      "The baseline only"
+    ],
+    "answerIndex": 1,
+    "explanation": "justify-content works along the main axis."
+  },
+  {
+    "id": "flex_19",
+    "question": "In Flexbox, align-items aligns items along:",
+    "choices": [
+      "The main axis",
+      "The cross axis",
+      "The document axis",
+      "The margin axis"
+    ],
+    "answerIndex": 1,
+    "explanation": "align-items controls alignment on the cross axis."
+  },
+  {
+    "id": "flex_20",
+    "question": "If flex-direction: column, the main axis is:",
+    "choices": ["Horizontal", "Vertical", "Diagonal", "Circular"],
+    "answerIndex": 1,
+    "explanation": "With column direction, the main axis runs vertically."
+  },
+  {
+    "id": "responsive_21",
+    "question": "What is a media query used for?",
+    "choices": [
+      "Connecting to an API",
+      "Applying CSS based on conditions like screen width",
+      "Making HTML semantic",
+      "Running JavaScript faster"
+    ],
+    "answerIndex": 1,
+    "explanation": "Media queries adapt styles based on device conditions."
+  },
+  {
+    "id": "responsive_22",
+    "question": "“Mobile-first” CSS usually means:",
+    "choices": [
+      "Start with desktop styles, then remove features for mobile",
+      "Start with small-screen styles, then add enhancements for larger screens",
+      "Only support mobile browsers",
+      "Use only px units"
+    ],
+    "answerIndex": 1,
+    "explanation": "Mobile-first builds up from small to large screens."
+  },
+  {
+    "id": "a11y_23",
+    "question": "Which improves accessibility the most?",
+    "choices": [
+      "Using div for everything",
+      "Skipping headings and using bold text instead",
+      "Using correct headings and semantic elements",
+      "Putting all text in images"
+    ],
+    "answerIndex": 2,
+    "explanation": "Semantic structure helps screen readers and users."
+  },
+  {
+    "id": "a11y_24",
+    "question": "Why is alt text important?",
+    "choices": [
+      "It makes images load faster",
+      "It provides text alternatives for screen readers and when images fail",
+      "It applies a filter to images",
+      "It makes the layout responsive"
+    ],
+    "answerIndex": 1,
+    "explanation": "Alt text improves accessibility and fallback content."
+  },
+  {
+    "id": "http_25",
+    "question": "What is the key difference between GET and POST?",
+    "choices": [
+      "GET can send data; POST cannot",
+      "GET typically sends data in the URL; POST sends data in the request body",
+      "POST is only for downloading",
+      "GET is more secure by default in all cases"
+    ],
+    "answerIndex": 1,
+    "explanation": "GET uses the URL; POST sends data in the request body."
+  }
+]
