@@ -1,302 +1,317 @@
 [
   {
-    "id": "ts_week04_1",
-    "question": "What is TypeScript primarily designed to add to JavaScript?",
+    "id": "ts_1",
+    "question": "What is TypeScript primarily used for?",
     "choices": [
-      "A new runtime environment",
-      "Static typing and better tooling",
-      "Built-in database support",
-      "Automatic UI rendering"
+      "Running code directly in the browser",
+      "Creating styles for HTML elements",
+      "Adding types and tooling on top of JavaScript",
+      "Managing server-side databases"
     ],
-    "answerIndex": 1,
-    "explanation": "TypeScript adds a type system and tooling on top of JavaScript to catch mistakes earlier."
+    "answerIndex": 2,
+    "explanation": "TypeScript adds strong typing and better tooling on top of JavaScript."
   },
   {
-    "id": "ts_week04_2",
-    "question": "What happens to TypeScript code before it runs in a browser or Node.js?",
+    "id": "ts_2",
+    "question": "Which of the following is true about TypeScript compilation?",
     "choices": [
-      "It runs directly as TypeScript",
-      "It is compiled/transpiled to JavaScript",
-      "It is converted to WebAssembly",
-      "It is executed only inside VS Code"
+      "TypeScript runs directly in the browser without compilation",
+      "TypeScript compiles to Python",
+      "TypeScript can only run on Node.js",
+      "TypeScript compiles to JavaScript, which runs anywhere JS runs"
     ],
-    "answerIndex": 1,
-    "explanation": "TypeScript compiles to JavaScript; the JavaScript is what actually runs."
+    "answerIndex": 3,
+    "explanation": "TypeScript code is transpiled to JavaScript, which runs in browsers or Node.js."
   },
   {
-    "id": "ts_week04_3",
-    "question": "Why would you install TypeScript with `npm install typescript -D`?",
+    "id": "ts_3",
+    "question": "Which primitive types are commonly used in TypeScript?",
     "choices": [
-      "Because TypeScript must ship to production as a runtime dependency",
-      "Because the TS compiler is used during development/build, not at runtime",
-      "Because `-D` makes TypeScript faster",
-      "Because `-D` installs TypeScript globally"
+      "String, Number, Boolean",
+      "char, int, bool",
+      "object, array, function",
+      "string, number, boolean"
     ],
-    "answerIndex": 1,
-    "explanation": "TypeScript is a build tool (compiler). The output JavaScript runs in production."
+    "answerIndex": 3,
+    "explanation": "TypeScript uses lowercase string, number, and boolean as common primitives."
   },
   {
-    "id": "ts_week04_4",
-    "question": "Which command generates a `tsconfig.json` in a TypeScript project?",
+    "id": "ts_4",
+    "question": "What is the main difference between `let` and `const`?",
     "choices": [
-      "`npm init`",
-      "`tsc -init`",
-      "`node init`",
-      "`npx ts-node init`"
+      "`let` is global, `const` is local",
+      "`const` cannot be reassigned, `let` can",
+      "`let` can hold any type, `const` cannot",
+      "`const` can only be used with strings"
     ],
     "answerIndex": 1,
-    "explanation": "`tsc -init` creates a starter `tsconfig.json` configuration file."
+    "explanation": "`const` prevents reassignment; `let` allows variable reassignment."
   },
   {
-    "id": "ts_week04_5",
-    "question": "What is the purpose of `rootDir` and `outDir` in `tsconfig.json`?",
-    "choices": [
-      "They control the HTTP server port",
-      "They define where TS sources live and where compiled JS is written",
-      "They enable Jest test discovery",
-      "They force the use of React"
-    ],
-    "answerIndex": 1,
-    "explanation": "`rootDir` points to source files (e.g., `src`), `outDir` to compiled output (e.g., `dist`)."
+    "id": "ts_5",
+    "question": "Which keyword should you generally avoid using in TypeScript?",
+    "choices": ["var", "let", "const", "function"],
+    "answerIndex": 0,
+    "explanation": "`var` is function-scoped and can cause bugs; `let` and `const` are block-scoped."
   },
   {
-    "id": "ts_week04_6",
-    "question": "What does `sourceMap: true` enable during debugging?",
+    "id": "ts_6",
+    "question": "What is the correct way to declare an array of numbers?",
     "choices": [
-      "Running TypeScript without compiling",
-      "Mapping compiled JavaScript back to original TypeScript sources",
-      "Automatic unit test generation",
-      "Stricter type inference"
-    ],
-    "answerIndex": 1,
-    "explanation": "Source maps let debuggers show TypeScript line numbers while executing compiled JavaScript."
-  },
-  {
-    "id": "ts_week04_7",
-    "question": "What is the main effect of `target: \"esnext\"` in TypeScript?",
-    "choices": [
-      "It enforces React Hooks",
-      "It chooses which JavaScript language features TS emits",
-      "It turns off type checking",
-      "It forces CommonJS modules"
-    ],
-    "answerIndex": 1,
-    "explanation": "The `target` controls the JavaScript version/features used in the emitted output."
-  },
-  {
-    "id": "ts_week04_8",
-    "question": "What does `noImplicitAny: true` do?",
-    "choices": [
-      "Disables the `any` type entirely",
-      "Errors when a value would be inferred as `any` without an explicit type",
-      "Automatically converts `any` to `unknown`",
-      "Allows implicit `any` only in arrays"
-    ],
-    "answerIndex": 1,
-    "explanation": "It prevents accidental `any` by requiring types instead of silently falling back to `any`."
-  },
-  {
-    "id": "ts_week04_9",
-    "question": "Which statement best describes the TypeScript type `any`?",
-    "choices": [
-      "A safe type that prevents runtime errors",
-      "A type that disables type checking for a value",
-      "A type that means “nullable string”",
-      "A type used only for arrays"
-    ],
-    "answerIndex": 1,
-    "explanation": "`any` opts out of type checking, which removes many of TypeScript’s benefits."
-  },
-  {
-    "id": "ts_week04_10",
-    "question": "Which primitive type names should you prefer in TypeScript?",
-    "choices": [
-      "`String`, `Number`, `Boolean`",
-      "`string`, `number`, `boolean`",
-      "`text`, `float`, `bool`",
-      "`char`, `int`, `bool`"
-    ],
-    "answerIndex": 1,
-    "explanation": "Use the lowercase primitives (`string`, `number`, `boolean`) in TypeScript code."
-  },
-  {
-    "id": "ts_week04_11",
-    "question": "What is type inference in TypeScript?",
-    "choices": [
-      "The ability to run TS code without compiling",
-      "TypeScript automatically deducing types from assigned values and usage",
-      "A runtime feature that changes variable types while running",
-      "A way to generate UML diagrams"
-    ],
-    "answerIndex": 1,
-    "explanation": "TypeScript can infer types so you don’t always need to write explicit annotations."
-  },
-  {
-    "id": "ts_week04_12",
-    "question": "Which statement about `const` is correct?",
-    "choices": [
-      "`const` variables cannot be read",
-      "`const` prevents re-assignment to the variable identifier",
-      "`const` variables are always global",
-      "`const` means the value is immutable in all cases"
-    ],
-    "answerIndex": 1,
-    "explanation": "`const` prevents re-assignment; object contents may still be mutable unless you enforce immutability."
-  },
-  {
-    "id": "ts_week04_13",
-    "question": "What does “block scope” mean for `let` and `const`?",
-    "choices": [
-      "They are only available inside the `{ ... }` block where they are declared",
-      "They can only be used in `if` statements",
-      "They are hoisted to the top of the file",
-      "They can only store numbers"
+      "let nums: number[] = [1, 2, 3]",
+      "let nums: Array = [1, 2, 3]",
+      "let nums: num[] = [1, 2, 3]",
+      "let nums: Number[] = [1, 2, 3]"
     ],
     "answerIndex": 0,
-    "explanation": "`let`/`const` are scoped to the nearest block, which helps avoid accidental variable reuse."
+    "explanation": "The correct syntax for a number array is `number[]`."
   },
   {
-    "id": "ts_week04_14",
-    "question": "Why is `var` generally discouraged in modern TypeScript/JavaScript?",
+    "id": "ts_7",
+    "question": "Which statement is true about TypeScript `any` type?",
     "choices": [
-      "It cannot store strings",
-      "It uses function scope and hoisting, which can lead to confusing bugs",
-      "It makes code run slower by default",
-      "It is required only in Node.js"
+      "It disables type checking for a value",
+      "It is required for all variables",
+      "It is the default type for numbers",
+      "It is the same as `unknown`"
     ],
-    "answerIndex": 1,
-    "explanation": "`var` is function-scoped and hoisted, while `let`/`const` have clearer block scoping."
+    "answerIndex": 0,
+    "explanation": "`any` allows a value to bypass type checking."
   },
   {
-    "id": "ts_week04_15",
-    "question": "How are `number` values represented in TypeScript at runtime (in JavaScript)?",
+    "id": "ts_8",
+    "question": "What will happen if you try to reassign a `const` variable?",
     "choices": [
-      "As 32-bit integers",
-      "As 64-bit double-precision floating point numbers",
-      "As arbitrary-precision decimals",
-      "As `bigint` by default"
+      "It works normally",
+      "TypeScript throws an error",
+      "The variable becomes `any`",
+      "It automatically creates a new variable"
     ],
     "answerIndex": 1,
-    "explanation": "JavaScript (and therefore TypeScript) uses IEEE 754 double-precision floats for `number`."
+    "explanation": "Reassigning a `const` variable causes a compile-time error."
   },
   {
-    "id": "ts_week04_16",
-    "question": "Which literal syntax creates a `bigint` in TypeScript/JavaScript?",
-    "choices": [
-      "`3.0`",
-      "`3n`",
-      "`bigint(3)`",
-      "`'3'`"
-    ],
-    "answerIndex": 1,
-    "explanation": "A `bigint` literal uses the `n` suffix, like `3n`."
+    "id": "ts_9",
+    "question": "What is the output of `3 === '3'` in TypeScript?",
+    "choices": ["false", "true", "undefined", "Error"],
+    "answerIndex": 0,
+    "explanation": "`===` checks type and value; 3 (number) !== '3' (string)."
   },
   {
-    "id": "ts_week04_17",
-    "question": "Which is a valid way to type an array of numbers?",
+    "id": "ts_10",
+    "question": "Which of the following correctly defines a function in TypeScript?",
     "choices": [
-      "`number()`",
-      "`number[]`",
-      "`numbers<number>`",
-      "`int[]`"
+      "function Add(a, b) { return a + b }",
+      "function Add(a: number, b: number): number { return a + b }",
+      "let Add = function(a, b): number { return a + b }",
+      "Add(a: number, b: number) => a + b"
     ],
     "answerIndex": 1,
-    "explanation": "Common array typings are `number[]` and `Array<number>`."
+    "explanation": "Specifying parameter and return types is the correct TypeScript syntax."
   },
   {
-    "id": "ts_week04_18",
-    "question": "What does the non-null assertion operator `!` do in TypeScript (e.g., `arr[i]!`)?",
+    "id": "ts_11",
+    "question": "Which of these is a valid arrow function in TypeScript?",
     "choices": [
-      "Negates a boolean value",
-      "Tells TypeScript you are sure the value is not `null`/`undefined`",
-      "Converts a number to a bigint",
-      "Throws an error if the value is null"
+      "const Add = (a, b) => return a + b",
+      "const Add = (a:number, b:number) => a + b",
+      "function Add(a:number, b:number) => a + b",
+      "const Add(a:number, b:number):number { return a+b }"
     ],
     "answerIndex": 1,
-    "explanation": "`!` is a compile-time assertion to silence “possibly undefined” errors; it does not add runtime checks."
+    "explanation": "Arrow functions use `=>` and can include type annotations for parameters."
   },
   {
-    "id": "ts_week04_19",
-    "question": "Why would you explicitly add a return type to a function (e.g., `: number`)?",
+    "id": "ts_12",
+    "question": "What does the `let` keyword in TypeScript define?",
     "choices": [
-      "To speed up execution",
-      "To make the intended return type clear and catch incorrect returns",
-      "Because TypeScript requires it for all functions",
-      "To enable JSX"
+      "A global constant",
+      "A block-scoped variable",
+      "A type definition",
+      "A read-only array"
     ],
     "answerIndex": 1,
-    "explanation": "Explicit return types improve clarity and help TypeScript catch wrong return values."
+    "explanation": "`let` creates a block-scoped variable that can be reassigned."
   },
   {
-    "id": "ts_week04_20",
-    "question": "What is the key difference between these arrow forms: `a => a + 1` vs `a => { return a + 1; }`?",
+    "id": "ts_13",
+    "question": "Which of the following is true about TypeScript enums?",
     "choices": [
-      "Only the second one can return a value",
-      "The first has an implicit return; the second requires an explicit `return`",
-      "The first is async; the second is sync",
-      "They are compiled differently and behave differently"
+      "They are the same as arrays",
+      "They define a set of named constants",
+      "They are only used for strings",
+      "They replace functions"
     ],
     "answerIndex": 1,
-    "explanation": "Arrow functions without braces implicitly return the expression result."
+    "explanation": "Enums define a set of named constant values."
   },
   {
-    "id": "ts_week04_21",
-    "question": "Which annotation correctly types a function variable that takes two numbers and returns a number?",
-    "choices": [
-      "`const add: number = (a, b) => a + b;`",
-      "`const add: (a: number, b: number) => number = (a, b) => a + b;`",
-      "`const add: (number, number) => number = (a, b) => a + b;`",
-      "`const add: (a, b): number = a + b;`"
-    ],
+    "id": "ts_14",
+    "question": "What will `AddAll([1,2,3], operations.add, 0)` return?",
+    "choices": ["0", "6", "1", "Error"],
     "answerIndex": 1,
-    "explanation": "Function types describe parameter and return types: `(a: number, b: number) => number`."
+    "explanation": "It sums all values starting with 0, resulting in 6."
   },
   {
-    "id": "ts_week04_22",
-    "question": "What is an `enum` commonly used for in TypeScript?",
-    "choices": [
-      "To declare a mutable array",
-      "To define a set of named constant values",
-      "To automatically generate unit tests",
-      "To replace all `if` statements"
-    ],
+    "id": "ts_15",
+    "question": "What initial value is used when multiplying all numbers in `AddAll`?",
+    "choices": ["0", "1", "undefined", "null"],
     "answerIndex": 1,
-    "explanation": "Enums represent a finite set of named options (e.g., operations like add/mul/gt/lt)."
+    "explanation": "Multiplication starts with the multiplicative identity 1."
   },
   {
-    "id": "ts_week04_23",
-    "question": "What makes a function a “higher-order function” (HoF)?",
+    "id": "ts_16",
+    "question": "Which higher-order function allows passing a custom operation?",
     "choices": [
-      "It must be defined with `function` keyword",
-      "It takes a function as an argument and/or returns a function",
-      "It always uses recursion",
-      "It can only work with numbers"
+      "ActionAllHoF",
+      "AddAll",
+      "factorial",
+      "console.log"
     ],
-    "answerIndex": 1,
-    "explanation": "Higher-order functions accept functions and/or return functions to make behavior configurable."
+    "answerIndex": 0,
+    "explanation": "ActionAllHoF accepts a function parameter to define the operation."
   },
   {
-    "id": "ts_week04_24",
-    "question": "What is the main purpose of generics like `<T>` in TypeScript?",
+    "id": "ts_17",
+    "question": "What is a generic in TypeScript?",
     "choices": [
-      "To make code run faster by default",
-      "To make functions/classes work with multiple types while keeping type safety",
-      "To turn TypeScript into a runtime language",
-      "To automatically convert values between types"
+      "A function that only works for numbers",
+      "A type parameter allowing dynamic types",
+      "A variable with type `any`",
+      "A reserved keyword"
     ],
     "answerIndex": 1,
-    "explanation": "Generics let you parameterize types (e.g., `T`) so one implementation works for many types safely."
+    "explanation": "Generics allow functions or classes to work with different types."
   },
   {
-    "id": "ts_week04_25",
-    "question": "Which setup best describes how to run TypeScript tests with Jest (as in the lecture notes)?",
+    "id": "ts_18",
+    "question": "What is the purpose of a curried function?",
     "choices": [
-      "Install only `jest` and run `node test.js`",
-      "Install `jest`, `ts-jest`, `@types/jest`, initialize with `ts-jest config:init`, then run `npx jest`",
-      "Install `mocha` and run `npm test`",
-      "Use `tsc -w` and tests run automatically"
+      "Runs faster than normal functions",
+      "Processes one argument at a time",
+      "Is always recursive",
+      "Prevents type checking"
     ],
     "answerIndex": 1,
-    "explanation": "The typical TS+Jest stack uses `ts-jest` and types, plus a generated Jest config."
+    "explanation": "Curried functions transform multiple arguments into chained single-argument functions."
+  },
+  {
+    "id": "ts_19",
+    "question": "What is recursion in TypeScript?",
+    "choices": [
+      "Using a function within a function",
+      "A loop with `for` and `while`",
+      "A function calling itself",
+      "A higher-order function"
+    ],
+    "answerIndex": 2,
+    "explanation": "Recursion occurs when a function calls itself, often with a base case."
+  },
+  {
+    "id": "ts_20",
+    "question": "What is the factorial of 0 in TypeScript?",
+    "choices": ["0", "1", "undefined", "Error"],
+    "answerIndex": 1,
+    "explanation": "By definition, 0! equals 1."
+  },
+  {
+    "id": "ts_21",
+    "question": "Which TypeScript built-in method can implement `map`, `filter`, or `reduce`?",
+    "choices": ["console.log", "Array.prototype", "String.prototype", "Math"],
+    "answerIndex": 1,
+    "explanation": "These methods are built into `Array.prototype`."
+  },
+  {
+    "id": "ts_22",
+    "question": "Which TypeScript keyword enforces type checking?",
+    "choices": ["any", "const", "let", "number"],
+    "answerIndex": 3,
+    "explanation": "Using `number` enforces that a variable only holds numeric values."
+  },
+  {
+    "id": "ts_23",
+    "question": "What is the output of `values.reduce((a,b)=>a+b,0)` for `[1,2,3]`?",
+    "choices": ["6", "0", "123", "undefined"],
+    "answerIndex": 0,
+    "explanation": "Reduce sums all elements starting with initial value 0: 1+2+3=6."
+  },
+  {
+    "id": "ts_24",
+    "question": "Which of the following can throw an error in TypeScript?",
+    "choices": [
+      "Accessing `arr[0]` in an empty array",
+      "Assigning a number to a number",
+      "Using a `const` variable without reassignment",
+      "Printing a string"
+    ],
+    "answerIndex": 0,
+    "explanation": "Accessing an element in an empty array can throw an error if undefined is handled incorrectly."
+  },
+  {
+    "id": "ts_25",
+    "question": "What is a higher-order function?",
+    "choices": [
+      "A function that returns a function or takes a function as input",
+      "A function that is recursive",
+      "A function without return type",
+      "A built-in TypeScript function"
+    ],
+    "answerIndex": 0,
+    "explanation": "Higher-order functions either accept functions as arguments or return functions."
+  },
+  {
+    "id": "ts_26",
+    "question": "What is the difference between `AddAll` and `ActionAllHoF`?",
+    "choices": [
+      "AddAll is generic, ActionAllHoF only adds numbers",
+      "AddAll only works on numbers, ActionAllHoF takes a function",
+      "AddAll is recursive, ActionAllHoF is iterative",
+      "There is no difference"
+    ],
+    "answerIndex": 1,
+    "explanation": "ActionAllHoF allows passing a custom operation; AddAll only adds numbers."
+  },
+  {
+    "id": "ts_27",
+    "question": "Which operator is used in TypeScript for exponentiation?",
+    "choices": ["^", "**", "pow()", "%"],
+    "answerIndex": 1,
+    "explanation": "`**` is the exponentiation operator in TypeScript."
+  },
+  {
+    "id": "ts_28",
+    "question": "Which method signature represents a generic higher-order function?",
+    "choices": [
+      "function fx(a:number, b:number):number",
+      "function ActionAllHoFGeneric<T>(arr:Array<T>, fx:(a:T,b:T)=>T):T",
+      "function factorial(n:number):number",
+      "function Map(arr:number[], fx:(a:number)=>number)"
+    ],
+    "answerIndex": 1,
+    "explanation": "ActionAllHoFGeneric uses a generic type parameter T and accepts a function."
+  },
+  {
+    "id": "ts_29",
+    "question": "What does `Filter<T>(pred)` return in the curried version?",
+    "choices": [
+      "A filtered array",
+      "A number",
+      "A boolean",
+      "A string"
+    ],
+    "answerIndex": 0,
+    "explanation": "The curried Filter function returns a new array containing elements that satisfy the predicate."
+  },
+  {
+    "id": "ts_30",
+    "question": "What is the purpose of TypeScript enums in `ActionAll`?",
+    "choices": [
+      "Define a list of named operations like add, mul, gt, lt",
+      "Store arrays",
+      "Handle recursion",
+      "Replace lambda functions"
+    ],
+    "answerIndex": 0,
+    "explanation": "Enums provide named constants to represent operations in ActionAll."
   }
 ]

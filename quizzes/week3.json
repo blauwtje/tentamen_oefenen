@@ -1,217 +1,332 @@
 [
   {
-    "id": "wad_1",
-    "question": "Which HTTP method is intended to be safe and idempotent when retrieving a resource?",
-    "choices": ["POST", "GET", "PATCH", "CONNECT"],
-    "answerIndex": 1,
-    "explanation": "GET is defined as a safe (no state change) and idempotent method used to retrieve representations of resources."
-  },
-  {
-    "id": "wad_2",
-    "question": "Which HTTP status code indicates that a new resource was successfully created?",
-    "choices": ["200 OK", "201 Created", "204 No Content", "304 Not Modified"],
-    "answerIndex": 1,
-    "explanation": "201 Created is used when the server successfully creates a new resource, typically after a POST request."
-  },
-  {
-    "id": "wad_3",
-    "question": "Which HTTP status code is most appropriate when the client is not authenticated?",
-    "choices": ["401 Unauthorized", "403 Forbidden", "404 Not Found", "409 Conflict"],
-    "answerIndex": 0,
-    "explanation": "401 indicates authentication is required or has failed; it often comes with a WWW-Authenticate header."
-  },
-  {
-    "id": "wad_4",
-    "question": "Which HTTP status code is most appropriate when the client is authenticated but not allowed to access the resource?",
-    "choices": ["400 Bad Request", "401 Unauthorized", "403 Forbidden", "500 Internal Server Error"],
-    "answerIndex": 2,
-    "explanation": "403 Forbidden means the server understood the request and the user is authenticated, but access is denied."
-  },
-  {
-    "id": "wad_5",
-    "question": "In a RESTful design, what does a URI primarily identify?",
-    "choices": ["A server-side method", "A resource", "A database table", "A UI page"],
-    "answerIndex": 1,
-    "explanation": "In REST, URIs identify resources (nouns), while HTTP methods specify actions on those resources."
-  },
-  {
-    "id": "wad_6",
-    "question": "What is the main difference between PUT and PATCH?",
+    "id": "week3_1",
+    "question": "What is the main purpose of JavaScript in web development?",
     "choices": [
-      "PUT is for partial updates and PATCH is for full replacements",
-      "PUT replaces the full resource representation while PATCH applies a partial modification",
-      "PUT is not idempotent and PATCH is idempotent",
-      "PUT can only be used for collections"
+      "Styling web pages",
+      "Structuring content",
+      "Adding interactivity to HTML",
+      "Managing databases"
     ],
-    "answerIndex": 1,
-    "explanation": "PUT generally sends a complete representation (replace), while PATCH applies partial changes to a resource."
+    "answerIndex": 2
   },
   {
-    "id": "wad_7",
-    "question": "Which HTTP header is commonly used for content negotiation to request a specific response format?",
-    "choices": ["Accept", "Content-Type", "Host", "Referer"],
-    "answerIndex": 0,
-    "explanation": "The Accept header indicates which media types (e.g., application/json) the client can process."
-  },
-  {
-    "id": "wad_8",
-    "question": "Which header describes the media type of the request body being sent to the server?",
-    "choices": ["Accept", "ETag", "Content-Type", "Cache-Control"],
-    "answerIndex": 2,
-    "explanation": "Content-Type specifies the format of the payload the client sends (e.g., application/json)."
-  },
-  {
-    "id": "wad_9",
-    "question": "What is the purpose of an ETag in HTTP?",
+    "id": "week3_2",
+    "question": "What does DOM stand for?",
     "choices": [
-      "To encrypt the response body",
-      "To uniquely identify a user session",
-      "To provide a validator for caching and conditional requests",
-      "To redirect the client to another URL"
+      "Document Object Model",
+      "Data Object Module",
+      "Dynamic Output Method",
+      "Document Output Manager"
     ],
-    "answerIndex": 2,
-    "explanation": "ETags are response validators used for cache validation (e.g., with If-None-Match) and concurrency patterns."
+    "answerIndex": 0
   },
   {
-    "id": "wad_10",
-    "question": "Which status code is commonly returned for a successful DELETE when no response body is needed?",
-    "choices": ["200 OK", "202 Accepted", "204 No Content", "301 Moved Permanently"],
-    "answerIndex": 2,
-    "explanation": "204 No Content indicates success with an intentionally empty response body."
-  },
-  {
-    "id": "wad_11",
-    "question": "What does 'stateless' mean in the context of HTTP?",
+    "id": "week3_3",
+    "question": "Which statement about the DOM is true?",
     "choices": [
-      "The server never stores any data at all",
-      "Each request contains all information needed to process it; server doesn't rely on stored client context between requests",
-      "The client cannot store cookies",
-      "Responses must not be cached"
+      "The DOM cannot be modified after page load",
+      "The DOM is an API representing the document as a node tree",
+      "The DOM is part of the JavaScript language",
+      "The DOM only contains element nodes"
     ],
-    "answerIndex": 1,
-    "explanation": "Statelessness means the server does not depend on previous requests; the client sends necessary context each time."
+    "answerIndex": 1
   },
   {
-    "id": "wad_12",
-    "question": "Which cookie attribute helps mitigate CSRF by restricting cross-site sending of cookies?",
-    "choices": ["HttpOnly", "SameSite", "Domain", "Path"],
-    "answerIndex": 1,
-    "explanation": "SameSite limits when cookies are sent on cross-site requests, reducing CSRF risk."
-  },
-  {
-    "id": "wad_13",
-    "question": "Which cookie attribute prevents JavaScript from reading the cookie via document.cookie?",
-    "choices": ["Secure", "HttpOnly", "SameSite", "Max-Age"],
-    "answerIndex": 1,
-    "explanation": "HttpOnly cookies are not accessible to JavaScript, reducing the impact of XSS on session theft."
-  },
-  {
-    "id": "wad_14",
-    "question": "Which mechanism primarily protects confidentiality and integrity of data in transit on the web?",
-    "choices": ["TLS (HTTPS)", "Base64 encoding", "HTML escaping", "Minification"],
-    "answerIndex": 0,
-    "explanation": "TLS (used by HTTPS) encrypts traffic and provides integrity checks, protecting data in transit."
-  },
-  {
-    "id": "wad_15",
-    "question": "What is the key security difference between authentication and authorization?",
+    "id": "week3_4",
+    "question": "Which of the following is a type of DOM event?",
     "choices": [
-      "Authentication decides what you can do; authorization verifies who you are",
-      "Authentication verifies who you are; authorization decides what you can do",
-      "They are the same concept",
-      "Authorization only applies to databases"
+      "Mouse event",
+      "Keyboard event",
+      "Form event",
+      "All of the above"
     ],
-    "answerIndex": 1,
-    "explanation": "Authentication is identity verification; authorization is permission checking."
+    "answerIndex": 3
   },
   {
-    "id": "wad_16",
-    "question": "Which HTTP status code is appropriate when the client sends invalid input (e.g., missing required field)?",
-    "choices": ["400 Bad Request", "401 Unauthorized", "502 Bad Gateway", "503 Service Unavailable"],
-    "answerIndex": 0,
-    "explanation": "400 indicates the server cannot process the request due to a client error such as invalid syntax or input."
-  },
-  {
-    "id": "wad_17",
-    "question": "Which HTTP status code indicates a resource could not be found?",
-    "choices": ["404 Not Found", "405 Method Not Allowed", "406 Not Acceptable", "412 Precondition Failed"],
-    "answerIndex": 0,
-    "explanation": "404 is returned when the server cannot find the requested resource."
-  },
-  {
-    "id": "wad_18",
-    "question": "Which status code is most appropriate when the client uses an unsupported HTTP method on an endpoint?",
-    "choices": ["404 Not Found", "405 Method Not Allowed", "409 Conflict", "415 Unsupported Media Type"],
-    "answerIndex": 1,
-    "explanation": "405 indicates the method is known but not allowed for the target resource (often with an Allow header)."
-  },
-  {
-    "id": "wad_19",
-    "question": "Which status code is most appropriate when the request body format is not supported by the server?",
-    "choices": ["406 Not Acceptable", "415 Unsupported Media Type", "422 Unprocessable Entity", "500 Internal Server Error"],
-    "answerIndex": 1,
-    "explanation": "415 is used when the server refuses the request because the payload media type (Content-Type) is unsupported."
-  },
-  {
-    "id": "wad_20",
-    "question": "What is the main purpose of CORS in browsers?",
+    "id": "week3_5",
+    "question": "Which method is used to create a new HTML element with JavaScript?",
     "choices": [
-      "To speed up API requests",
-      "To allow or restrict cross-origin requests made by web pages",
-      "To encrypt API responses",
-      "To prevent SQL injection"
+      "document.newElement('div')",
+      "document.createElement('div')",
+      "document.addElement('div')",
+      "document.insertElement('div')"
     ],
-    "answerIndex": 1,
-    "explanation": "CORS is a browser security mechanism that controls whether cross-origin requests are permitted."
+    "answerIndex": 1
   },
   {
-    "id": "wad_21",
-    "question": "Which header is typically used by a server to indicate which origins are allowed for CORS?",
-    "choices": ["Access-Control-Allow-Origin", "Origin", "Allow", "Access-Control-Request-Method"],
-    "answerIndex": 0,
-    "explanation": "Access-Control-Allow-Origin is sent in responses to indicate which origin(s) may access the resource."
-  },
-  {
-    "id": "wad_22",
-    "question": "Which HTTP method is commonly used for a CORS preflight request?",
-    "choices": ["OPTIONS", "HEAD", "TRACE", "PUT"],
-    "answerIndex": 0,
-    "explanation": "Browsers use an OPTIONS preflight to check permitted methods/headers for certain cross-origin requests."
-  },
-  {
-    "id": "wad_23",
-    "question": "Which statement best describes XSS (Cross-Site Scripting)?",
+    "id": "week3_6",
+    "question": "Why is JSON commonly used in web development?",
     "choices": [
-      "An attack where the attacker tricks the browser into executing malicious scripts in a trusted site context",
-      "An attack that guesses passwords by trying many combinations",
-      "An attack that floods a server with traffic to make it unavailable",
-      "An attack that changes DNS records to redirect traffic"
+      "To style web pages",
+      "To store and exchange data between client and server",
+      "To manipulate DOM elements",
+      "To compile TypeScript"
     ],
-    "answerIndex": 0,
-    "explanation": "XSS happens when untrusted input is rendered as executable code (e.g., JavaScript) in the victim's browser."
+    "answerIndex": 1
   },
   {
-    "id": "wad_24",
-    "question": "Which statement best describes CSRF (Cross-Site Request Forgery)?",
+    "id": "week3_7",
+    "question": "What is the role of asynchronous HTTP requests?",
     "choices": [
-      "Stealing cookies via injected JavaScript",
-      "Forcing a victim's browser to make an unwanted authenticated request to a site",
-      "Intercepting traffic using a man-in-the-middle proxy",
-      "Uploading a malicious file to the server"
+      "They block the browser until the request finishes",
+      "They allow fetching or sending data without reloading the page",
+      "They replace the DOM API",
+      "They style HTML forms automatically"
     ],
-    "answerIndex": 1,
-    "explanation": "CSRF exploits the fact that browsers automatically send credentials (like cookies) with requests."
+    "answerIndex": 1
   },
   {
-    "id": "wad_25",
-    "question": "Which technique is most appropriate to prevent SQL injection when using a SQL database?",
+    "id": "week3_8",
+    "question": "Which is a good UX practice for web forms?",
     "choices": [
-      "String concatenation of user input into queries",
-      "Parameterized queries / prepared statements",
-      "Storing passwords in plaintext for simplicity",
-      "Disabling database permissions"
+      "Enforce strict input formats without explanation",
+      "Provide clear instructions and validation",
+      "Hide all error messages from users",
+      "Force unusual formatting for all fields"
     ],
-    "answerIndex": 1,
-    "explanation": "Prepared statements separate code from data, preventing user input from being interpreted as SQL syntax."
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_9",
+    "question": "What is the purpose of npm in front-end development?",
+    "choices": [
+      "Compiling CSS",
+      "Managing JavaScript packages and dependencies",
+      "Creating HTML content",
+      "Running HTTP requests"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_10",
+    "question": "What does minifying JavaScript do?",
+    "choices": [
+      "Adds comments for clarity",
+      "Removes unnecessary characters to reduce file size",
+      "Converts JS to TypeScript",
+      "Improves UX automatically"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_11",
+    "question": "Which tool bundles JS and assets for optimized loading?",
+    "choices": [
+      "npm",
+      "Webpack",
+      "Sass",
+      "Babel"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_12",
+    "question": "What is the role of a CSS preprocessor like Sass?",
+    "choices": [
+      "Add type checking",
+      "Add features like variables and nesting",
+      "Bundle JavaScript",
+      "Validate HTML forms"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_13",
+    "question": "Why do developers use front-end frameworks like React or Angular?",
+    "choices": [
+      "They replace HTML entirely",
+      "They make complex UI easier to manage",
+      "They automatically improve UX",
+      "They remove the need for JavaScript"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_14",
+    "question": "What problem did TypeScript address when it was introduced?",
+    "choices": [
+      "Lack of CSS preprocessing",
+      "JavaScript had no static typing",
+      "HTTP requests were synchronous",
+      "DOM manipulation was impossible"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_15",
+    "question": "Which of these is true about TypeScript compilation?",
+    "choices": [
+      "It runs directly in the browser",
+      "It is compiled into JavaScript",
+      "It replaces JSON entirely",
+      "It automatically generates HTML"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_16",
+    "question": "Why is TypeScript popular in large web applications?",
+    "choices": [
+      "It eliminates JavaScript",
+      "It adds type safety and improves maintainability",
+      "It replaces CSS",
+      "It automatically fetches API data"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_17",
+    "question": "What does the Network tab in developer tools show?",
+    "choices": [
+      "HTML structure only",
+      "HTTP requests and responses",
+      "CSS styling",
+      "TypeScript compilation errors"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_18",
+    "question": "Which of these is a benefit of using static site generators like Jekyll or Hugo?",
+    "choices": [
+      "Generate dynamic content in the browser",
+      "Pre-generate HTML pages for faster loading",
+      "Compile TypeScript automatically",
+      "Optimize CSS on the fly"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_19",
+    "question": "Why is it useful to understand how frameworks work under the hood?",
+    "choices": [
+      "To avoid writing HTML",
+      "To debug issues and build better applications",
+      "It only matters for backend developers",
+      "Frameworks require no understanding"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_20",
+    "question": "Which API allows scripts to manipulate every node in an HTML document?",
+    "choices": [
+      "JSON API",
+      "DOM API",
+      "TypeScript API",
+      "CSS API"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_21",
+    "question": "Which of the following is true about asynchronous tasks in JavaScript?",
+    "choices": [
+      "JS pauses synchronous code until async tasks finish",
+      "All async tasks run in parallel threads",
+      "JS spawns multiple hidden threads",
+      "Async tasks cannot run in the browser"
+    ],
+    "answerIndex": 0
+  },
+  {
+    "id": "week3_22",
+    "question": "Which of the following is a type of front-end development tooling?",
+    "choices": [
+      "Webpack",
+      "Sass",
+      "npm",
+      "All of the above"
+    ],
+    "answerIndex": 3
+  },
+  {
+    "id": "week3_23",
+    "question": "Which statement about client-server interaction is correct?",
+    "choices": [
+      "Servers send data only in XML",
+      "Clients can send and receive data asynchronously",
+      "Browsers cannot handle HTTP requests",
+      "JSON is not used in web applications"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_24",
+    "question": "Which of these describes JSX?",
+    "choices": [
+      "A JavaScript framework for routing",
+      "A virtual representation of the DOM",
+      "A strict TypeScript variant",
+      "A syntax extension allowing HTML-like elements in JS"
+    ],
+    "answerIndex": 3
+  },
+  {
+    "id": "week3_25",
+    "question": "Which of these is an advantage of using TypeScript instead of plain JavaScript?",
+    "choices": [
+      "It runs faster in the browser",
+      "It provides compile-time type checking",
+      "It replaces CSS",
+      "It automatically fetches API data"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_26",
+    "question": "Which is a correct example of a DOM method to get an element by ID?",
+    "choices": [
+      "document.querySelectorAll('#myId')",
+      "document.getElementById('myId')",
+      "document.createElement('#myId')",
+      "document.addElement('#myId')"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_27",
+    "question": "Which type of event would trigger when a user submits a form?",
+    "choices": [
+      "Keyboard event",
+      "Form event",
+      "Mouse event",
+      "Window event"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_28",
+    "question": "Why is it important to check HTTP request responses in developer tools?",
+    "choices": [
+      "To debug data transfer and API communication",
+      "To style HTML elements",
+      "To minify JavaScript",
+      "To compile TypeScript"
+    ],
+    "answerIndex": 0
+  },
+  {
+    "id": "week3_29",
+    "question": "Which of the following is NOT a core reason to learn HTML, CSS, and JavaScript fundamentals?",
+    "choices": [
+      "They remain useful over decades",
+      "Frameworks are always stable",
+      "Understanding them helps debug frameworks",
+      "They form the base of all web development"
+    ],
+    "answerIndex": 1
+  },
+  {
+    "id": "week3_30",
+    "question": "What is a primary benefit of using front-end frameworks responsibly?",
+    "choices": [
+      "Avoid learning core web technologies",
+      "Manage complex UI and maintainable code",
+      "Eliminate the need for DOM manipulation",
+      "Automatically improve SEO"
+    ],
+    "answerIndex": 1
   }
 ]

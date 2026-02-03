@@ -2,7 +2,7 @@
 
 const appEl = document.getElementById('app');
 
-/** @typedef {{ id?: string, question: string, choices: string[], answerIndex: number, explanation?: string }} QuizQuestion */
+/** @typedef {{ id?: string, question: string, choices: string[], answerIndex: number, explanation?: string, code?: string }} QuizQuestion */
 
 const state = {
   quizName: null,
@@ -12,8 +12,10 @@ const state = {
   current: 0,
   startedAt: null,
   endedAt: null,
-  shuffleQuestions: false,
-  shuffleChoices: false,
+  shuffleQuestions: true,
+  shuffleChoices: true,
+  quizKey: null,
+  firstScorePosted: false,
 };
 
 function escapeHtml(str) {
@@ -86,6 +88,7 @@ function normalizedQuestions(rawQuestions) {
     }
 
     const explanation = typeof q.explanation === 'string' ? q.explanation : undefined;
+    const code = typeof q.code === 'string' && q.code.trim() ? q.code : undefined;
 
     out.push({
       id: typeof q.id === 'string' && q.id.trim() ? q.id.trim() : makeId('q'),
@@ -93,6 +96,7 @@ function normalizedQuestions(rawQuestions) {
       choices: choicesStr,
       answerIndex,
       explanation,
+      code,
     });
   });
 
@@ -109,12 +113,133 @@ function resetSession() {
   state.current = 0;
   state.startedAt = null;
   state.endedAt = null;
+  state.firstScorePosted = false;
 }
 
 function setQuiz(questions, quizName) {
   state.questions = questions;
   state.quizName = quizName || 'Quiz';
+  // quizKey is an id used for storing stats; default to quizName if caller doesn't provide one
+  state.quizKey = arguments.length > 2 && arguments[2] ? arguments[2] : (quizName || 'Quiz');
   resetSession();
+}
+
+function statsKeyFor(key) {
+  return `quizStats:${key}`;
+}
+
+function getQuizStats(key) {
+  if (!key) return null;
+  try {
+    const raw = localStorage.getItem(statsKeyFor(key));
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (e) {
+    return null;
+  }
+}
+
+function saveQuizStats(key, pct) {
+  if (!key) return;
+  const sk = statsKeyFor(key);
+  const now = new Date().toISOString();
+  let st = getQuizStats(key);
+  if (!st) {
+    st = { count: 0, totalPct: 0, avgPct: 0, lastAt: null };
+  }
+  st.count += 1;
+  st.totalPct = (st.totalPct || 0) + pct;
+  st.avgPct = Math.round((st.totalPct / st.count) * 100) / 100;
+  st.lastAt = now;
+  try {
+    localStorage.setItem(sk, JSON.stringify(st));
+  } catch (e) {
+    // ignore storage errors
+  }
+}
+
+async function postResult(key, pct) {
+  if (!key) return;
+  try {
+    await fetch('/save-result', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ quiz: key, firstScore: pct }),
+    });
+  } catch (e) {
+    // ignore network errors; server may not be running
+  }
+}
+
+async function renderStatsPanel(items) {
+  const el = document.getElementById('quizStats');
+  if (!el) return;
+  if (!items || items.length === 0) {
+    el.textContent = '';
+    return;
+  }
+
+  // Deduplicate items by file name
+  const uniqueItems = Array.from(new Map(items.map(it => [it.file, it])).values());
+
+  try {
+    const res = await fetch('./results/', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Could not fetch results/ directory');
+    const html = await res.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const links = Array.from(doc.querySelectorAll('a')).map(a => (a.getAttribute('href') || '').trim()).filter(Boolean);
+    const jsonFiles = links.filter(h => h.toLowerCase().endsWith('.json'));
+
+    const groups = {};
+    await Promise.all(jsonFiles.map(async (f) => {
+      try {
+        const r = await fetch(`./results/${f}`, { cache: 'no-store' });
+        if (!r.ok) return;
+        const j = await r.json();
+        const entries = Array.isArray(j) ? j : [j];
+        entries.forEach((entry) => {
+          try {
+            const key = entry.quiz || entry.quizKey || entry.key || entry.file || null;
+            const pct = typeof entry.firstScore === 'number' ? entry.firstScore : (typeof entry.pct === 'number' ? entry.pct : null);
+            if (!key || pct == null) return;
+            const normalizedKey = String(key).replace(/\.json$/i, '').replace(/^\.\//, '');
+            if (!groups[normalizedKey]) groups[normalizedKey] = [];
+            groups[normalizedKey].push(pct);
+          } catch (e) {
+            // ignore malformed entry
+          }
+        });
+      } catch (e) {
+        // ignore malformed files
+      }
+    }));
+
+    const rows = uniqueItems.map(it => {
+      const normalizedFile = String(it.file || '').replace(/\.json$/i, '').replace(/^\.\//, '');
+      const arr = groups[normalizedFile] || [];
+      if (!arr.length) return null;
+      const count = arr.length;
+      const avg = Math.round((arr.reduce((a, b) => a + b, 0) / count) * 100) / 100;
+      return { name: it.name, file: it.file, count, avg };
+    }).filter(Boolean);
+
+    const leftHtml = rows.map(r => `<div style="margin-top:6px;"><b>${escapeHtml(r.name)}</b>: ${r.count} attempt(s) • avg ${r.avg}%</div>`).join('');
+    el.innerHTML = leftHtml.length ? leftHtml : '<div class="muted">No quiz attempts yet.</div>';
+
+    const scoreboardEl = document.getElementById('scoreboard');
+    if (scoreboardEl) {
+      const sorted = rows.slice().sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true }));
+      scoreboardEl.innerHTML = sorted.map(r => `<div style="margin-top:6px;"><b>${escapeHtml(r.name)}</b>: ${r.count} attempt(s) • avg ${r.avg}%</div>`).join('') || '<div class="muted">No quiz attempts yet.</div>';
+    }
+  } catch (e) {
+    const rows = uniqueItems.map(it => {
+      const st = getQuizStats(it.file);
+      if (!st) return null;
+      return `<div style="margin-top:6px;"><b>${escapeHtml(it.name)}</b>: ${st.count} attempt(s) • avg ${st.avgPct}%</div>`;
+    }).filter(Boolean);
+    el.innerHTML = rows.length ? rows.join('') : '<div class="muted">No quiz attempts yet.</div>';
+  }
 }
 
 function startQuiz({ shuffleQuestions, shuffleChoices }) {
@@ -130,6 +255,7 @@ function startQuiz({ shuffleQuestions, shuffleChoices }) {
   state.current = 0;
   state.startedAt = new Date();
   state.endedAt = null;
+  state.firstScorePosted = false;
 
   renderQuestion();
 }
@@ -147,6 +273,7 @@ function startQuizWithOrder(order, { shuffleQuestions, shuffleChoices }) {
   state.current = 0;
   state.startedAt = new Date();
   state.endedAt = null;
+  state.firstScorePosted = false;
 
   renderQuestion();
 }
@@ -212,15 +339,15 @@ function renderStartScreen(errorMsg) {
     <hr />
 
     <div class="row" style="align-items:flex-start;">
-      <div style="flex:1; min-width: 280px;">
+      <div id="leftPanel" style="flex:1; min-width: 280px;">
         <div class="muted" style="margin-bottom: 6px;">Choose a quiz (from <code>quizzes/</code>)</div>
         <select id="quizSelect" style="width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--border); background: rgba(0,0,0,0.12); color: var(--text);">
           <option value="" selected>Loading…</option>
         </select>
+        <div id="quizStats" class="muted" style="margin-top: 8px; font-size: 13px;"></div>
         <div id="quizStatus" class="muted" style="margin-top: 8px; font-size: 13px;"></div>
 
         <div class="row" style="margin-top: 10px;">
-          <button id="loadSelected" type="button" disabled>Load selected</button>
           <button id="refreshList" type="button">Refresh list</button>
         </div>
 
@@ -234,9 +361,10 @@ function renderStartScreen(errorMsg) {
       </div>
 
       <div style="flex:1; min-width: 280px;">
-        <label class="checkbox"><input id="shuffleQ" type="checkbox" /> Shuffle questions</label>
-        <label class="checkbox" style="margin-top:10px;"><input id="shuffleC" type="checkbox" /> Shuffle choices (optional)</label>
-        <div class="muted" style="margin-top: 8px; font-size: 13px;">If you shuffle choices, answers are kept correct.</div>
+        <div class="card" style="margin-top:10px; padding:10px;">
+          <div style="font-weight:700; margin-bottom:6px;">Scoreboard</div>
+          <div id="scoreboard" class="muted" style="font-size:13px; max-height:260px; overflow:auto;">Loading…</div>
+        </div>
       </div>
     </div>
 
@@ -255,12 +383,25 @@ function renderStartScreen(errorMsg) {
 
   const fileInput = document.getElementById('fileInput');
   const startBtn = document.getElementById('startBtn');
-  const shuffleQ = document.getElementById('shuffleQ');
-  const shuffleC = document.getElementById('shuffleC');
   const quizSelect = document.getElementById('quizSelect');
   const quizStatus = document.getElementById('quizStatus');
-  const loadSelected = document.getElementById('loadSelected');
   const refreshList = document.getElementById('refreshList');
+  const scoreboardEl = document.getElementById('scoreboard');
+  const leftPanel = document.getElementById('leftPanel');
+
+  // Make scoreboard match left panel height so it visually lines up with upload area
+  try {
+    if (scoreboardEl && leftPanel) {
+      // compute available height inside leftPanel (including details)
+      const h = leftPanel.getBoundingClientRect().height;
+      // set scoreboard max-height to match (subtract small padding)
+      scoreboardEl.style.maxHeight = (h - 8) + 'px';
+      scoreboardEl.style.overflow = 'auto';
+    }
+  } catch (e) {
+    // ignore measurement errors
+  }
+  // export/import UI removed; stats persisted to `results/` via server
 
   if (location && location.protocol === 'file:') {
     if (quizStatus) {
@@ -275,7 +416,7 @@ function renderStartScreen(errorMsg) {
       if (!res.ok) throw new Error('Failed to load quizzes/sample-quiz.json');
       const json = await res.json();
       const qs = normalizedQuestions(json);
-      setQuiz(qs, 'Sample Quiz');
+      setQuiz(qs, 'Sample Quiz', 'sample-quiz.json');
       startBtn.disabled = false;
       startBtn.focus();
     } catch (e) {
@@ -318,9 +459,8 @@ function renderStartScreen(errorMsg) {
   }
 
   async function loadQuizList() {
-    if (!quizSelect || !quizStatus || !loadSelected) return;
+    if (!quizSelect || !quizStatus) return;
 
-    loadSelected.disabled = true;
     quizSelect.innerHTML = `<option value="" selected>Loading…</option>`;
     quizStatus.textContent = '';
 
@@ -361,21 +501,14 @@ function renderStartScreen(errorMsg) {
         discoveredItems = [];
       }
 
-      // Merge by file (manifest name wins)
-      const byFile = new Map();
-      for (const it of discoveredItems) {
-        if (!it?.file) continue;
-        byFile.set(it.file, { file: it.file, name: it.name || nameFromFile(it.file) });
-      }
-      for (const it of manifestItems) {
-        if (!it?.file) continue;
-        byFile.set(it.file, { file: it.file, name: it.name || nameFromFile(it.file) });
-      }
+      // Deduplicate discoveredItems and manifestItems by file name
+      const allItems = [...manifestItems, ...discoveredItems];
+      const uniqueItems = Array.from(new Map(allItems.map(it => [it.file, it])).values());
 
-      const items = Array.from(byFile.values())
+      const items = uniqueItems
         .filter(it => it.file.toLowerCase().endsWith('.json'))
         .filter(it => it.file.toLowerCase() !== 'index.json')
-        .sort((a, b) => a.name.localeCompare(b.name));
+        .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true }));
 
       if (items.length === 0) {
         quizSelect.innerHTML = `<option value="" selected>(no quizzes listed)</option>`;
@@ -388,7 +521,20 @@ function renderStartScreen(errorMsg) {
         .join('');
 
       quizStatus.textContent = `Found ${items.length} quiz(es).`;
-      loadSelected.disabled = false;
+
+      // Render stats for the discovered items
+      try { renderStatsPanel(items); } catch (e) { /* ignore */ }
+
+      // Auto-load the first item so it's ready immediately
+      try {
+        if (quizSelect.options && quizSelect.options.length > 0) {
+          quizSelect.selectedIndex = 0;
+          // trigger change handler (if present) to load the quiz
+          quizSelect.dispatchEvent(new Event('change'));
+        }
+      } catch (e) {
+        // ignore dispatch problems; worst case user can re-select
+      }
     } catch (e) {
       quizSelect.innerHTML = `<option value="" selected>(list unavailable)</option>`;
       quizStatus.textContent = 'Could not load quiz list. Use the file picker or run a local server (python http.server recommended).';
@@ -401,27 +547,31 @@ function renderStartScreen(errorMsg) {
     });
   }
 
-  if (loadSelected && quizSelect) loadSelected.addEventListener('click', async () => {
-    const file = quizSelect.value;
-    if (!file) return;
-    const safePath = file.replace(/^\/+/, '');
-    const url = safePath.startsWith('quizzes/') || safePath.startsWith('./quizzes/')
-      ? safePath
-      : `./quizzes/${safePath}`;
+  // Auto-load selected quiz when the dropdown value changes
+  if (quizSelect) {
+    quizSelect.addEventListener('change', async () => {
+      const file = quizSelect.value;
+      if (!file) return;
+      const safePath = file.replace(/^\/+/, '');
+      const url = safePath.startsWith('quizzes/') || safePath.startsWith('./quizzes/')
+        ? safePath
+        : `./quizzes/${safePath}`;
 
-    try {
-      const res = await fetch(url, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`Failed to load ${url}`);
-      const json = await res.json();
-      const qs = normalizedQuestions(json);
-      const quizName = quizSelect.options[quizSelect.selectedIndex]?.textContent || 'Quiz';
-      setQuiz(qs, quizName);
-      startBtn.disabled = false;
-      startBtn.focus();
-    } catch (e) {
-      renderStartScreen(e?.message || String(e));
-    }
-  });
+      try {
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`Failed to load ${url}`);
+        const json = await res.json();
+        const qs = normalizedQuestions(json);
+        const quizName = quizSelect.options[quizSelect.selectedIndex]?.textContent || 'Quiz';
+        // Use the file path as the quizKey so stats are tied to file
+        setQuiz(qs, quizName, file);
+        startBtn.disabled = false;
+        startBtn.focus();
+      } catch (e) {
+        renderStartScreen(e?.message || String(e));
+      }
+    });
+  }
 
   // kick off quiz list load
   loadQuizList();
@@ -434,7 +584,7 @@ function renderStartScreen(errorMsg) {
       const text = await file.text();
       const json = JSON.parse(text);
       const qs = normalizedQuestions(json);
-      setQuiz(qs, file.name.replace(/\.json$/i, ''));
+      setQuiz(qs, file.name.replace(/\.json$/i, ''), file.name);
       startBtn.disabled = false;
     } catch (e) {
       startBtn.disabled = true;
@@ -444,7 +594,8 @@ function renderStartScreen(errorMsg) {
 
   startBtn.addEventListener('click', () => {
     if (!state.questions.length) return;
-    startQuiz({ shuffleQuestions: shuffleQ.checked, shuffleChoices: shuffleC.checked });
+    // Shuffling is enabled by default and not user-controllable
+    startQuiz({ shuffleQuestions: true, shuffleChoices: true });
   });
 }
 
@@ -455,17 +606,9 @@ function renderQuestion() {
   const selected = state.answers[state.current];
 
   // Optionally shuffle choices per question while preserving correct mapping.
-  // We do this by building a display mapping each time we render, but keep the
-  // stored answer in "display index" space for the current render.
-  // For simplicity: if shuffleChoices is on, we compute a stable shuffle per question id.
-
   const mapping = buildChoiceMapping(q);
   const displayChoices = mapping.displayChoices;
-  const displayCorrectIndex = mapping.displayCorrectIndex;
 
-  // If previously answered under a different mapping, we can’t safely reuse it.
-  // So when shuffleChoices is enabled, we store answers in ORIGINAL index space.
-  // That avoids mismatch.
   const selectedOriginalIndex = selected;
 
   appEl.innerHTML = `
@@ -475,7 +618,10 @@ function renderQuestion() {
       <button id="endBtn" class="danger" type="button">End</button>
     </div>
 
-    <div class="question">${escapeHtml(q.question)}</div>
+    <div class="question-container">
+      <div class="question">${escapeHtml(q.question)}</div>
+      ${q.code && q.code.trim() ? `<pre class="code-block"><code>${highlightCode(escapeHtml(q.code))}</code></pre>` : ''}
+    </div>
 
     <form id="choiceForm" class="choices">
       ${displayChoices
@@ -589,6 +735,12 @@ function endQuiz() {
 function renderResults() {
   const { total, correctCount, wrongCount, results } = computeResults();
   const pct = total ? Math.round((correctCount / total) * 100) : 0;
+  // Persist only the first score for this session (ignore subsequent finishes, e.g. Retry wrong)
+  if (!state.firstScorePosted) {
+    try { saveQuizStats(state.quizKey || state.quizName, pct); } catch (e) { }
+    try { postResult(state.quizKey || state.quizName, pct); } catch (e) { /* ignore network errors */ }
+    state.firstScorePosted = true;
+  }
   const wrongOrder = results
     .filter(r => !r.isCorrect)
     .map(r => r.originalIndex);
@@ -683,5 +835,45 @@ function mulberry32(seed) {
   };
 }
 
+// Simple JS/TS syntax highlighting for code blocks
+function highlightCode(code) {
+  return code
+    // Comments
+    .replace(/(\/\/.*)/g, '<span class="com">$1</span>')
+    // Strings
+    .replace(/('[^']*'|"[^"]*"|`[^`]*`)/g, '<span class="str">$1</span>')
+    // Numbers
+    .replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="num">$1</span>')
+    // Keywords
+    .replace(/\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|super|import|from|export|default|type|interface|public|private|protected|static|readonly|void|number|string|boolean|any|as|in|of|instanceof|this|true|false|null|undefined)\b/g, '<span class="kw">$1</span>')
+    // Function names (simple)
+    .replace(/\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(?=\()/g, '<span class="func">$1</span>')
+    // Variables (simple: after let/const/var/type)
+    .replace(/\b(let|const|var|type)\s+([a-zA-Z_][a-zA-Z0-9_]*)/g, '$1 <span class="var">$2</span>');
+}
+
 // Boot
 renderStartScreen();
+
+// Header home button: go back to start screen
+try {
+  const homeBtn = document.getElementById('homeBtn');
+  if (homeBtn) {
+    homeBtn.addEventListener('click', () => {
+      // reset session state and render start
+      state.questions = [];
+      state.quizName = null;
+      resetSession();
+      renderStartScreen();
+    });
+    // support keyboard activation (Enter/Space)
+    homeBtn.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        homeBtn.click();
+      }
+    });
+  }
+} catch (e) {
+  // ignore
+}

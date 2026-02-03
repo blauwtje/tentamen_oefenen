@@ -25,4 +25,4 @@ exit /b 1
 
 :start
 start "" "http://localhost:%PORT%/"
-%PY% -m http.server %PORT%
+%PY% server.py %PORT%

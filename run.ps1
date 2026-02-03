@@ -32,4 +32,4 @@ Write-Host "Opening: $url" -ForegroundColor Cyan
 Start-Process $url
 
 # Run server in the current window; stop with Ctrl+C
-& $cmd[0] @($cmd[1..($cmd.Count-1)]) -m http.server $Port
+& $cmd[0] @($cmd[1..($cmd.Count-1)]) server.py $Port

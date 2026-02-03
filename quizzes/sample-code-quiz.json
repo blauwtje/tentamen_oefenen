@@ -1,0 +1,67 @@
+[
+  {
+    "id": "code_1",
+    "question": "What will this code output?",
+    "code": "const nums = [1, 2, 3];\nconsole.log(nums.map(n => n * 2));",
+    "choices": [
+      "[2, 4, 6]",
+      "[1, 2, 3]",
+      "[3, 2, 1]",
+      "[1, 4, 9]"
+    ],
+    "answerIndex": 0,
+    "explanation": "The map function multiplies each element by 2, resulting in [2, 4, 6]."
+  },
+  {
+    "id": "code_2",
+    "question": "What does this function return?",
+    "code": "function add(a, b) {\n  return a + b;\n}\nadd(2, 3);",
+    "choices": [
+      "2",
+      "3",
+      "5",
+      "undefined"
+    ],
+    "answerIndex": 2,
+    "explanation": "add(2, 3) returns 5."
+  },
+  {
+    "id": "code_3",
+    "question": "What is the value of x after this code runs?",
+    "code": "let x = 10;\nx += 5;",
+    "choices": [
+      "5",
+      "10",
+      "15",
+      "20"
+    ],
+    "answerIndex": 2,
+    "explanation": "x starts at 10 and 5 is added, so x becomes 15."
+  },
+  {
+    "id": "code_4",
+    "question": "Which array method is used here?",
+    "code": "const arr = [1, 2, 3];\nconst result = arr.filter(n => n > 1);",
+    "choices": [
+      "map()",
+      "filter()",
+      "reduce()",
+      "forEach()"
+    ],
+    "answerIndex": 1,
+    "explanation": "filter() returns a new array with elements that pass the test."
+  },
+  {
+    "id": "code_5",
+    "question": "What will be logged to the console?",
+    "code": "console.log(typeof null);",
+    "choices": [
+      "'object'",
+      "'null'",
+      "'undefined'",
+      "'number'"
+    ],
+    "answerIndex": 0,
+    "explanation": "typeof null is a well-known JavaScript quirk: it returns 'object'."
+  }
+]

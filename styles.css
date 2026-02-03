@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
+
 :root{
   --bg: #0b1020;
   --card: rgba(255,255,255,0.06);
@@ -11,7 +13,7 @@
   --ok: #34d399;
   --shadow: 0 20px 60px rgba(0,0,0,0.35);
   --radius: 16px;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --mono: 'Fira Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
@@ -36,6 +38,7 @@ body{
 
 .header{margin: 12px 0 18px;}
 .header h1{margin:0 0 6px; font-size: 28px; letter-spacing: 0.2px;}
+.clickable{cursor:pointer;}
 .muted{color: var(--muted);}
 
 .card{
@@ -45,6 +48,8 @@ body{
   box-shadow: var(--shadow);
   padding: 18px;
 }
+
+.card #scoreboard{max-height:260px; overflow:auto;}
 
 .footer{margin-top: 16px; font-size: 13px;}
 
@@ -81,6 +86,25 @@ input[type="file"]{
   border-radius: 12px;
   background: rgba(0,0,0,0.10);
 }
+
+select{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background-color: #0b1020; /* solid dark bg for better contrast */
+  color: var(--text);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+option{
+  color: var(--text);
+  background-color: #0b1020;
+}
+
+select:focus{ outline: 2px solid rgba(124,92,255,0.25); }
 
 label.checkbox{
   display:flex;
@@ -178,7 +202,7 @@ hr{
 .reviewItem .answers{margin-top: 8px; color: var(--muted);}
 .reviewItem .answers b{color: var(--text);}
 
-code{font-family: var(--mono);}
+.code{font-family: var(--mono);}
 
 .error{
   border: 1px solid rgba(251,113,133,0.35);
@@ -186,4 +210,59 @@ code{font-family: var(--mono);}
   padding: 10px 12px;
   border-radius: 14px;
   color: rgba(255,205,214,0.95);
+}
+
+.question-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.code-block {
+  flex: 1;
+  background: #23272e !important;
+  color: #d4d4d4 !important;
+  border: 2px solid #7c5cff !important;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Liberation Mono', monospace;
+  font-size: 15px;
+  overflow-x: auto;
+  min-width: 220px;
+  max-width: 100%;
+  box-sizing: border-box;
+  line-height: 1.6;
+  position: relative;
+}
+
+.code-block code {
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
+/* Simple syntax highlighting */
+.code-block .kw { color: #569cd6; font-weight: 600; }
+.code-block .str { color: #ce9178; }
+.code-block .num { color: #b5cea8; }
+.code-block .func { color: #dcdcaa; }
+.code-block .var { color: #9cdcfe; }
+.code-block .com { color: #6a9955; font-style: italic; }
+
+/* Optional: subtle shadow for depth */
+.code-block {
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
+}
+
+@media (max-width: 700px) {
+  .question-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .code-block {
+    min-width: 0;
+    width: 100%;
+  }
 }

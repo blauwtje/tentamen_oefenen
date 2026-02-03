@@ -1,277 +1,307 @@
 [
   {
     "id": "html_1",
-    "question": "What is the main purpose of HTML?",
-    "choices": [
-      "Styling the page",
-      "Structuring the content",
-      "Storing data in a database",
-      "Running server code"
-    ],
-    "answerIndex": 1,
-    "explanation": "HTML provides the structure and meaning of web content."
+    "question": "What is HTML primarily used for?",
+    "choices": ["Programming logic", "Styling web pages", "Structuring web content", "Database management"],
+    "answerIndex": 2,
+    "explanation": "HTML is used to structure content on web pages, not to style or manage databases."
   },
   {
-    "id": "css_2",
-    "question": "What does CSS primarily control?",
-    "choices": [
-      "Page structure",
-      "Page behavior/logic",
-      "Page presentation (layout/visuals)",
-      "Network requests"
-    ],
-    "answerIndex": 2,
-    "explanation": "CSS controls how content looks and is laid out."
+    "id": "html_2",
+    "question": "Which of the following is a correct HTML element?",
+    "choices": ["<div>", "<style>", "<function>", "<loop>"],
+    "answerIndex": 0,
+    "explanation": "<div> is a valid HTML element used to group content."
   },
   {
-    "id": "dom_3",
-    "question": "What is the DOM?",
-    "choices": [
-      "A database for websites",
-      "A programming language",
-      "A tree representation of the page built from HTML",
-      "A CSS framework"
-    ],
+    "id": "html_3",
+    "question": "What does semantic HTML mean?",
+    "choices": ["HTML with colors and styles", "HTML that is readable by humans only", "HTML that conveys meaning", "HTML written in XML syntax only"],
     "answerIndex": 2,
-    "explanation": "The DOM represents the HTML document as a tree structure."
+    "explanation": "Semantic HTML elements convey meaning about the content, such as <header>, <footer>, or <article>."
   },
   {
     "id": "html_4",
-    "question": "Which is an example of a semantic HTML element?",
-    "choices": ["div", "span", "article", "b"],
-    "answerIndex": 2,
-    "explanation": "Semantic elements describe their meaning, like <article>."
+    "question": "Which of these is NOT a semantic HTML element?",
+    "choices": ["<article>", "<span>", "<section>", "<nav>"],
+    "answerIndex": 1,
+    "explanation": "<span> is a generic inline container and does not carry semantic meaning."
   },
   {
     "id": "html_5",
-    "question": "Why use semantic HTML?",
+    "question": "Which attribute is useful for automated testing?",
+    "choices": ["id", "class", "data-test", "style"],
+    "answerIndex": 2,
+    "explanation": "Adding a data-test attribute allows testers to reliably select elements for automated testing."
+  },
+  {
+    "id": "html_6",
+    "question": "What should you always do with HTML tags?",
+    "choices": ["Write them in uppercase", "Close all tags properly", "Use only inline styles", "Avoid using attributes"],
+    "answerIndex": 1,
+    "explanation": "Properly closing tags is important, especially for XML-compliant HTML."
+  },
+  {
+    "id": "html_7",
+    "question": "Which of the following best describes the benefit of knowing HTML, CSS, and JavaScript fundamentals?",
     "choices": [
-      "It makes JavaScript run faster",
-      "It improves meaning/structure for accessibility and SEO",
-      "It prevents CSS from being overridden",
-      "It removes the need for CSS"
+      "They are only useful for old websites",
+      "They help you understand and work with modern frameworks",
+      "They are no longer relevant due to frameworks",
+      "They only help in graphic design"
     ],
     "answerIndex": 1,
-    "explanation": "Semantic HTML improves accessibility and search engine understanding."
+    "explanation": "Fundamentals remain valuable as modern frameworks are built on top of HTML, CSS, and JavaScript."
+  },
+  {
+    "id": "html_8",
+    "question": "Which of these is considered a 'timeless skill' in web development?",
+    "choices": ["Bootstrap knowledge", "React knowledge", "HTML fundamentals", "Next.js knowledge"],
+    "answerIndex": 2,
+    "explanation": "HTML fundamentals remain useful across decades regardless of frameworks."
+  },
+  {
+    "id": "html_9",
+    "question": "Why is accessibility important in HTML?",
+    "choices": [
+      "It improves browser rendering speed",
+      "It helps visually impaired users access content",
+      "It increases website SEO only",
+      "It reduces file size"
+    ],
+    "answerIndex": 1,
+    "explanation": "Accessibility ensures users with disabilities can access content effectively."
+  },
+  {
+    "id": "html_10",
+    "question": "Which HTML element is used to create a link?",
+    "choices": ["<link>", "<a>", "<href>", "<url>"],
+    "answerIndex": 1,
+    "explanation": "The <a> element is used for hyperlinks."
+  },
+  {
+    "id": "css_1",
+    "question": "What does CSS stand for?",
+    "choices": [
+      "Cascading Style Sheets",
+      "Computer Style Syntax",
+      "Code Styling System",
+      "Creative Styling Script"
+    ],
+    "answerIndex": 0,
+    "explanation": "CSS stands for Cascading Style Sheets."
+  },
+  {
+    "id": "css_2",
+    "question": "Which of these is NOT a CSS layout mode?",
+    "choices": ["Flexbox", "Grid", "Flow", "Binary"],
+    "answerIndex": 3,
+    "explanation": "Binary is not a CSS layout mode; Flow, Flexbox, Grid, and Positioned are."
+  },
+  {
+    "id": "css_3",
+    "question": "CSS specificity determines what?",
+    "choices": [
+      "Which color to use",
+      "Which style rule is applied when multiple rules target the same element",
+      "How fast CSS loads",
+      "The size of the page"
+    ],
+    "answerIndex": 1,
+    "explanation": "Specificity decides which CSS rule takes precedence for an element."
+  },
+  {
+    "id": "css_4",
+    "question": "Why should class naming conventions like BEM or SMACSS be used?",
+    "choices": [
+      "To make code harder to read",
+      "To improve code readability and maintainability",
+      "To allow inline CSS",
+      "To avoid using IDs"
+    ],
+    "answerIndex": 1,
+    "explanation": "Naming conventions improve readability, consistency, and maintainability of CSS."
+  },
+  {
+    "id": "css_5",
+    "question": "What is the primary purpose of media queries in CSS?",
+    "choices": [
+      "To select HTML elements",
+      "To implement responsive design based on screen size",
+      "To add animations",
+      "To compress CSS files"
+    ],
+    "answerIndex": 1,
+    "explanation": "Media queries allow styles to change depending on device screen size or features."
   },
   {
     "id": "css_6",
-    "question": "Which statement about block vs inline is correct?",
+    "question": "What does 'inline CSS' mean?",
     "choices": [
-      "Inline elements always start on a new line",
-      "Block elements ignore width/height",
-      "Block elements typically start on a new line and can take full width",
-      "Inline elements can contain block elements by default"
+      "CSS written inside a <style> block",
+      "CSS written inside an external file",
+      "CSS applied directly via the style attribute in HTML",
+      "CSS automatically generated by the browser"
     ],
     "answerIndex": 2,
-    "explanation": "Block elements naturally start on a new line and expand horizontally."
+    "explanation": "Inline CSS applies styles directly to an element using the style attribute."
   },
   {
     "id": "css_7",
-    "question": "The CSS box model consists of (from inside to outside):",
-    "choices": [
-      "margin, border, padding, content",
-      "content, padding, border, margin",
-      "padding, content, margin, border",
-      "border, margin, content, padding"
-    ],
-    "answerIndex": 1,
-    "explanation": "The correct order is content → padding → border → margin."
+    "question": "Which layout mode is generally recommended for main app layouts?",
+    "choices": ["Flexbox", "Table", "Positioned", "Inline-block"],
+    "answerIndex": 0,
+    "explanation": "Flexbox is widely recommended for flexible and responsive main layouts."
   },
   {
     "id": "css_8",
-    "question": "What does padding affect?",
+    "question": "What is the risk of messy or poorly structured CSS?",
     "choices": [
-      "Space outside the border",
-      "Space between content and border",
-      "Border thickness",
-      "Text color"
+      "Faster page load",
+      "Improved readability",
+      "Harder maintenance and misunderstandings",
+      "Better developer experience"
     ],
-    "answerIndex": 1,
-    "explanation": "Padding adds space inside the border, around the content."
+    "answerIndex": 2,
+    "explanation": "Messy CSS makes it harder for others (or yourself) to maintain or update code."
   },
   {
     "id": "css_9",
-    "question": "What does margin affect?",
+    "question": "Which of these is true about the combination of HTML and CSS?",
     "choices": [
-      "Space between content and border",
-      "Space outside the border (between elements)",
-      "Border color",
-      "Font size"
+      "CSS can replace HTML completely",
+      "HTML and CSS together can structure and style a page effectively",
+      "HTML is optional if CSS is used",
+      "CSS automatically generates HTML elements"
     ],
     "answerIndex": 1,
-    "explanation": "Margin controls space between elements."
+    "explanation": "HTML structures content while CSS styles it; both are necessary for modern web pages."
   },
   {
     "id": "css_10",
-    "question": "What does box-sizing: border-box; do?",
+    "question": "Why is understanding the DOM important for CSS?",
     "choices": [
-      "Adds a border automatically",
-      "Includes padding and border in the element’s set width/height",
-      "Makes the element inline",
-      "Disables margins"
+      "Because CSS can create elements dynamically",
+      "Because CSS interacts with HTML elements in the DOM",
+      "Because DOM replaces HTML",
+      "It is not important at all"
     ],
     "answerIndex": 1,
-    "explanation": "It changes how width and height are calculated."
+    "explanation": "CSS styles HTML elements that exist in the DOM; understanding it helps avoid layout issues."
   },
   {
     "id": "css_11",
-    "question": "Which selector has higher specificity?",
-    "choices": [".menu", "#menu", "div", "*"],
+    "question": "Which of the following is a potential problem with setting height: 100% in CSS?",
+    "choices": [
+      "It always works perfectly",
+      "It depends on parent element heights being defined",
+      "It changes the width instead",
+      "It is not supported in any browser"
+    ],
     "answerIndex": 1,
-    "explanation": "ID selectors have higher specificity than class or element selectors."
+    "explanation": "Height percentages are relative to parent element heights; if undefined, the behavior is unexpected."
   },
   {
     "id": "css_12",
-    "question": "If two CSS rules have the same specificity, what decides the winner?",
+    "question": "What is a common CSS pitfall mentioned in your notes?",
     "choices": [
-      "The rule written later in the CSS",
-      "The rule written earlier in the CSS",
-      "The one with the shorter selector",
-      "The one in the smallest file"
+      "Not using inline styles",
+      "Point solutions that aren't reusable",
+      "Using semantic HTML",
+      "Using media queries"
     ],
-    "answerIndex": 0,
-    "explanation": "Later rules override earlier ones when specificity is equal."
+    "answerIndex": 1,
+    "explanation": "Point solutions everywhere create non-reusable, hard-to-maintain CSS code."
   },
   {
     "id": "css_13",
-    "question": "Which unit is relative to the root (html) font size?",
-    "choices": ["em", "rem", "px", "pt"],
-    "answerIndex": 1,
-    "explanation": "rem is relative to the root element’s font size."
+    "question": "What does BEM stand for in CSS naming conventions?",
+    "choices": [
+      "Block Element Modifier",
+      "Base Element Method",
+      "Browser Element Module",
+      "Bold Emphasized Markup"
+    ],
+    "answerIndex": 0,
+    "explanation": "BEM is a methodology to name classes: Block, Element, Modifier."
   },
   {
     "id": "css_14",
-    "question": "Which unit is relative to the current element’s font size?",
-    "choices": ["rem", "px", "em", "vh"],
-    "answerIndex": 2,
-    "explanation": "em is relative to the element’s own font size."
+    "question": "What is the main advantage of using a framework like Bootstrap?",
+    "choices": [
+      "You never need HTML again",
+      "Quick start with ready-made styles and components",
+      "It guarantees perfect code",
+      "It automatically generates JavaScript"
+    ],
+    "answerIndex": 1,
+    "explanation": "Bootstrap provides pre-built styles and components to speed up development."
   },
   {
     "id": "css_15",
-    "question": "What does display: inline generally do?",
+    "question": "Which of the following best describes Flexbox?",
     "choices": [
-      "Starts on a new line and stretches full width",
-      "Allows width/height to apply normally",
-      "Flows within a line; width/height usually don’t apply",
-      "Turns the element into a flex container"
+      "A layout mode for arranging elements in rows or columns",
+      "A JavaScript framework",
+      "A CSS animation tool",
+      "A semantic HTML element"
     ],
-    "answerIndex": 2,
-    "explanation": "Inline elements flow with text and ignore width/height."
+    "answerIndex": 0,
+    "explanation": "Flexbox is a CSS layout mode for distributing space along rows or columns."
   },
   {
     "id": "css_16",
-    "question": "What does display: inline-block allow compared to inline?",
+    "question": "Why should developers refactor CSS regularly?",
     "choices": [
-      "It forces a new line",
-      "It allows setting width/height while still flowing inline",
-      "It disables padding",
-      "It removes whitespace"
+      "To make the page load slower",
+      "To maintain readability and prevent future problems",
+      "Because browsers require it",
+      "To remove semantic meaning"
     ],
     "answerIndex": 1,
-    "explanation": "Inline-block combines inline flow with block sizing."
+    "explanation": "Refactoring keeps code maintainable, readable, and reduces future issues."
   },
   {
-    "id": "flex_17",
-    "question": "What is Flexbox mainly used for?",
+    "id": "css_17",
+    "question": "Which tool can help enforce consistent CSS style across a project?",
+    "choices": ["Linting tools", "Bootstrap", "Flexbox", "Media queries"],
+    "answerIndex": 0,
+    "explanation": "Linting tools check CSS for consistency and enforce style rules."
+  },
+  {
+    "id": "css_18",
+    "question": "Why is keeping CSS simple considered hard work?",
     "choices": [
-      "Writing database queries",
-      "One-dimensional layout (row OR column) alignment/distribution",
-      "Two-dimensional grid layouts only",
-      "Compressing images"
+      "Because CSS is automatically generated",
+      "Because simple CSS requires careful planning and organization",
+      "Because it loads slower",
+      "Because it doesn't affect the page"
     ],
     "answerIndex": 1,
-    "explanation": "Flexbox is designed for one-dimensional layouts."
+    "explanation": "Writing simple, clear CSS requires discipline to maintain structure and readability."
   },
   {
-    "id": "flex_18",
-    "question": "In Flexbox, justify-content aligns items along:",
+    "id": "css_19",
+    "question": "Which of these is a good practice for responsive design?",
     "choices": [
-      "The cross axis",
-      "The main axis",
-      "The z-axis",
-      "The baseline only"
+      "Using media queries to adapt styles",
+      "Using fixed pixel widths only",
+      "Avoiding flexible layouts",
+      "Using inline styles for everything"
+    ],
+    "answerIndex": 0,
+    "explanation": "Media queries allow design to adapt to different screen sizes."
+  },
+  {
+    "id": "css_20",
+    "question": "What is the relationship between frameworks and web fundamentals?",
+    "choices": [
+      "Frameworks replace fundamentals",
+      "Frameworks are built on top of fundamentals",
+      "Fundamentals are outdated because of frameworks",
+      "Frameworks only use JavaScript"
     ],
     "answerIndex": 1,
-    "explanation": "justify-content works along the main axis."
-  },
-  {
-    "id": "flex_19",
-    "question": "In Flexbox, align-items aligns items along:",
-    "choices": [
-      "The main axis",
-      "The cross axis",
-      "The document axis",
-      "The margin axis"
-    ],
-    "answerIndex": 1,
-    "explanation": "align-items controls alignment on the cross axis."
-  },
-  {
-    "id": "flex_20",
-    "question": "If flex-direction: column, the main axis is:",
-    "choices": ["Horizontal", "Vertical", "Diagonal", "Circular"],
-    "answerIndex": 1,
-    "explanation": "With column direction, the main axis runs vertically."
-  },
-  {
-    "id": "responsive_21",
-    "question": "What is a media query used for?",
-    "choices": [
-      "Connecting to an API",
-      "Applying CSS based on conditions like screen width",
-      "Making HTML semantic",
-      "Running JavaScript faster"
-    ],
-    "answerIndex": 1,
-    "explanation": "Media queries adapt styles based on device conditions."
-  },
-  {
-    "id": "responsive_22",
-    "question": "“Mobile-first” CSS usually means:",
-    "choices": [
-      "Start with desktop styles, then remove features for mobile",
-      "Start with small-screen styles, then add enhancements for larger screens",
-      "Only support mobile browsers",
-      "Use only px units"
-    ],
-    "answerIndex": 1,
-    "explanation": "Mobile-first builds up from small to large screens."
-  },
-  {
-    "id": "a11y_23",
-    "question": "Which improves accessibility the most?",
-    "choices": [
-      "Using div for everything",
-      "Skipping headings and using bold text instead",
-      "Using correct headings and semantic elements",
-      "Putting all text in images"
-    ],
-    "answerIndex": 2,
-    "explanation": "Semantic structure helps screen readers and users."
-  },
-  {
-    "id": "a11y_24",
-    "question": "Why is alt text important?",
-    "choices": [
-      "It makes images load faster",
-      "It provides text alternatives for screen readers and when images fail",
-      "It applies a filter to images",
-      "It makes the layout responsive"
-    ],
-    "answerIndex": 1,
-    "explanation": "Alt text improves accessibility and fallback content."
-  },
-  {
-    "id": "http_25",
-    "question": "What is the key difference between GET and POST?",
-    "choices": [
-      "GET can send data; POST cannot",
-      "GET typically sends data in the URL; POST sends data in the request body",
-      "POST is only for downloading",
-      "GET is more secure by default in all cases"
-    ],
-    "answerIndex": 1,
-    "explanation": "GET uses the URL; POST sends data in the request body."
+    "explanation": "Understanding fundamentals like HTML, CSS, and JS is essential because frameworks rely on them."
   }
 ]

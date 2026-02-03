@@ -1,302 +1,367 @@
 [
   {
-    "id": "fp_1",
-    "question": "What is the primary purpose of the map() function in functional programming?",
-    "choices": [
-      "To filter elements based on a condition",
-      "To transform each element in an array and create a new array",
-      "To combine all elements into a single value",
-      "To sort elements in an array"
-    ],
-    "answerIndex": 1,
-    "explanation": "map() transforms each element in an array by applying a function and returns a new array of the same length with the transformed values."
+    "id": "w5_1",
+    "question": "Which TypeScript array method transforms each element and returns a new array?",
+    "code": "",
+    "choices": ["reduce()", "filter()", "map()", "forEach()"],
+    "answerIndex": 2,
+    "explanation": "map() applies a function to each element of an array and returns a new array of the same length."
   },
   {
-    "id": "fp_2",
-    "question": "Which function would you use to create a new array containing only elements that pass a specific test?",
+    "id": "w5_2",
+    "question": "Which method creates a new array with only elements that pass a given test?",
+    "code": "",
+    "choices": ["map()", "filter()", "reduce()", "sort()"],
+    "answerIndex": 1,
+    "explanation": "filter() returns a new array containing only elements that satisfy the provided condition."
+  },
+  {
+    "id": "w5_3",
+    "question": "Which method aggregates array values into a single value?",
+    "code": "",
+    "choices": ["map()", "filter()", "reduce()", "every()"],
+    "answerIndex": 2,
+    "explanation": "reduce() iterates over an array and combines all elements into a single value using an accumulator function."
+  },
+  {
+    "id": "w5_4",
+    "question": "What will be the output of the following TypeScript code?",
+    "code": "const arr = [1, 2, 3];\nconsole.log(arr.map(x => x * 3));",
+    "choices": ["[1, 2, 3]", "[3, 6, 9]", "[1, 4, 9]", "[3, 2, 1]"],
+    "answerIndex": 1,
+    "explanation": "The map() function multiplies each element by 3, resulting in [3, 6, 9]."
+  },
+  {
+    "id": "w5_5",
+    "question": "Why might you implement a custom map, filter, or reduce function?",
+    "code": "",
     "choices": [
-      "map()",
-      "reduce()",
-      "filter()",
-      "forEach()"
+      "To work with arrays of primitive types only",
+      "To work with user-defined data structures like lists or trees",
+      "Because built-in methods are slower",
+      "To avoid TypeScript errors"
+    ],
+    "answerIndex": 1,
+    "explanation": "Custom implementations can operate on non-array structures like trees or graphs where built-in methods don't apply."
+  },
+  {
+    "id": "w5_6",
+    "question": "What is a key advantage of recursive solutions in TypeScript?",
+    "code": "",
+    "choices": [
+      "They are always faster than loops",
+      "They describe what should be done rather than how",
+      "They reduce memory usage",
+      "They don't require a return statement"
+    ],
+    "answerIndex": 1,
+    "explanation": "Recursion is often more declarative, focusing on what needs to be done instead of step-by-step iteration."
+  },
+  {
+    "id": "w5_7",
+    "question": "What does the following TypeScript code demonstrate?",
+    "code": "class Person {\n  readonly name: string;\n  age: number;\n  constructor(name: string, age?: number) {\n    this.name = name;\n    this.age = age;\n  }\n}",
+    "choices": [
+      "Primitive types",
+      "User-defined classes and constructors",
+      "TypeScript arrays",
+      "Generic functions"
+    ],
+    "answerIndex": 1,
+    "explanation": "The code defines a class with a constructor, demonstrating user-defined types in TypeScript."
+  },
+  {
+    "id": "w5_8",
+    "question": "Which TypeScript feature is being used here?",
+    "code": "interface Logger {\n  log(message: string): void;\n}\nclass ConsoleLogger implements Logger {\n  log(message: string) {\n    console.log(message);\n  }\n}",
+    "choices": [
+      "Discriminated unions",
+      "Classes",
+      "Interfaces",
+      "Generics"
     ],
     "answerIndex": 2,
-    "explanation": "filter() creates a new array containing only elements that satisfy a given condition (predicate)."
+    "explanation": "Interfaces define a contract that classes implement, enforcing a consistent structure."
   },
   {
-    "id": "fp_3",
-    "question": "What does the reduce() function do in functional programming?",
+    "id": "w5_9",
+    "question": "Which TypeScript type pattern is shown below?",
+    "code": "type Success<T> = { status: \"OK\"; result: T; };\ntype Fail = { status: \"Fail\"; reason: string; };\ntype ReturnType<T> = Success<T> | Fail;",
     "choices": [
-      "Reduces the size of an array by removing elements",
-      "Aggregates array values into a single value",
-      "Reduces the execution time of code",
-      "Filters out duplicate values"
-    ],
-    "answerIndex": 1,
-    "explanation": "reduce() accumulates or aggregates values from an array into a single result by applying a function repeatedly."
-  },
-  {
-    "id": "fp_4",
-    "question": "What is a key characteristic of recursive solutions compared to iterative ones?",
-    "choices": [
-      "They are always faster",
-      "They use more memory",
-      "They are more declarative (describe 'what' rather than 'how')",
-      "They cannot handle large inputs"
+      "Classes",
+      "Interfaces",
+      "Discriminated unions",
+      "Generics only"
     ],
     "answerIndex": 2,
-    "explanation": "Recursive solutions tend to be more declarative, focusing on what needs to be done rather than the step-by-step process of how to do it."
+    "explanation": "ReturnType<T> is a discriminated union combining Success<T> and Fail, allowing type-safe handling of success and failure cases."
   },
   {
-    "id": "fp_5",
-    "question": "What is the 'base case' in a recursive function?",
+    "id": "w5_10",
+    "question": "What will MapGeneric2([1,2,3], x=>x*x) return?",
+    "code": "function MapGeneric2<T, R>(arr: Array<T>, fn: (val: T, index: number) => R): ReturnType<R[]> {\n  if(arr.length<=0) return {status: \"Fail\", reason: \"Empty array\"};\n  const result: Array<R> = [];\n  for (let i = 0; i < arr.length; i++) {\n    if(arr[i]==undefined) return {status: \"Fail\", reason: `Empty at index ${i}` };\n    result.push(fn(arr[i]!, i));\n  }\n  return {status: \"OK\", result: result};\n}\nconst res = MapGeneric2([1,2,3], x=>x*x);",
     "choices": [
-      "The first line of the function",
-      "The condition that stops the recursion",
-      "The return type declaration",
-      "The most complex part of the recursion"
+      "{status: 'Fail', reason: 'Empty array'}",
+      "{status: 'OK', result: [1,4,9]}",
+      "[1,2,3]",
+      "Throws runtime error"
     ],
     "answerIndex": 1,
-    "explanation": "The base case is the condition that terminates the recursion, preventing infinite loops."
+    "explanation": "MapGeneric2 returns a discriminated union; here, the input is valid, so it returns {status: 'OK', result: [1,4,9]}."
   },
   {
-    "id": "fp_6",
-    "question": "In TypeScript, what is the purpose of the 'readonly' modifier?",
+    "id": "w5_11",
+    "question": "Which TypeScript array operation allows chaining multiple operations?",
+    "code": "",
+    "choices": ["reduce()", "map()", "map() and filter()", "forEach()"],
+    "answerIndex": 2,
+    "explanation": "Methods like map() and filter() return arrays and can be chained to perform multiple transformations sequentially."
+  },
+  {
+    "id": "w5_12",
+    "question": "Which statement about currying is correct?",
+    "code": "",
     "choices": [
-      "Prevents a value from being read",
-      "Prevents reassignment of a property in TypeScript code",
-      "Makes a property optional",
-      "Hides the property from other classes"
+      "Currying combines multiple functions into one",
+      "Currying splits a multi-argument function into nested single-argument functions",
+      "Currying only works with arrays",
+      "Currying is a way to filter arrays"
     ],
     "answerIndex": 1,
-    "explanation": "In TypeScript, 'readonly' prevents assigning to that property in your code (compile-time). It helps model immutability." 
+    "explanation": "Currying transforms a function taking multiple arguments into a series of functions taking one argument each."
   },
   {
-    "id": "fp_7",
-    "question": "What is the main difference between a class and an interface in TypeScript?",
+    "id": "w5_13",
+    "question": "Why is immutability important in functional programming?",
+    "code": "",
     "choices": [
-      "Interfaces can have implementations, classes cannot",
-      "Classes are for runtime, interfaces are compile-time contracts",
-      "Interfaces are faster than classes",
-      "Classes cannot be extended, interfaces can"
-    ],
-    "answerIndex": 1,
-    "explanation": "Interfaces define contracts (shapes/types) that classes must implement, while classes provide actual implementations and exist at runtime."
-  },
-  {
-    "id": "fp_8",
-    "question": "What is a discriminated union in TypeScript?",
-    "choices": [
-      "A union type where each member has a common property to distinguish them",
-      "A type that combines multiple interfaces",
-      "A union of primitive types only",
-      "A type that cannot be discriminated"
+      "It reduces runtime errors and side effects",
+      "It makes code run faster",
+      "It prevents recursion",
+      "It allows using classes"
     ],
     "answerIndex": 0,
-    "explanation": "A discriminated union is a union type where each member has a common property (discriminant) that can be used to distinguish between them at runtime."
+    "explanation": "Immutable objects do not change after creation, reducing side effects and making code more predictable."
   },
   {
-    "id": "fp_9",
-    "question": "What is a literal type in TypeScript?",
+    "id": "w5_14",
+    "question": "Which of these is a pure function?",
+    "code": "",
     "choices": [
-      "A type that can only contain string values",
-      "A type that represents a specific value rather than a range of values",
-      "A type for literal programming constructs",
-      "A type that cannot be changed"
+      "A function that modifies a global variable",
+      "A function that always returns the same output for the same input",
+      "A function that logs data to the console",
+      "A function that reads from a file"
     ],
     "answerIndex": 1,
-    "explanation": "A literal type is a type that represents a single specific value (like 'OK' or 'Fail'), rather than a range of possible values."
+    "explanation": "Pure functions do not modify external state and always return the same output for the same inputs."
   },
   {
-    "id": "fp_10",
-    "question": "Why might you return a custom ReturnType (Success/Fail) instead of throwing exceptions?",
+    "id": "w5_15",
+    "question": "What is function composition in TypeScript?",
+    "code": "",
     "choices": [
-      "To make code run faster",
-      "To avoid crashing the program and handle errors gracefully",
-      "To reduce code size",
-      "Exceptions are deprecated in TypeScript"
-    ],
-    "answerIndex": 1,
-    "explanation": "Returning custom result types allows for graceful error handling without stopping program execution, making code more robust."
-  },
-  {
-    "id": "fp_11",
-    "question": "What is function composition?",
-    "choices": [
-      "Combining two or more functions to produce a new function",
-      "Splitting one function into multiple unrelated functions",
-      "Running two functions in parallel threads",
-      "Calling a function from inside itself (recursion)"
+      "Combining two functions so the output of one is the input of the next",
+      "Writing multiple functions in the same file",
+      "Calling reduce() inside map()",
+      "Merging arrays using concat()"
     ],
     "answerIndex": 0,
-    "explanation": "Function composition combines functions so that the output of one becomes the input of the next (e.g., f(g(x)))."
+    "explanation": "Function composition creates a new function by passing the output of one function as the input to another."
   },
   {
-    "id": "fp_12",
-    "question": "In the expression 'f(g(x))', what does this represent in function composition?",
+    "id": "w5_16",
+    "question": "What does the And function do in this code?",
+    "code": "function And<T>(f1:(a:T)=>boolean, f2:(a:T)=>boolean) {\n  return function(a:T){ return f1(a) && f2(a); }\n}",
     "choices": [
-      "Parallel execution of f and g",
-      "g is applied first, then f to the result",
-      "f is applied first, then g to the result",
-      "Both functions are applied simultaneously"
+      "Runs f1 or f2 depending on a condition",
+      "Runs both functions and returns true only if both are true",
+      "Merges two arrays",
+      "Filters objects based on price only"
     ],
     "answerIndex": 1,
-    "explanation": "In 'f(g(x))', function g is applied first to x, then function f is applied to the result of g(x)."
+    "explanation": "And combines two predicates and returns true only if both predicates return true for the input."
   },
   {
-    "id": "fp_13",
-    "question": "What is currying in functional programming?",
+    "id": "w5_17",
+    "question": "Which line filters products under 1000 that are in stock?",
+    "code": "const products: Product[] = [\n  { id: 1, name: 'Laptop', price: 1200, inStock: true },\n  { id: 2, name: 'Phone', price: 800, inStock: false },\n  { id: 3, name: 'Tablet', price: 600, inStock: true }\n];",
     "choices": [
-      "A technique for parallelizing function calls",
-      "Transforming a function with multiple arguments into a sequence of single-argument functions",
-      "Making code more complex",
-      "A type of loop optimization"
+      "products.filter(x=>x.price<=1000).filter(x=>x.inStock)",
+      "products.filter(x=>x.price<=1000 || x.inStock)",
+      "products.map(x=>x.price<=1000 && x.inStock)",
+      "products.reduce(x=>x.price<=1000 && x.inStock)"
+    ],
+    "answerIndex": 0,
+    "explanation": "Chaining two filter() calls selects products meeting both conditions."
+  },
+  {
+    "id": "w5_18",
+    "question": "What does the Then function achieve?",
+    "code": "function Then<X,Y,Z>(f:(a:Y)=>Z, g:(a:X)=>Y) {\n  return function(a:X){ return f(g(a)); }\n}",
+    "choices": [
+      "Composes two functions so f(g(x)) is applied",
+      "Creates a nested class",
+      "Filters arrays twice",
+      "Executes asynchronous code"
+    ],
+    "answerIndex": 0,
+    "explanation": "Then implements function composition, where the result of g(x) is passed into f."
+  },
+  {
+    "id": "w5_19",
+    "question": "Which statement about discriminated unions is true?",
+    "code": "",
+    "choices": [
+      "They allow defining a type that can be one of multiple types distinguished by a literal",
+      "They are classes",
+      "They only work with numbers",
+      "They replace interfaces"
+    ],
+    "answerIndex": 0,
+    "explanation": "Discriminated unions combine multiple types using a literal property to distinguish between them."
+  },
+  {
+    "id": "w5_20",
+    "question": "Which TypeScript array operation is used to sum points of members only?",
+    "code": "const onlyPoints = apiUsers.filter(x=>x.kind=='member').map(x=>x.points).reduce((acc, x)=> acc + x, 0);",
+    "choices": [
+      "filter() then map() then reduce()",
+      "map() only",
+      "reduce() only",
+      "filter() only"
+    ],
+    "answerIndex": 0,
+    "explanation": "This example first filters members, maps their points, then reduces to sum them."
+  },
+  {
+    "id": "w5_21",
+    "question": "Which is the correct syntax for a TypeScript type with optional property?",
+    "code": "",
+    "choices": [
+      "type User = { id: number, name: string? }",
+      "type User = { id: number, name?: string }",
+      "type User = { id: number, name: optional string }",
+      "type User = { id: number, name: string = optional }"
     ],
     "answerIndex": 1,
-    "explanation": "Currying transforms a function that takes multiple arguments into a series of functions that each take a single argument."
+    "explanation": "Optional properties use the ? symbol: name?: string."
   },
   {
-    "id": "fp_14",
-    "question": "What is immutability in functional programming?",
+    "id": "w5_22",
+    "question": "What does the code below illustrate?",
+    "code": "type Admin = { kind: 'admin', id: number, name: string, permissions: string[] };\ntype Member = { kind: 'member', id: number, name: string, points: number };\ntype User = Admin | Member;",
     "choices": [
-      "The ability to mutate objects freely",
-      "Objects that cannot change after creation",
-      "Functions that never return",
-      "Variables that can only be used once"
+      "An array",
+      "Discriminated unions",
+      "Classes",
+      "Generic function"
     ],
     "answerIndex": 1,
-    "explanation": "Immutability means objects/data structures cannot be changed after they are created, leading to more predictable code."
+    "explanation": "User is a discriminated union that can be either Admin or Member."
   },
   {
-    "id": "fp_15",
-    "question": "What defines a pure function?",
+    "id": "w5_23",
+    "question": "Which statement is true about ReturnType<T>?",
+    "code": "",
     "choices": [
-      "A function with no parameters",
-      "A function that always returns the same output for the same inputs and has no side effects",
-      "A function that only uses mathematical operations",
-      "A function that is written in a single line"
+      "It combines Success<T> and Fail types",
+      "It only works for arrays",
+      "It is a class",
+      "It replaces interfaces"
+    ],
+    "answerIndex": 0,
+    "explanation": "ReturnType<T> is a union type combining Success<T> and Fail to provide type-safe error handling."
+  },
+  {
+    "id": "w5_24",
+    "question": "Which statement about pure functions is correct?",
+    "code": "",
+    "choices": [
+      "They depend on external variables",
+      "They always return the same output for the same input",
+      "They write to files or logs",
+      "They modify global state"
     ],
     "answerIndex": 1,
-    "explanation": "A pure function always returns the same result given the same arguments and has no side effects (doesn't modify external state)."
+    "explanation": "Pure functions have no side effects and consistently produce the same output for the same inputs."
   },
   {
-    "id": "fp_16",
-    "question": "Why are pure functions advantageous?",
+    "id": "w5_25",
+    "question": "What is the result of combining map(), filter(), and reduce() in sequence?",
+    "code": "",
     "choices": [
-      "They run faster",
-      "They are easier to test, understand, and debug due to predictability",
-      "They use less memory",
-      "They can access global variables"
+      "A single aggregated value",
+      "A new array after map, filtered, then reduced to a value",
+      "Only the original array is modified",
+      "It throws a runtime error"
     ],
     "answerIndex": 1,
-    "explanation": "Pure functions are predictable, easier to test, debug, and reason about since they don't depend on or modify external state."
+    "explanation": "Chaining map, filter, and reduce allows stepwise transformations and final aggregation."
   },
   {
-    "id": "fp_17",
-    "question": "In the code 'products.filter(x=>x.price<=1000).filter(x=>x.inStock)', why is this inefficient?",
+    "id": "w5_26",
+    "question": "Which TypeScript feature allows generic types in functions?",
+    "code": "",
     "choices": [
-      "It uses arrow functions",
-      "It creates intermediate arrays for each filter operation",
-      "Filter cannot be chained",
-      "It doesn't handle errors"
-    ],
-    "answerIndex": 1,
-    "explanation": "Chaining filters creates intermediate arrays, which can be inefficient with large datasets. Combining conditions in a single filter is more efficient."
-  },
-  {
-    "id": "fp_18",
-    "question": "What does the 'extends' keyword do in TypeScript classes?",
-    "choices": [
-      "Extends the length of an array",
-      "Creates a subclass that inherits from a parent class",
-      "Extends the functionality of a function",
-      "Makes a class abstract"
-    ],
-    "answerIndex": 1,
-    "explanation": "The 'extends' keyword creates inheritance, allowing a child class to inherit properties and methods from a parent class."
-  },
-  {
-    "id": "fp_19",
-    "question": "What is the purpose of the 'super()' call in a constructor?",
-    "choices": [
-      "To call a superior function",
-      "To call the parent class constructor",
-      "To make the class super",
-      "To initialize super variables"
-    ],
-    "answerIndex": 1,
-    "explanation": "super() calls the constructor of the parent class, ensuring proper initialization of inherited properties."
-  },
-  {
-    "id": "fp_20",
-    "question": "What is type algebra in TypeScript?",
-    "choices": [
-      "Mathematical operations on types",
-      "Creating new types by combining existing types using union, intersection, etc.",
-      "Using types in mathematical functions",
-      "A deprecated feature"
-    ],
-    "answerIndex": 1,
-    "explanation": "Type algebra refers to creating new types by combining existing types using operators like union (|), intersection (&), etc."
-  },
-  {
-    "id": "fp_21",
-    "question": "Which of these is NOT a benefit of using custom return types (Success/Fail) over exceptions?",
-    "choices": [
-      "Better type safety",
-      "Forces explicit error handling",
-      "Makes code run significantly faster",
-      "Errors become part of the function signature"
+      "Interfaces",
+      "Classes",
+      "Generics",
+      "Discriminated unions"
     ],
     "answerIndex": 2,
-    "explanation": "While custom return types improve type safety and force error handling, they don't necessarily make code run significantly faster."
+    "explanation": "Generics let you write functions that work with multiple types while preserving type safety."
   },
   {
-    "id": "fp_22",
-    "question": "What does the 'implements' keyword do in TypeScript?",
+    "id": "w5_27",
+    "question": "What is the difference between MapGeneric and MapGeneric2?",
+    "code": "",
     "choices": [
-      "Implements a function from an interface",
-      "Indicates a class provides implementations for all members of an interface",
-      "Implements a design pattern",
-      "Creates an implementation of an abstract class"
+      "MapGeneric throws errors, MapGeneric2 returns a discriminated union",
+      "MapGeneric uses reduce, MapGeneric2 uses map",
+      "MapGeneric2 is synchronous, MapGeneric is asynchronous",
+      "There is no difference"
+    ],
+    "answerIndex": 0,
+    "explanation": "MapGeneric throws exceptions on error, whereas MapGeneric2 returns a ReturnType<T> to handle failures safely."
+  },
+  {
+    "id": "w5_28",
+    "question": "Which of these best describes currying?",
+    "code": "",
+    "choices": [
+      "Breaking a function into smaller single-argument functions",
+      "Transforming an array into a single value",
+      "Filtering objects",
+      "Chaining promises"
+    ],
+    "answerIndex": 0,
+    "explanation": "Currying splits multi-argument functions into nested functions each taking a single argument."
+  },
+  {
+    "id": "w5_29",
+    "question": "What will the console output be?",
+    "code": "const arr = [1,2,3,4,5];\nconsole.log(arr.filter(x => x % 2 === 0));",
+    "choices": [
+      "[1,3,5]",
+      "[2,4]",
+      "[1,2,3,4,5]",
+      "[2,3,4]"
     ],
     "answerIndex": 1,
-    "explanation": "The 'implements' keyword indicates that a class provides concrete implementations for all members defined in an interface."
+    "explanation": "The filter() method returns only even numbers: [2,4]."
   },
   {
-    "id": "fp_23",
-    "question": "In the chain 'apiUsers.filter(x=>x.kind==\"member\").map(x=>x.points).reduce((acc,x)=>acc+x,0)', what is the final result?",
+    "id": "w5_30",
+    "question": "Why is functional programming useful in TypeScript?",
+    "code": "",
     "choices": [
-      "An array of member points",
-      "The total points of all members",
-      "The average points of members",
-      "A filtered array of members"
+      "It allows code to be more predictable, testable, and modular",
+      "It replaces classes entirely",
+      "It is required by TypeScript compiler",
+      "It allows dynamic typing"
     ],
-    "answerIndex": 1,
-    "explanation": "This chain filters members, extracts their points, then sums all points using reduce, resulting in the total points."
-  },
-  {
-    "id": "fp_24",
-    "question": "What is the purpose of the 'And' and 'Or' higher-order functions in the products example?",
-    "choices": [
-      "To perform logical operations on boolean values",
-      "To compose multiple filter conditions into single predicates",
-      "To combine arrays",
-      "To create type unions"
-    ],
-    "answerIndex": 1,
-    "explanation": "These functions compose multiple predicate functions into single predicates that can be used with filter()."
-  },
-  {
-    "id": "fp_25",
-    "question": "Which concept emphasizes that functions should not modify external state or variables?",
-    "choices": [
-      "Currying",
-      "Immutability",
-      "Pure functions",
-      "Recursion"
-    ],
-    "answerIndex": 2,
-    "explanation": "Pure functions emphasize no side effects - they don't modify external state and only depend on their inputs."
+    "answerIndex": 0,
+    "explanation": "Functional programming encourages pure functions, immutability, and function composition, improving predictability and maintainability."
   }
 ]
