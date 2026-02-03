@@ -1,302 +1,332 @@
 [
   {
-    "id": "w09_01",
-    "question": "What is a database?",
-    "choices": [
-      "A UI component library",
-      "A structured collection of related data that can be stored and accessed efficiently",
-      "A TypeScript configuration file",
-      "A CSS preprocessor"
-    ],
-    "answerIndex": 1,
-    "explanation": "The notes define a database as a structured collection of related data that can be stored, accessed, and manipulated efficiently."
+    "id": "q1",
+    "question": "What does the Model represent in the MVC pattern?",
+    "code": "",
+    "choices": ["UI elements", "User requests", "Data and business logic", "Rendering engine"],
+    "answerIndex": 2,
+    "explanation": "The Model contains data and the business rules that operate on that data."
   },
   {
-    "id": "w09_02",
-    "question": "What is a DBMS?",
+    "id": "q2",
+    "question": "Which statement describes the purpose of an ORM like EF Core?",
+    "code": "",
     "choices": [
-      "A JavaScript runtime",
-      "Database software used to create, edit, maintain, and secure databases",
-      "A React hook",
-      "A web server protocol"
+      "To generate HTML views automatically",
+      "To interact with the database using .NET objects rather than SQL",
+      "To replace the need for a database",
+      "To compile C# into SQL scripts"
     ],
     "answerIndex": 1,
-    "explanation": "A DBMS handles storage, access control, backup, reporting, and multi-user access."
+    "explanation": "EF Core maps tables to .NET objects, abstracting database operations."
   },
   {
-    "id": "w09_03",
-    "question": "Which is listed as a common problem with spreadsheets compared to databases?",
+    "id": "q3",
+    "question": "What is a core characteristic of a database?",
+    "code": "",
     "choices": [
-      "They cannot store any numbers",
-      "Multiple inconsistent records",
-      "They always require SQL",
-      "They automatically enforce foreign keys"
+      "It only stores numeric data",
+      "It stores unrelated data structures",
+      "It stores structured related data reflecting a mini-world",
+      "It cannot be accessed simultaneously"
+    ],
+    "answerIndex": 2,
+    "explanation": "A database stores related data representing a real-world domain."
+  },
+  {
+    "id": "q4",
+    "question": "Which is a key advantage of using a database instead of flat files?",
+    "code": "",
+    "choices": [
+      "More duplicate data",
+      "Difficulty maintaining relations",
+      "Consistent multi-user data access",
+      "No support for filtering"
+    ],
+    "answerIndex": 2,
+    "explanation": "Databases maintain consistency and support multiple users."
+  },
+  {
+    "id": "q5",
+    "question": "Which of the following is a relational database?",
+    "code": "",
+    "choices": ["MongoDB", "Neo4J", "MySQL", "CouchDB"],
+    "answerIndex": 2,
+    "explanation": "MySQL is a relational database."
+  },
+  {
+    "id": "q6",
+    "question": "In data modeling, what does an entity represent?",
+    "code": "",
+    "choices": ["A physical disk", "A real-world object or concept", "A JSON file", "A UI element"],
+    "answerIndex": 1,
+    "explanation": "Entities model real-world objects such as customers or orders."
+  },
+  {
+    "id": "q7",
+    "question": "What is the purpose of the DbContext class in EF Core?",
+    "code": "",
+    "choices": ["To create UI views", "To represent a session with the database", "To store CSS classes", "To host API controllers"],
+    "answerIndex": 1,
+    "explanation": "DbContext manages database connections and operations."
+  },
+  {
+    "id": "q8",
+    "question": "What does a DbSet<T> represent in EF Core?",
+    "code": "",
+    "choices": ["A controller action", "A list of files", "A table and its records", "A LINQ provider"],
+    "answerIndex": 2,
+    "explanation": "DbSet<T> maps an entity class to a database table."
+  },
+  {
+    "id": "q9",
+    "question": "Which EF Core call executes pending changes to the database?",
+    "code": "",
+    "choices": ["Add()", "SaveChanges()", "Update()", "Track()"],
+    "answerIndex": 1,
+    "explanation": "SaveChanges() writes tracked changes to the database."
+  },
+  {
+    "id": "q10",
+    "question": "What is the result of the following code?",
+    "code": "db.Customers.ToList();",
+    "choices": [
+      "It compiles but never executes a query",
+      "It executes a query and returns all customers",
+      "It deletes all customers",
+      "It updates all customer records"
     ],
     "answerIndex": 1,
-    "explanation": "The reader mentions issues like inconsistent records and difficulty maintaining relations."
+    "explanation": "ToList() forces query execution and retrieves results."
   },
   {
-    "id": "w09_04",
-    "question": "Which is an advantage of using databases?",
+    "id": "q11",
+    "question": "What does deferred execution mean in LINQ?",
+    "code": "",
     "choices": [
-      "No need for backups",
-      "One consistent version of data for multi-user access",
-      "No need for security",
-      "All users see all data"
+      "Queries run immediately",
+      "Queries run only when enumerated",
+      "Queries run at compile time",
+      "Queries run only during migrations"
     ],
     "answerIndex": 1,
-    "explanation": "Databases support consistent data for multiple users and can provide different views/access."
+    "explanation": "LINQ queries execute only when enumeration happens, e.g., ToList()."
   },
   {
-    "id": "w09_05",
-    "question": "In data modeling, what is a conceptual data model focused on?",
+    "id": "q12",
+    "question": "Why must an entity in EF Core have a primary key?",
+    "code": "",
     "choices": [
-      "Disk layout and indexing details",
-      "Entities, attributes, and relationships close to how users perceive data",
-      "JavaScript event loops",
-      "CSS styling rules"
+      "To support UI rendering",
+      "To uniquely identify and track instances",
+      "To control database migrations",
+      "To enable method overloading"
     ],
     "answerIndex": 1,
-    "explanation": "Conceptual models use entities/attributes/relationships and stay close to the domain (miniworld)."
+    "explanation": "EF Core requires keys to track entity state."
   },
   {
-    "id": "w09_06",
-    "question": "What does an “entity” represent in the conceptual model?",
+    "id": "q13",
+    "question": "Which class would cause EF Core to throw a missing primary key exception?",
+    "code": "public class Test {\n  public int Field1 { get; set; }\n  public string Field2 { get; set; } = null!;\n}",
     "choices": [
-      "A compiled DLL",
-      "A real-world object or concept (e.g., Customer, Product)",
-      "A UI route",
-      "A Promise"
+      "Because Field1 is an int",
+      "Because Field2 is a string",
+      "Because no property is defined as a key",
+      "Because it contains two properties"
+    ],
+    "answerIndex": 2,
+    "explanation": "Entities must define a primary key either by convention or explicitly."
+  },
+  {
+    "id": "q14",
+    "question": "Which property name is recognized by convention as a primary key?",
+    "code": "",
+    "choices": ["PK", "Primary", "Id", "KeyField"],
+    "answerIndex": 2,
+    "explanation": "By convention, EF Core uses Id or ClassNameId as primary key."
+  },
+  {
+    "id": "q15",
+    "question": "What does the [Keyless] attribute specify in EF Core?",
+    "code": "",
+    "choices": [
+      "That the table has multiple keys",
+      "That the entity has no primary key",
+      "That the key is auto-generated",
+      "That the key is composite"
     ],
     "answerIndex": 1,
-    "explanation": "Entities represent real-world objects/concepts in the miniworld, like employees or projects."
+    "explanation": "[Keyless] indicates that the entity does not have a primary key."
   },
   {
-    "id": "w09_07",
-    "question": "What is an attribute in data modeling?",
+    "id": "q16",
+    "question": "Which Fluent API call defines a composite key?",
+    "code": "modelBuilder.Entity<OrderDetail>().HasKey(_ => new { _.OrderId, _.ProductId });",
     "choices": [
-      "A property that describes an entity (e.g., Name, Salary)",
-      "A HTTP header",
-      "A TypeScript generic",
-      "A React component"
+      "Sets a shadow property",
+      "Defines a composite primary key",
+      "Creates a foreign key",
+      "Creates a unique constraint only"
+    ],
+    "answerIndex": 1,
+    "explanation": "Passing multiple fields creates a composite key."
+  },
+  {
+    "id": "q17",
+    "question": "In the Product entity, what does CategoryId represent?",
+    "code": "",
+    "choices": ["A composite key", "A foreign key", "A navigation property", "A shadow state"],
+    "answerIndex": 1,
+    "explanation": "CategoryId is the explicit foreign key linking to Category."
+  },
+  {
+    "id": "q18",
+    "question": "What type of relationship exists between Category and Product?",
+    "code": "",
+    "choices": ["One-to-one", "Many-to-many", "One-to-many", "Self-referencing"],
+    "answerIndex": 2,
+    "explanation": "Each category has many products; each product has one category."
+  },
+  {
+    "id": "q19",
+    "question": "How is the self-referencing relationship defined for Employee?",
+    "code": "",
+    "choices": [
+      "One employee belongs to many managers",
+      "Each employee has an optional manager",
+      "Employees cannot reference other employees",
+      "Managers are stored in a separate table"
+    ],
+    "answerIndex": 1,
+    "explanation": "ManagerId optionally links an employee to another employee."
+  },
+  {
+    "id": "q20",
+    "question": "What does Include() do when querying data?",
+    "code": "db.Products.Include(p => p.Category)",
+    "choices": [
+      "Executes the query immediately",
+      "Loads related navigation data eagerly",
+      "Filters out categories",
+      "Deletes related entities automatically"
+    ],
+    "answerIndex": 1,
+    "explanation": "Include eagerly loads navigation properties."
+  },
+  {
+    "id": "q21",
+    "question": "What LINQ operation is used in EF Core to combine two sequences?",
+    "code": "",
+    "choices": ["Join", "Union", "GroupBy", "Average"],
+    "answerIndex": 1,
+    "explanation": "Union merges two query results into one sequence."
+  },
+  {
+    "id": "q22",
+    "question": "What does the following join produce?",
+    "code": "db.Products.Join(db.Categories, p => p.CategoryId, c => c.Id, (p, c) => new { p.Name, c.Name })",
+    "choices": [
+      "A list of categories only",
+      "A filtered list of products",
+      "A combined result of product and category data",
+      "An empty query"
+    ],
+    "answerIndex": 2,
+    "explanation": "Join merges data from both sequences based on matching keys."
+  },
+  {
+    "id": "q23",
+    "question": "What does GroupBy achieve in the provided LINQ example?",
+    "code": "",
+    "choices": [
+      "Filters by product price",
+      "Groups products by category",
+      "Deletes duplicate categories",
+      "Creates a composite key"
+    ],
+    "answerIndex": 1,
+    "explanation": "GroupBy clusters records based on category name."
+  },
+  {
+    "id": "q24",
+    "question": "Which aggregate operation calculates the highest product price?",
+    "code": "",
+    "choices": ["Count()", "Average()", "Max()", "Sum()"],
+    "answerIndex": 2,
+    "explanation": "Max returns the highest value in a grouped set."
+  },
+  {
+    "id": "q25",
+    "question": "Why might EF Core generate a shadow foreign key?",
+    "code": "",
+    "choices": [
+      "The entity has no fields",
+      "A navigation property exists but the FK property is missing",
+      "The primary key is composite",
+      "The database is empty"
+    ],
+    "answerIndex": 1,
+    "explanation": "If the FK is omitted, EF generates a hidden shadow FK property."
+  },
+  {
+    "id": "q26",
+    "question": "What does FirstOrDefault() return when no match is found?",
+    "code": "",
+    "choices": ["An exception", "A default value (usually null)", "The last item", "A compiled query"],
+    "answerIndex": 1,
+    "explanation": "FirstOrDefault returns null if nothing satisfies the condition."
+  },
+  {
+    "id": "q27",
+    "question": "What happens if an entity is modified but SaveChanges() is not called?",
+    "code": "",
+    "choices": [
+      "The change is auto-saved",
+      "The change is lost and not written to the database",
+      "The database crashes",
+      "EF creates a migration automatically"
+    ],
+    "answerIndex": 1,
+    "explanation": "Changes are tracked in memory only until SaveChanges() is executed."
+  },
+  {
+    "id": "q28",
+    "question": "What does AddRange() do in EF Core?",
+    "code": "",
+    "choices": [
+      "Adds multiple entities to the change tracker",
+      "Deletes entities permanently",
+      "Executes a bulk SQL operation",
+      "Updates all tracked entities"
     ],
     "answerIndex": 0,
-    "explanation": "Attributes describe properties of an entity (like a customer’s email)."
+    "explanation": "AddRange registers multiple entities for insertion."
   },
   {
-    "id": "w09_08",
-    "question": "What is Entity Framework Core (EF Core)?",
+    "id": "q29",
+    "question": "Why is OrderDetail defined with a composite key?",
+    "code": "",
     "choices": [
-      "A front-end routing library",
-      "A cross-platform ORM for .NET",
-      "A SQL database engine",
-      "A browser Web API"
+      "It has no navigation properties",
+      "Each product has only one order",
+      "The combination of OrderId and ProductId uniquely identifies each item",
+      "EF requires composite keys for all join tables"
+    ],
+    "answerIndex": 2,
+    "explanation": "OrderId + ProductId uniquely identify an entry in an order's item list."
+  },
+  {
+    "id": "q30",
+    "question": "What does the following LINQ statement achieve?",
+    "code": "var allProducts = cheapItems.Union(expensiveItems).ToList();",
+    "choices": [
+      "Returns duplicate items only",
+      "Merges two sequences into one without duplicates",
+      "Filters out items above 50",
+      "Sorts the product list"
     ],
     "answerIndex": 1,
-    "explanation": "EF Core is an Object-Relational Mapper that lets .NET code work with databases using objects."
-  },
-  {
-    "id": "w09_09",
-    "question": "In EF Core, what makes up the model?",
-    "choices": [
-      "Only SQL scripts",
-      "Entity classes and a DbContext",
-      "Only controllers",
-      "Only DTOs"
-    ],
-    "answerIndex": 1,
-    "explanation": "The model consists of entity classes plus a context representing the session with the database."
-  },
-  {
-    "id": "w09_10",
-    "question": "What does DbContext represent in EF Core?",
-    "choices": [
-      "A JavaScript call stack",
-      "A session with the database and access to tables via DbSet<T>",
-      "A CSS module scope",
-      "A build tool"
-    ],
-    "answerIndex": 1,
-    "explanation": "DbContext manages the connection/session and provides access to sets of entities."
-  },
-  {
-    "id": "w09_11",
-    "question": "What is DbSet<T> used for?",
-    "choices": [
-      "Defining a TypeScript union",
-      "Querying and saving instances of an entity type",
-      "Declaring React routes",
-      "Creating JSON responses"
-    ],
-    "answerIndex": 1,
-    "explanation": "DbSet<T> represents a table-like set of entities you can query/update."
-  },
-  {
-    "id": "w09_12",
-    "question": "Which mechanism does EF Core use to evolve database schema from code?",
-    "choices": [
-      "React reconciliation",
-      "Migrations",
-      "CSS bundling",
-      "Promise chaining"
-    ],
-    "answerIndex": 1,
-    "explanation": "Migrations generate schema changes from your model and apply them to the database."
-  },
-  {
-    "id": "w09_13",
-    "question": "In EF Core, what is LINQ primarily used for?",
-    "choices": [
-      "Writing CSS",
-      "Querying data with expressions that can be translated to SQL",
-      "Creating HTTP routes",
-      "Building React components"
-    ],
-    "answerIndex": 1,
-    "explanation": "LINQ lets you query entities; EF can translate many expressions to SQL queries."
-  },
-  {
-    "id": "w09_14",
-    "question": "Which is a common convention for a primary key property in EF Core by convention?",
-    "choices": [
-      "PrimaryKey",
-      "Id or <ClassName>Id",
-      "KeyFieldOnly",
-      "PK_"
-    ],
-    "answerIndex": 1,
-    "explanation": "By convention, EF treats Id or ClassNameId as the primary key."
-  },
-  {
-    "id": "w09_15",
-    "question": "If an entity has no primary key defined, EF Core will:",
-    "choices": [
-      "Generate one automatically in all cases",
-      "Throw an error unless configured as keyless",
-      "Ignore the entity silently",
-      "Convert it to a DTO"
-    ],
-    "answerIndex": 1,
-    "explanation": "The notes show an error requiring a primary key unless you configure HasNoKey / [Keyless]."
-  },
-  {
-    "id": "w09_16",
-    "question": "Which is one way to configure an entity as keyless in EF Core?",
-    "choices": [
-      "Use [Keyless] attribute or Fluent API HasNoKey()",
-      "Use useMemo()",
-      "Add [FromBody]",
-      "Add a Route attribute"
-    ],
-    "answerIndex": 0,
-    "explanation": "The notes show [Keyless] or modelBuilder.Entity<Test>().HasNoKey()."
-  },
-  {
-    "id": "w09_17",
-    "question": "What is a foreign key property in the Product/Category example?",
-    "choices": [
-      "CategoryName",
-      "CategoryId",
-      "Products",
-      "DbSet<Category>"
-    ],
-    "answerIndex": 1,
-    "explanation": "In the example, Product has CategoryId as the foreign key."
-  },
-  {
-    "id": "w09_18",
-    "question": "What is a navigation property in EF Core?",
-    "choices": [
-      "A property that links entities (e.g., Product.Category or Category.Products)",
-      "A route mapping for controllers",
-      "A JavaScript promise callback",
-      "A CSS selector"
-    ],
-    "answerIndex": 0,
-    "explanation": "Navigation properties represent relationships between entities (references/collections)."
-  },
-  {
-    "id": "w09_19",
-    "question": "How do you define a composite key for OrderDetail (OrderId + ProductId) in Fluent API?",
-    "choices": [
-      "modelBuilder.Entity<OrderDetail>().HasKey(od => new { od.OrderId, od.ProductId })",
-      "modelBuilder.Entity<OrderDetail>().HasNoKey()",
-      "builder.Services.AddKey<OrderDetail>()",
-      "app.MapKey(\"orderdetail\")"
-    ],
-    "answerIndex": 0,
-    "explanation": "The notes show defining a composite key with HasKey on an anonymous object of the key fields."
-  },
-  {
-    "id": "w09_20",
-    "question": "What does Include(p => p.Category) do in an EF Core query?",
-    "choices": [
-      "Adds a new table",
-      "Eager-loads the related Category data",
-      "Creates a new migration",
-      "Forces client-side filtering only"
-    ],
-    "answerIndex": 1,
-    "explanation": "Include is used to eagerly load related entities instead of leaving navigation properties unpopulated."
-  },
-  {
-    "id": "w09_21",
-    "question": "What does “deferred execution” mean for IQueryable queries?",
-    "choices": [
-      "The query runs immediately when written",
-      "The query runs only when enumerated (e.g., ToList/Count)",
-      "The query runs only at app startup",
-      "The query runs only in the browser"
-    ],
-    "answerIndex": 1,
-    "explanation": "LINQ queries are built up and executed when you enumerate them (ToList/ToListAsync/etc.)."
-  },
-  {
-    "id": "w09_22",
-    "question": "What is the main goal of using an ORM like EF Core compared to direct SQL in every feature?",
-    "choices": [
-      "To remove the need for a database",
-      "To work with the database using objects and reduce data-access boilerplate",
-      "To force all queries to run in-memory",
-      "To make all apps single-threaded"
-    ],
-    "answerIndex": 1,
-    "explanation": "EF Core abstracts many repetitive data-access tasks and maps tables/rows to objects."
-  },
-  {
-    "id": "w09_23",
-    "question": "Which of these is an example of a relationship mentioned in the webshop case study?",
-    "choices": [
-      "Each product belongs to a category",
-      "Each CSS class belongs to a component",
-      "Each Promise belongs to a hook",
-      "Each URL belongs to a database"
-    ],
-    "answerIndex": 0,
-    "explanation": "The case study includes Product → Category and Order → OrderDetails relationships."
-  },
-  {
-    "id": "w09_24",
-    "question": "In the self-reference example, what does Employee.ManagerId represent?",
-    "choices": [
-      "A list of subordinates",
-      "An optional foreign key referencing another Employee",
-      "A primary key for Category",
-      "A route parameter"
-    ],
-    "answerIndex": 1,
-    "explanation": "ManagerId is a nullable FK that points to another Employee row (self relationship)."
-  },
-  {
-    "id": "w09_25",
-    "question": "Which statement best describes EF Core migrations?",
-    "choices": [
-      "They are React components",
-      "They are a way to track and apply schema changes from code to the database",
-      "They are a replacement for DbContext",
-      "They only work for in-memory databases"
-    ],
-    "answerIndex": 1,
-    "explanation": "Migrations let you evolve schema safely by generating change steps based on model changes."
+    "explanation": "Union combines two sets, removing duplicates."
   }
 ]
