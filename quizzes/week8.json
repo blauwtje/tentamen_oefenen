@@ -1,302 +1,392 @@
 [
   {
-    "id": "w08_01",
-    "question": "What is React Router primarily used for in React applications?",
+    "id": "w8_1",
+    "question": "What is the purpose of React Router in a React application?",
+    "code": "",
     "choices": [
-      "Compiling TypeScript",
-      "Routing/navigation based on the URL without full page reloads",
-      "Managing CSS modules",
-      "Replacing React state"
+      "To handle navigation and render components based on URL without reloading the page",
+      "To provide styling for React components",
+      "To fetch data from APIs",
+      "To manage component state"
     ],
-    "answerIndex": 1,
-    "explanation": "React Router renders different components based on the current URL, keeping the app as an SPA."
+    "answerIndex": 0,
+    "explanation": "React Router allows routing within a SPA without full page reloads, managing navigation and component rendering based on URL."
   },
   {
-    "id": "w08_02",
-    "question": "Which package is installed to use React Router in a typical React project?",
+    "id": "w8_2",
+    "question": "Which component is used to wrap the main App to enable routing?",
+    "code": "import { createRoot } from 'react-dom/client'\nimport { BrowserRouter } from 'react-router-dom'\nimport App from './App.jsx'\n\ncreateRoot(document.getElementById('root')).render(\n  <BrowserRouter>\n    <App />\n  </BrowserRouter>\n)",
     "choices": [
-      "react-router",
-      "react-router-dom",
-      "react-routing",
-      "router-react"
+      "BrowserRouter",
+      "Route",
+      "Link",
+      "NavLink"
     ],
-    "answerIndex": 1,
-    "explanation": "The notes use `npm install react-router-dom`."
+    "answerIndex": 0,
+    "explanation": "BrowserRouter wraps the App component to provide routing context to the application."
   },
   {
-    "id": "w08_03",
-    "question": "What is the purpose of wrapping your app in <BrowserRouter>?",
+    "id": "w8_3",
+    "question": "In React Router, what does the '*' path do?",
+    "code": "<Route path=\"*\" element={<NotFound />} />",
     "choices": [
-      "To enable React hooks",
-      "To enable routing context and URL-based navigation",
-      "To optimize images",
-      "To connect to a database"
+      "Matches any unknown route to show a 404 page",
+      "Matches only the root route",
+      "Redirects to the home page automatically",
+      "Matches only dynamic routes"
     ],
-    "answerIndex": 1,
-    "explanation": "BrowserRouter sets up routing using the History API and provides router context to the component tree."
+    "answerIndex": 0,
+    "explanation": "The '*' wildcard route ensures unknown URLs render a 404-style page instead of a blank screen."
   },
   {
-    "id": "w08_04",
-    "question": "Which components are used to declare routes in React Router's declarative mode?",
+    "id": "w8_4",
+    "question": "What is the difference between <Link> and <a> tags in React Router?",
+    "code": "import { Link } from 'react-router-dom'\n<Link to=\"/\">Home</Link>",
     "choices": [
-      "<Switch> and <Path>",
-      "<Routes> and <Route>",
-      "<Router> and <Page>",
-      "<Link> and <NavLink>"
+      "<Link> prevents full page reload using History API, <a> reloads the page",
+      "<Link> always reloads the page, <a> prevents reload",
+      "<Link> is used only for dynamic routes",
+      "<Link> can fetch data automatically"
     ],
-    "answerIndex": 1,
-    "explanation": "The reader shows: <Routes> with multiple <Route> entries."
+    "answerIndex": 0,
+    "explanation": "<Link> uses the History API for SPA navigation, avoiding a full page reload."
   },
   {
-    "id": "w08_05",
-    "question": "What is the key difference between <a href=...> and <Link to=...> in a React SPA?",
+    "id": "w8_5",
+    "question": "Which hook allows programmatic navigation in React Router?",
+    "code": "import { useNavigate } from 'react-router-dom'\nconst navigate = useNavigate()\nnavigate('/dashboard')",
     "choices": [
-      "<Link> triggers a full page reload",
-      "<a> triggers a full page reload; <Link> changes the URL without reloading",
-      "They behave identically",
-      "<a> only works with TypeScript"
+      "useNavigate",
+      "useParams",
+      "useLocation",
+      "useSearchParams"
     ],
-    "answerIndex": 1,
-    "explanation": "<a> performs a full navigation, while <Link> uses the History API to keep the SPA running."
+    "answerIndex": 0,
+    "explanation": "useNavigate provides a function to navigate programmatically to a route."
   },
   {
-    "id": "w08_06",
-    "question": "What does <NavLink> provide that <Link> does not (as shown in the notes)?",
-    "choices": [
-      "Automatic database queries",
-      "An isActive state for styling active links",
-      "Automatic code-splitting",
-      "Built-in authentication"
-    ],
-    "answerIndex": 1,
-    "explanation": "NavLink can apply different styling/className when its route matches and is active."
-  },
-  {
-    "id": "w08_07",
-    "question": "Which hook is used for programmatic navigation in React Router?",
+    "id": "w8_6",
+    "question": "How do you access URL parameters in a dynamic route?",
+    "code": "import { useParams } from 'react-router-dom'\nconst { id } = useParams();",
     "choices": [
       "useParams()",
       "useNavigate()",
       "useLocation()",
-      "useMemo()"
-    ],
-    "answerIndex": 1,
-    "explanation": "The reader uses useNavigate() to navigate('/dashboard') on a button click."
-  },
-  {
-    "id": "w08_08",
-    "question": "What does a wildcard route like <Route path='*' ... /> typically handle?",
-    "choices": [
-      "Only query strings",
-      "Unknown routes (404-style pages)",
-      "Only POST requests",
-      "Only nested routes"
-    ],
-    "answerIndex": 1,
-    "explanation": "A '*' path is used to render a NotFound component for unmatched URLs."
-  },
-  {
-    "id": "w08_09",
-    "question": "What is a dynamic route parameter example from the notes?",
-    "choices": [
-      "/dashboard/:id",
-      "/dashboard?id=42",
-      "/dashboard/*",
-      "/:dashboard/id"
+      "useSearchParams()"
     ],
     "answerIndex": 0,
-    "explanation": "Dynamic segments use ':' (e.g., /dashboard/:id)."
+    "explanation": "useParams returns an object of URL path parameters defined in dynamic routes."
   },
   {
-    "id": "w08_10",
-    "question": "Which hook reads dynamic path parameters in React Router?",
+    "id": "w8_7",
+    "question": "Which hook is used to get query string parameters?",
+    "code": "import { useSearchParams } from 'react-router-dom'\nconst [searchParams] = useSearchParams()\nsearchParams.get('username')",
     "choices": [
-      "useParams()",
+      "useSearchParams",
+      "useParams",
+      "useNavigate",
+      "useLocation"
+    ],
+    "answerIndex": 0,
+    "explanation": "useSearchParams provides access to query string parameters in the URL."
+  },
+  {
+    "id": "w8_8",
+    "question": "How are nested routes rendered inside a parent component?",
+    "code": "import { Outlet } from 'react-router-dom'\n<Outlet />",
+    "choices": [
+      "Using <Outlet /> in the parent component",
+      "Using <Link> in the parent component",
+      "Using useNavigate() in the parent component",
+      "Using useParams() in the parent component"
+    ],
+    "answerIndex": 0,
+    "explanation": "Outlet is a placeholder in the parent component where child routes are rendered."
+  },
+  {
+    "id": "w8_9",
+    "question": "How do you protect a route to allow only authenticated users?",
+    "code": "import { Navigate } from 'react-router-dom'\nconst ProtectedRoute = (props) => {\n  const isAuthenticated = localStorage.getItem('token')\n  return isAuthenticated ? props.children : <Navigate to='/login' />\n}",
+    "choices": [
+      "Wrap the component with a ProtectedRoute that checks authentication",
+      "Use <Link> with a conditional",
+      "Use useSearchParams to check token",
+      "Use useParams to block unauthorized access"
+    ],
+    "answerIndex": 0,
+    "explanation": "ProtectedRoute checks authentication and redirects unauthorized users to login."
+  },
+  {
+    "id": "w8_10",
+    "question": "Which component redirects from one route to another?",
+    "code": "<Route path='/' element={<Navigate to='/home' replace />} />",
+    "choices": [
+      "Navigate",
+      "Link",
+      "NavLink",
+      "Outlet"
+    ],
+    "answerIndex": 0,
+    "explanation": "Navigate component programmatically redirects to a new route."
+  },
+  {
+    "id": "w8_11",
+    "question": "What is the main purpose of <NavLink>?",
+    "code": "<NavLink to='/about' className={({ isActive }) => (isActive ? 'active' : '')}>About</NavLink>",
+    "choices": [
+      "To apply styling when the link is active",
+      "To fetch data from the server",
+      "To navigate programmatically",
+      "To create nested routes"
+    ],
+    "answerIndex": 0,
+    "explanation": "<NavLink> allows dynamic styling when a route is active."
+  },
+  {
+    "id": "w8_12",
+    "question": "Which hook allows accessing the current URL and state?",
+    "code": "",
+    "choices": [
+      "useLocation",
+      "useParams",
+      "useNavigate",
+      "useSearchParams"
+    ],
+    "answerIndex": 0,
+    "explanation": "useLocation returns the current location object including pathname, search, and state."
+  },
+  {
+    "id": "w8_13",
+    "question": "In nested routes, where should you place links to child routes?",
+    "code": "function Dashboard() {\n  return (\n    <div>\n      <nav>\n        <Link to='stats'>Stats</Link>\n      </nav>\n      <Outlet />\n    </div>\n  )\n}",
+    "choices": [
+      "Inside the parent component",
+      "Inside the child component only",
+      "Inside the Router wrapper only",
+      "Inside useParams"
+    ],
+    "answerIndex": 0,
+    "explanation": "Links to nested routes are placed inside the parent component."
+  },
+  {
+    "id": "w8_14",
+    "question": "How do you create a dynamic route that accepts an ID parameter?",
+    "code": "<Route path='/dashboard/:id' element={<DashboardItem />} />",
+    "choices": [
+      "By adding :paramName in the path",
+      "By using useSearchParams",
+      "By using Navigate",
+      "By wrapping in Outlet"
+    ],
+    "answerIndex": 0,
+    "explanation": "Dynamic segments in routes are defined with :paramName syntax."
+  },
+  {
+    "id": "w8_15",
+    "question": "Which hook is used to fetch and cache server data in React?",
+    "code": "import { useQuery } from '@tanstack/react-query'\nconst { data, isLoading, error } = useQuery({ queryKey: ['users'], queryFn: () => fetch('/api/users').then(res => res.json()) })",
+    "choices": [
+      "useQuery",
+      "useState",
+      "useEffect",
+      "useContext"
+    ],
+    "answerIndex": 0,
+    "explanation": "useQuery manages server state including fetching, caching, and error handling."
+  },
+  {
+    "id": "w8_16",
+    "question": "Which hook is used to share global data across components?",
+    "code": "const theme = React.useContext(ThemeContext)",
+    "choices": [
+      "useContext",
+      "useState",
+      "useMemo",
+      "useCallback"
+    ],
+    "answerIndex": 0,
+    "explanation": "useContext allows consuming a context value across components."
+  },
+  {
+    "id": "w8_17",
+    "question": "Which hook optimizes a value by memoizing it?",
+    "code": "const expensiveValue = useMemo(() => computeValue(data), [data])",
+    "choices": [
+      "useMemo",
+      "useState",
+      "useEffect",
+      "useCallback"
+    ],
+    "answerIndex": 0,
+    "explanation": "useMemo memoizes a computed value to prevent unnecessary recalculations."
+  },
+  {
+    "id": "w8_18",
+    "question": "Which hook memoizes a function to avoid unnecessary re-creation?",
+    "code": "const memoizedHandler = useCallback(() => handleAction(data), [data])",
+    "choices": [
+      "useCallback",
+      "useMemo",
+      "useEffect",
+      "useState"
+    ],
+    "answerIndex": 0,
+    "explanation": "useCallback memoizes a function so that it is not recreated on every render."
+  },
+  {
+    "id": "w8_19",
+    "question": "Which command installs React Router in your project?",
+    "code": "npm install react-router-dom",
+    "choices": [
+      "npm install react-router-dom",
+      "npm install react",
+      "npm install react-query",
+      "npm install react-router"
+    ],
+    "answerIndex": 0,
+    "explanation": "React Router is installed via npm install react-router-dom."
+  },
+  {
+    "id": "w8_20",
+    "question": "Which component is used to render the matched component for a route?",
+    "code": "<Routes>\n  <Route path='/' element={<Home />} />\n</Routes>",
+    "choices": [
+      "Routes",
+      "Route",
+      "Link",
+      "BrowserRouter"
+    ],
+    "answerIndex": 0,
+    "explanation": "<Routes> wraps all <Route> elements and handles rendering the matched component."
+  },
+  {
+    "id": "w8_21",
+    "question": "What type of navigation does <Link> provide?",
+    "code": "<Link to='/home'>Home</Link>",
+    "choices": [
+      "Declarative navigation without page reload",
+      "Programmatic navigation",
+      "Full page reload navigation",
+      "Dynamic query string navigation"
+    ],
+    "answerIndex": 0,
+    "explanation": "<Link> provides declarative navigation in a SPA, preventing full page reloads."
+  },
+  {
+    "id": "w8_22",
+    "question": "Which of the following is true about <NavLink>?",
+    "code": "<NavLink to='/about' className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>",
+    "choices": [
+      "Can apply active styles when the route matches",
+      "Navigates to dynamic routes only",
+      "Triggers full page reload",
+      "Can redirect to another page"
+    ],
+    "answerIndex": 0,
+    "explanation": "<NavLink> applies a class or style when the route is active."
+  },
+  {
+    "id": "w8_23",
+    "question": "How do you access query string parameters for URL 'http://localhost:3000/login?username=name&password=pass'?",
+    "code": "const [searchParams] = useSearchParams()\nconst username = searchParams.get('username');",
+    "choices": [
       "useSearchParams()",
-      "useQuery()",
-      "useCallback()"
-    ],
-    "answerIndex": 0,
-    "explanation": "useParams() provides values for route parameters like :id."
-  },
-  {
-    "id": "w08_11",
-    "question": "Which hook is used to work with query string parameters like ?min=10&max=20?",
-    "choices": [
-      "useSearchParams()",
       "useParams()",
-      "useEffect()",
-      "useRef()"
+      "useNavigate()",
+      "useLocation()"
     ],
     "answerIndex": 0,
-    "explanation": "The notes show useSearchParams() to read query parameters."
+    "explanation": "useSearchParams returns query string parameters as key-value pairs."
   },
   {
-    "id": "w08_12",
-    "question": "What is the purpose of <Outlet /> in nested routes?",
+    "id": "w8_24",
+    "question": "Which hook is used to optimize performance by memoizing values?",
+    "code": "const expensiveValue = useMemo(() => computeValue(data), [data])",
     "choices": [
-      "It renders the active child route inside the parent route component",
-      "It redirects to the home page",
-      "It parses JSON bodies",
-      "It memoizes expensive computations"
+      "useMemo",
+      "useCallback",
+      "useState",
+      "useEffect"
     ],
     "answerIndex": 0,
-    "explanation": "Outlet is the placeholder where matching nested route elements render."
+    "explanation": "useMemo memoizes expensive computed values for performance optimization."
   },
   {
-    "id": "w08_13",
-    "question": "In nested routes, how do child paths like 'stats' relate to a parent path '/dashboard'?",
+    "id": "w8_25",
+    "question": "What happens if a route does not match any defined path and no '*' route is defined?",
+    "code": "",
     "choices": [
-      "They become '/stats'",
-      "They become '/dashboard/stats'",
-      "They become '/dashboard?stats=true'",
-      "They replace the parent path"
-    ],
-    "answerIndex": 1,
-    "explanation": "Child routes are appended to the parent path, producing '/dashboard/stats'."
-  },
-  {
-    "id": "w08_14",
-    "question": "What does the <Navigate /> component do in React Router?",
-    "choices": [
-      "Creates a new tab",
-      "Performs a redirect to another route",
-      "Adds middleware to the pipeline",
-      "Fetches server data"
-    ],
-    "answerIndex": 1,
-    "explanation": "Navigate redirects from one route to another (optionally with replace)."
-  },
-  {
-    "id": "w08_15",
-    "question": "A common way to implement protected routes is to:",
-    "choices": [
-      "Use <Navigate> when the user is not authenticated",
-      "Use <a> tags instead of <Link>",
-      "Disable the browser history API",
-      "Move routing to the server"
+      "The app may render a blank screen",
+      "It automatically redirects to home",
+      "It throws an error",
+      "It renders the first route"
     ],
     "answerIndex": 0,
-    "explanation": "The notes show returning children if authenticated, otherwise <Navigate to='/login'/>."
+    "explanation": "Without a wildcard '*' route, unknown paths will not render any component, potentially showing a blank screen."
   },
   {
-    "id": "w08_16",
-    "question": "In the protected route example, where is the authentication check stored?",
+    "id": "w8_26",
+    "question": "Which hook would you use to redirect users programmatically?",
+    "code": "const navigate = useNavigate()\nnavigate('/dashboard')",
     "choices": [
-      "In localStorage (e.g., token)",
-      "In a global CSS file",
-      "In the service worker cache",
-      "In the DOM dataset"
+      "useNavigate",
+      "useParams",
+      "useSearchParams",
+      "useLocation"
     ],
     "answerIndex": 0,
-    "explanation": "The example uses localStorage.getItem('token') as a simple auth flag."
+    "explanation": "useNavigate provides programmatic navigation within React Router."
   },
   {
-    "id": "w08_17",
-    "question": "What is useContext used for?",
+    "id": "w8_27",
+    "question": "Which hook should only be called inside React function components or other custom hooks?",
+    "code": "",
     "choices": [
-      "Running side effects after render",
-      "Sharing values globally across components without prop drilling",
-      "Replacing the router",
-      "Parsing query strings"
-    ],
-    "answerIndex": 1,
-    "explanation": "useContext reads values from a Context Provider higher in the component tree."
-  },
-  {
-    "id": "w08_18",
-    "question": "Which statement best matches useMemo?",
-    "choices": [
-      "It memoizes a computed value based on dependencies",
-      "It navigates to a new route",
-      "It creates a new context",
-      "It fetches data from an API"
+      "useQuery / useContext / useMemo / useCallback",
+      "useParams",
+      "useNavigate",
+      "useSearchParams"
     ],
     "answerIndex": 0,
-    "explanation": "useMemo caches a computed result and recomputes only when dependencies change."
+    "explanation": "Hooks must follow rules: they can only be called inside React function components or other hooks."
   },
   {
-    "id": "w08_19",
-    "question": "Which statement best matches useCallback?",
+    "id": "w8_28",
+    "question": "Which React Router component enables hierarchical or nested rendering?",
+    "code": "<Route path='/dashboard' element={<Dashboard />}>\n  <Route path='stats' element={<Stats />} />\n</Route>",
     "choices": [
-      "It memoizes a function reference based on dependencies",
-      "It stores mutable values without re-render",
-      "It replaces useEffect",
-      "It styles active links"
+      "Outlet",
+      "Navigate",
+      "Link",
+      "NavLink"
     ],
     "answerIndex": 0,
-    "explanation": "useCallback returns a stable function reference unless dependencies change."
+    "explanation": "Outlet renders child components for nested routes inside a parent component."
   },
   {
-    "id": "w08_20",
-    "question": "React Query (TanStack Query) is mainly used for:",
+    "id": "w8_29",
+    "question": "What is the main advantage of using React Router over plain anchor (<a>) tags?",
+    "code": "<Link to='/home'>Home</Link>",
     "choices": [
-      "Server state management like fetching, caching, and error handling",
-      "Client-side routing",
-      "Type checking",
-      "CSS scoping"
+      "SPA navigation without full page reload",
+      "Automatic data fetching",
+      "State management",
+      "Memoization"
     ],
     "answerIndex": 0,
-    "explanation": "The notes describe React Query as managing server state including fetching and caching."
+    "explanation": "<Link> enables SPA navigation, updating URL and view without full page reloads."
   },
   {
-    "id": "w08_21",
-    "question": "In the React Query example, what is queryKey used for?",
+    "id": "w8_30",
+    "question": "Which React Router component or hook allows you to implement route redirection?",
+    "code": "<Route path='/' element={<Navigate to='/home' replace />} />",
     "choices": [
-      "Styling NavLink",
-      "Identifying and caching a specific query",
-      "Defining route parameters",
-      "Generating TypeScript types"
-    ],
-    "answerIndex": 1,
-    "explanation": "queryKey identifies a query for caching/invalidation (e.g., ['users'])."
-  },
-  {
-    "id": "w08_22",
-    "question": "What is the main idea behind using declarative routes?",
-    "choices": [
-      "You imperatively push URLs everywhere",
-      "You describe the route-to-component mapping in JSX",
-      "You must use class components",
-      "You disable browser history"
-    ],
-    "answerIndex": 1,
-    "explanation": "Declarative routing is describing what should render for a given path using <Routes>/<Route> components."
-  },
-  {
-    "id": "w08_23",
-    "question": "Which is a correct reason to avoid case-sensitive filename/URL mismatches in teams?",
-    "choices": [
-      "React Router only supports lowercase routes",
-      "Case sensitivity can differ between operating systems",
-      "TypeScript forbids uppercase letters",
-      "Browsers automatically rewrite URLs"
-    ],
-    "answerIndex": 1,
-    "explanation": "Some OS/filesystems differ in case sensitivity; consistent naming reduces mistakes."
-  },
-  {
-    "id": "w08_24",
-    "question": "Which hook can be used to access the current URL and navigation state (mentioned alongside useSearchParams)?",
-    "choices": [
-      "useLocation()",
-      "useReducer()",
-      "useLayoutEffect()",
-      "useId()"
+      "Navigate",
+      "Link",
+      "NavLink",
+      "Outlet"
     ],
     "answerIndex": 0,
-    "explanation": "The reader mentions useLocation() for accessing current URL and state."
-  },
-  {
-    "id": "w08_25",
-    "question": "What is a common effect of using replace with <Navigate to=... replace />?",
-    "choices": [
-      "It replaces the entire React component tree",
-      "It replaces the current entry in browser history",
-      "It replaces all query parameters with defaults",
-      "It replaces the need for BrowserRouter"
-    ],
-    "answerIndex": 1,
-    "explanation": "replace updates history so the redirected-from route isn’t kept as a separate back-button entry."
+    "explanation": "Navigate component is used to redirect users from one route to another programmatically."
   }
 ]

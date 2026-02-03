@@ -3,7 +3,12 @@
     "id": "w5_1",
     "question": "Which TypeScript array method transforms each element and returns a new array?",
     "code": "",
-    "choices": ["reduce()", "filter()", "map()", "forEach()"],
+    "choices": [
+      "reduce()",
+      "filter()",
+      "map()",
+      "forEach()"
+    ],
     "answerIndex": 2,
     "explanation": "map() applies a function to each element of an array and returns a new array of the same length."
   },
@@ -11,7 +16,12 @@
     "id": "w5_2",
     "question": "Which method creates a new array with only elements that pass a given test?",
     "code": "",
-    "choices": ["map()", "filter()", "reduce()", "sort()"],
+    "choices": [
+      "map()",
+      "filter()",
+      "reduce()",
+      "sort()"
+    ],
     "answerIndex": 1,
     "explanation": "filter() returns a new array containing only elements that satisfy the provided condition."
   },
@@ -19,7 +29,12 @@
     "id": "w5_3",
     "question": "Which method aggregates array values into a single value?",
     "code": "",
-    "choices": ["map()", "filter()", "reduce()", "every()"],
+    "choices": [
+      "map()",
+      "filter()",
+      "reduce()",
+      "every()"
+    ],
     "answerIndex": 2,
     "explanation": "reduce() iterates over an array and combines all elements into a single value using an accumulator function."
   },
@@ -27,7 +42,12 @@
     "id": "w5_4",
     "question": "What will be the output of the following TypeScript code?",
     "code": "const arr = [1, 2, 3];\nconsole.log(arr.map(x => x * 3));",
-    "choices": ["[1, 2, 3]", "[3, 6, 9]", "[1, 4, 9]", "[3, 2, 1]"],
+    "choices": [
+      "[1, 2, 3]",
+      "[3, 6, 9]",
+      "[1, 4, 9]",
+      "[3, 2, 1]"
+    ],
     "answerIndex": 1,
     "explanation": "The map() function multiplies each element by 3, resulting in [3, 6, 9]."
   },
@@ -86,7 +106,7 @@
   {
     "id": "w5_9",
     "question": "Which TypeScript type pattern is shown below?",
-    "code": "type Success<T> = { status: \"OK\"; result: T; };\ntype Fail = { status: \"Fail\"; reason: string; };\ntype ReturnType<T> = Success<T> | Fail;",
+    "code": "type Success = { status: \"OK\"; result: T; };\ntype Fail = { status: \"Fail\"; reason: string; };\ntype ReturnType = Success | Fail;",
     "choices": [
       "Classes",
       "Interfaces",
@@ -99,7 +119,7 @@
   {
     "id": "w5_10",
     "question": "What will MapGeneric2([1,2,3], x=>x*x) return?",
-    "code": "function MapGeneric2<T, R>(arr: Array<T>, fn: (val: T, index: number) => R): ReturnType<R[]> {\n  if(arr.length<=0) return {status: \"Fail\", reason: \"Empty array\"};\n  const result: Array<R> = [];\n  for (let i = 0; i < arr.length; i++) {\n    if(arr[i]==undefined) return {status: \"Fail\", reason: `Empty at index ${i}` };\n    result.push(fn(arr[i]!, i));\n  }\n  return {status: \"OK\", result: result};\n}\nconst res = MapGeneric2([1,2,3], x=>x*x);",
+    "code": "function MapGeneric2(arr: Array, fn: (val: T, index: number) => R): ReturnType {\n  if(arr.length = [];\n  for (let i = 0; i x*x);",
     "choices": [
       "{status: 'Fail', reason: 'Empty array'}",
       "{status: 'OK', result: [1,4,9]}",
@@ -113,7 +133,12 @@
     "id": "w5_11",
     "question": "Which TypeScript array operation allows chaining multiple operations?",
     "code": "",
-    "choices": ["reduce()", "map()", "map() and filter()", "forEach()"],
+    "choices": [
+      "reduce()",
+      "map()",
+      "map() and filter()",
+      "forEach()"
+    ],
     "answerIndex": 2,
     "explanation": "Methods like map() and filter() return arrays and can be chained to perform multiple transformations sequentially."
   },
@@ -172,7 +197,7 @@
   {
     "id": "w5_16",
     "question": "What does the And function do in this code?",
-    "code": "function And<T>(f1:(a:T)=>boolean, f2:(a:T)=>boolean) {\n  return function(a:T){ return f1(a) && f2(a); }\n}",
+    "code": "function And(f1:(a:T)=>boolean, f2:(a:T)=>boolean) {\n  return function(a:T){ return f1(a) && f2(a); }\n}",
     "choices": [
       "Runs f1 or f2 depending on a condition",
       "Runs both functions and returns true only if both are true",
@@ -198,7 +223,7 @@
   {
     "id": "w5_18",
     "question": "What does the Then function achieve?",
-    "code": "function Then<X,Y,Z>(f:(a:Y)=>Z, g:(a:X)=>Y) {\n  return function(a:X){ return f(g(a)); }\n}",
+    "code": "function Then(f:(a:Y)=>Z, g:(a:X)=>Y) {\n  return function(a:X){ return f(g(a)); }\n}",
     "choices": [
       "Composes two functions so f(g(x)) is applied",
       "Creates a nested class",

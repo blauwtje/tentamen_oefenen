@@ -224,8 +224,8 @@ async function renderStatsPanel(items) {
       return { name: it.name, file: it.file, count, avg };
     }).filter(Boolean);
 
-    const leftHtml = rows.map(r => `<div style="margin-top:6px;"><b>${escapeHtml(r.name)}</b>: ${r.count} attempt(s) • avg ${r.avg}%</div>`).join('');
-    el.innerHTML = leftHtml.length ? leftHtml : '<div class="muted">No quiz attempts yet.</div>';
+    // Do not render small stats under the dropdown; leave that area empty
+    el.innerHTML = '';
 
     const scoreboardEl = document.getElementById('scoreboard');
     if (scoreboardEl) {
@@ -233,12 +233,17 @@ async function renderStatsPanel(items) {
       scoreboardEl.innerHTML = sorted.map(r => `<div style="margin-top:6px;"><b>${escapeHtml(r.name)}</b>: ${r.count} attempt(s) • avg ${r.avg}%</div>`).join('') || '<div class="muted">No quiz attempts yet.</div>';
     }
   } catch (e) {
+    // Fallback: build scoreboard from localStorage stats and leave dropdown stats empty
+    el.innerHTML = '';
     const rows = uniqueItems.map(it => {
       const st = getQuizStats(it.file);
       if (!st) return null;
-      return `<div style="margin-top:6px;"><b>${escapeHtml(it.name)}</b>: ${st.count} attempt(s) • avg ${st.avgPct}%</div>`;
+      return { name: it.name, file: it.file, count: st.count, avg: st.avgPct };
     }).filter(Boolean);
-    el.innerHTML = rows.length ? rows.join('') : '<div class="muted">No quiz attempts yet.</div>';
+    const scoreboardEl = document.getElementById('scoreboard');
+    if (scoreboardEl) {
+      scoreboardEl.innerHTML = rows.map(r => `<div style="margin-top:6px;"><b>${escapeHtml(r.name)}</b>: ${r.count} attempt(s) • avg ${r.avg}%</div>`).join('') || '<div class="muted">No quiz attempts yet.</div>';
+    }
   }
 }
 
@@ -255,6 +260,7 @@ function startQuiz({ shuffleQuestions, shuffleChoices }) {
   state.current = 0;
   state.startedAt = new Date();
   state.endedAt = null;
+  // This is a fresh quiz start: allow the first finish to be recorded/saved.
   state.firstScorePosted = false;
 
   renderQuestion();
@@ -273,7 +279,9 @@ function startQuizWithOrder(order, { shuffleQuestions, shuffleChoices }) {
   state.current = 0;
   state.startedAt = new Date();
   state.endedAt = null;
-  state.firstScorePosted = false;
+  // When starting with an explicit order (e.g. retry wrong), do not record/post the resulting score
+  // to avoid counting retry attempts in aggregated stats.
+  state.firstScorePosted = true;
 
   renderQuestion();
 }
@@ -372,6 +380,7 @@ function renderStartScreen(errorMsg) {
 
     <div class="row">
       <button id="startBtn" class="primary" type="button" disabled>Start quiz</button>
+      <button id="random40Btn" type="button" style="margin-left:8px;">Random 40</button>
       <div class="muted">Tip: check <code>quizzes/sample-quiz.json</code> to see the format.</div>
     </div>
 
@@ -597,6 +606,77 @@ function renderStartScreen(errorMsg) {
     // Shuffling is enabled by default and not user-controllable
     startQuiz({ shuffleQuestions: true, shuffleChoices: true });
   });
+
+  const random40Btn = document.getElementById('random40Btn');
+  if (random40Btn) {
+    random40Btn.addEventListener('click', async () => {
+      random40Btn.disabled = true;
+      try {
+        // Load manifest and discovered quizzes
+        let manifestItems = [];
+        try {
+          const res = await fetch('./quizzes/index.json', { cache: 'no-store' });
+          if (res.ok) {
+            const manifest = await res.json();
+            if (Array.isArray(manifest)) {
+              manifestItems = manifest
+                .filter(x => x && typeof x === 'object')
+                .map((x) => ({
+                  name: typeof x.name === 'string' ? x.name : null,
+                  file: typeof x.file === 'string' ? x.file : (typeof x.path === 'string' ? x.path : null),
+                }))
+                .filter(x => x.file)
+                .map(x => ({ file: x.file, name: x.name || nameFromFile(x.file) }));
+            }
+          }
+        } catch (e) {
+          manifestItems = [];
+        }
+
+        let discoveredItems = [];
+        try {
+          discoveredItems = await discoverQuizzesFromDirectoryListing();
+        } catch (e) {
+          discoveredItems = [];
+        }
+
+        const allItems = [...manifestItems, ...discoveredItems];
+        const uniqueItems = Array.from(new Map(allItems.map(it => [it.file, it])).values());
+        // exclude any quiz with "sample" in the file or name
+        const filtered = uniqueItems.filter(it => !/sample/i.test(String(it.file)) && !/sample/i.test(String(it.name)));
+
+        const allQuestions = [];
+        await Promise.all(filtered.map(async (it) => {
+          try {
+            const path = it.file.startsWith('quizzes/') ? it.file : `./quizzes/${it.file}`;
+            const r = await fetch(path, { cache: 'no-store' });
+            if (!r.ok) return;
+            const j = await r.json();
+            if (Array.isArray(j)) allQuestions.push(...j);
+          } catch (e) {
+            // ignore
+          }
+        }));
+
+        if (!allQuestions.length) {
+          renderStartScreen('No questions found for Random 40.');
+          return;
+        }
+
+        // Shuffle and pick up to 40
+        shuffleInPlace(allQuestions);
+        const picked = allQuestions.slice(0, 40);
+
+        const qs = normalizedQuestions(picked);
+        setQuiz(qs, 'Random 40', 'random-40');
+        startQuiz({ shuffleQuestions: true, shuffleChoices: true });
+      } catch (e) {
+        renderStartScreen(e?.message || String(e));
+      } finally {
+        random40Btn.disabled = false;
+      }
+    });
+  }
 }
 
 function renderQuestion() {
@@ -618,10 +698,8 @@ function renderQuestion() {
       <button id="endBtn" class="danger" type="button">End</button>
     </div>
 
-    <div class="question-container">
-      <div class="question">${escapeHtml(q.question)}</div>
-      ${q.code && q.code.trim() ? `<pre class="code-block"><code>${highlightCode(escapeHtml(q.code))}</code></pre>` : ''}
-    </div>
+    <div class="question">${escapeHtml(q.question)}</div>
+    ${q.code && q.code.trim() ? `<pre class="code-block"><code>${highlightCode(escapeHtml(q.code))}</code></pre>` : ''}
 
     <form id="choiceForm" class="choices">
       ${displayChoices
@@ -780,7 +858,7 @@ function renderResults() {
       const correctText = r.choices[r.correct];
 
       return `
-        <div class="reviewItem">
+        <div class="reviewItem" data-idx="${i}" tabindex="0">
           <div class="top">
             <span class="qno">Q${i + 1}</span>
             <span class="status ${status}">${statusText}</span>
@@ -796,6 +874,47 @@ function renderResults() {
     })
     .join('');
 
+    // Make each review item clickable to open a detailed readonly view
+    Array.from(reviewEl.querySelectorAll('.reviewItem')).forEach(el => {
+      const idx = Number(el.getAttribute('data-idx'));
+      el.addEventListener('click', () => renderQuestionReview(idx));
+      el.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault();
+          el.click();
+        }
+      });
+    });
+  
+    // Add back-to-top button for long results
+    let backBtn = document.getElementById('backTopBtn');
+    if (!backBtn) {
+      backBtn = document.createElement('button');
+      backBtn.id = 'backTopBtn';
+      backBtn.className = 'backToTop';
+      backBtn.type = 'button';
+      backBtn.textContent = 'Top';
+      backBtn.setAttribute('hidden', '');
+      document.body.appendChild(backBtn);
+    }
+
+    function updateBackBtnVisibility() {
+      const rect = appEl.getBoundingClientRect();
+      // show when top of app is above viewport by 200px
+      if (rect.top < -200) {
+        backBtn.removeAttribute('hidden');
+      } else {
+        backBtn.setAttribute('hidden', '');
+      }
+    }
+
+    window.addEventListener('scroll', updateBackBtnVisibility);
+    // initial check
+    updateBackBtnVisibility();
+
+    backBtn.addEventListener('click', () => {
+      window.scrollTo({ top: appEl.getBoundingClientRect().top + window.scrollY - 8, behavior: 'smooth' });
+    });
   document.getElementById('restartBtn').addEventListener('click', () => {
     startQuiz({ shuffleQuestions: state.shuffleQuestions, shuffleChoices: state.shuffleChoices });
   });
@@ -812,6 +931,39 @@ function renderResults() {
     resetSession();
     renderStartScreen();
   });
+}
+
+function renderQuestionReview(reviewIndex) {
+  const { results } = computeResults();
+  const r = results[reviewIndex];
+  if (!r) return;
+
+  // Render the full question review with choices and highlight correct answer
+  appEl.innerHTML = `
+    <div class="row">
+      <div>
+        <div class="badge">Review</div>
+        <h2 style="margin:8px 0 4px;">Question ${reviewIndex + 1}</h2>
+      </div>
+      <div class="spacer"></div>
+      <button id="backResults" type="button">Back</button>
+    </div>
+
+    <hr />
+
+    <div class="question">${escapeHtml(r.question)}</div>
+    ${r.choices && r.choices.length ? `<pre class="code-block small"><code>${highlightCode(escapeHtml(r.choices.join('\n')))}</code></pre>` : ''}
+
+    <div class="reviewDetail">
+      ${r.choices.map((c, i) => {
+        const cls = i === r.correct ? 'status ok' : (i === r.selected ? 'status bad' : '');
+        return `<div style="margin:6px 0;">${i === r.correct ? '<b>Correct:</b> ' : (i === r.selected ? '<b>Your answer:</b> ' : '')}${escapeHtml(c)}</div>`;
+      }).join('')}
+    </div>
+  `;
+
+  const backBtn = document.getElementById('backResults');
+  if (backBtn) backBtn.addEventListener('click', () => renderResults());
 }
 
 // Deterministic PRNG helpers (for choice shuffle)
@@ -842,8 +994,7 @@ function highlightCode(code) {
     .replace(/(\/\/.*)/g, '<span class="com">$1</span>')
     // Strings
     .replace(/('[^']*'|"[^"]*"|`[^`]*`)/g, '<span class="str">$1</span>')
-    // Numbers
-    .replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="num">$1</span>')
+    // Numbers: no highlighting to avoid injecting markup that may appear in code snippets
     // Keywords
     .replace(/\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|super|import|from|export|default|type|interface|public|private|protected|static|readonly|void|number|string|boolean|any|as|in|of|instanceof|this|true|false|null|undefined)\b/g, '<span class="kw">$1</span>')
     // Function names (simple)

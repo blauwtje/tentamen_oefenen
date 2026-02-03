@@ -1,302 +1,372 @@
 [
   {
-    "id": "react_week06_1",
-    "question": "What is React primarily used for?",
+    "id": "w6_1",
+    "question": "What is the primary purpose of React?",
+    "code": "",
     "choices": [
-      "Building component-based user interfaces",
-      "Managing SQL databases",
-      "Encrypting network traffic",
-      "Compiling TypeScript to JavaScript"
-    ],
-    "answerIndex": 0,
-    "explanation": "React is a front-end library focused on building UIs from reusable components."
-  },
-  {
-    "id": "react_week06_2",
-    "question": "What is a Single-Page Application (SPA)?",
-    "choices": [
-      "An app that loads a single HTML page and updates content dynamically",
-      "An app that has exactly one route",
-      "An app that cannot use APIs",
-      "An app that requires no JavaScript"
-    ],
-    "answerIndex": 0,
-    "explanation": "SPAs typically load one page and use JavaScript to update the view without full reloads."
-  },
-  {
-    "id": "react_week06_3",
-    "question": "What is the role of a bundler/packager (e.g., Vite/Parcel) in an SPA?",
-    "choices": [
-      "It replaces the browser",
-      "It combines and optimizes modules/assets into bundles for the browser",
-      "It stores your data in a database",
-      "It converts HTML to CSS"
+      "To directly manipulate the DOM for every update",
+      "To build user interfaces using a declarative component-based approach",
+      "To provide a backend server runtime",
+      "To compile JavaScript into machine code"
     ],
     "answerIndex": 1,
-    "explanation": "Bundlers collect modules/CSS/assets and produce optimized output for the browser."
+    "explanation": "React is a front-end library focused on building UI through reusable components and declarative rendering."
   },
   {
-    "id": "react_week06_4",
-    "question": "What does it mean that React is declarative?",
+    "id": "w6_2",
+    "question": "What does React use to optimize DOM updates?",
+    "code": "",
     "choices": [
-      "You write step-by-step DOM update instructions",
-      "You describe the UI for each state and React updates the DOM for you",
-      "You must always use classes",
-      "You cannot use state"
-    ],
-    "answerIndex": 1,
-    "explanation": "In a declarative style, you express what the UI should look like, not how to update it."
-  },
-  {
-    "id": "react_week06_5",
-    "question": "Which statement best describes React's component-based approach?",
-    "choices": [
-      "UIs are built from reusable, isolated components",
-      "UIs must be written in a single file",
-      "Components can only be class-based",
-      "Components are stored on the server"
-    ],
-    "answerIndex": 0,
-    "explanation": "React apps are typically composed of many small reusable components."
-  },
-  {
-    "id": "react_week06_6",
-    "question": "What is JSX?",
-    "choices": [
-      "A database query language",
-      "A syntax extension that lets you write HTML-like tags in JavaScript",
-      "A replacement for CSS",
-      "A browser API for fetching data"
-    ],
-    "answerIndex": 1,
-    "explanation": "JSX allows components to return markup-like syntax that gets compiled to JavaScript."
-  },
-  {
-    "id": "react_week06_7",
-    "question": "Why doesn’t plain JavaScript allow `const el = <h1>Hello</h1>` without tooling?",
-    "choices": [
-      "Because JSX is not valid JavaScript syntax without a compiler/transform",
-      "Because browsers block HTML inside scripts",
-      "Because React only works with TypeScript",
-      "Because JSX requires HTTP/2"
-    ],
-    "answerIndex": 0,
-    "explanation": "JSX must be transformed (e.g., by Babel) into valid JavaScript function calls."
-  },
-  {
-    "id": "react_week06_8",
-    "question": "What is a Virtual DOM in React?",
-    "choices": [
-      "A second browser tab",
-      "A lightweight in-memory representation of the real DOM",
-      "A database schema",
-      "A CSS preprocessor"
-    ],
-    "answerIndex": 1,
-    "explanation": "React keeps an in-memory representation to compute efficient updates to the real DOM."
-  },
-  {
-    "id": "react_week06_9",
-    "question": "What is “reconciliation” in React?",
-    "choices": [
-      "Encrypting component props",
-      "Comparing Virtual DOM trees to update only what changed",
-      "Making HTTP requests reliable",
-      "Compiling TypeScript"
-    ],
-    "answerIndex": 1,
-    "explanation": "Reconciliation is React’s process of deciding minimal DOM changes after state/props changes."
-  },
-  {
-    "id": "react_week06_10",
-    "question": "Which code pattern is used to mount a React app with React 18?",
-    "choices": [
-      "`ReactDOM.render(App, root)`",
-      "`ReactDOM.createRoot(element).render(<App />)`",
-      "`new ReactDOM(<App />)`",
-      "`document.write(<App />)`"
-    ],
-    "answerIndex": 1,
-    "explanation": "React 18 uses `createRoot(...)` and then `root.render(...)`."
-  },
-  {
-    "id": "react_week06_11",
-    "question": "In React, what is “state”?",
-    "choices": [
-      "Server-side database storage",
-      "Component-specific data that can change over time and affects rendering",
-      "A CSS class name",
-      "A URL parameter"
-    ],
-    "answerIndex": 1,
-    "explanation": "State is component memory that drives what’s shown on screen when it changes."
-  },
-  {
-    "id": "react_week06_12",
-    "question": "Which statement about props is correct (per the lecture notes)?",
-    "choices": [
-      "Props are read-only for the receiving component",
-      "Props must be stored in localStorage",
-      "Props can only be numbers",
-      "Props are automatically persisted to the server"
-    ],
-    "answerIndex": 0,
-    "explanation": "Props are inputs passed from parent to child and should not be mutated by the child."
-  },
-  {
-    "id": "react_week06_13",
-    "question": "Which is a valid functional component definition?",
-    "choices": [
-      "`function App() { return <h1>Hello</h1>; }`",
-      "`class App() => <h1>Hello</h1>`",
-      "`component App { render: <h1>Hello</h1> }`",
-      "`new App(<h1>Hello</h1>)`"
-    ],
-    "answerIndex": 0,
-    "explanation": "Functional components are plain functions that return JSX."
-  },
-  {
-    "id": "react_week06_14",
-    "question": "What did React Hooks enable compared to only using class components?",
-    "choices": [
-      "Using state and other React features in functional components",
-      "Using CSS without stylesheets",
-      "Running React without JavaScript",
-      "Eliminating the DOM entirely"
-    ],
-    "answerIndex": 0,
-    "explanation": "Hooks allow managing state and side effects in functional components."
-  },
-  {
-    "id": "react_week06_15",
-    "question": "What does `useState(initialValue)` return?",
-    "choices": [
-      "A single value only",
-      "An object with a `value` property",
-      "An array/tuple with the current value and an updater function",
-      "A promise"
+      "Shadow DOM",
+      "Direct DOM rewriting",
+      "Virtual DOM",
+      "Compiled templates"
     ],
     "answerIndex": 2,
-    "explanation": "`useState` returns `[stateValue, setStateValue]`."
+    "explanation": "React uses a Virtual DOM to compute minimal changes before updating the real DOM."
   },
   {
-    "id": "react_week06_16",
-    "question": "What typically happens when you call a state setter like `setCount(...)`?",
+    "id": "w6_3",
+    "question": "Which of the following best describes a React component?",
+    "code": "",
     "choices": [
-      "The page always fully reloads",
-      "React schedules a re-render with the new state",
-      "The browser clears localStorage",
-      "The component automatically unmounts"
-    ],
-    "answerIndex": 1,
-    "explanation": "Updating state causes React to re-render the component and update the DOM efficiently."
-  },
-  {
-    "id": "react_week06_17",
-    "question": "Why do React state updates often use patterns like `setTasks([...tasks, newTask])`?",
-    "choices": [
-      "Because React requires arrays to be sorted",
-      "Because creating a new array avoids mutating existing state",
-      "Because spread syntax is faster than loops",
-      "Because it prevents TypeScript compilation"
-    ],
-    "answerIndex": 1,
-    "explanation": "Creating new objects/arrays helps React detect changes and supports predictable updates."
-  },
-  {
-    "id": "react_week06_18",
-    "question": "What is `useEffect` mainly used for?",
-    "choices": [
-      "Declaring component props",
-      "Handling side effects (e.g., fetching, subscriptions, timers, logging)",
-      "Replacing `useState`",
-      "Rendering JSX"
-    ],
-    "answerIndex": 1,
-    "explanation": "Effects run for work outside rendering, like network calls or interacting with browser APIs."
-  },
-  {
-    "id": "react_week06_19",
-    "question": "What does the dependency array in `useEffect(() => { ... }, [a, b])` control?",
-    "choices": [
-      "Which components can import the hook",
-      "When the effect runs again based on changes in listed values",
-      "How many times React mounts the component",
-      "Whether JSX is enabled"
-    ],
-    "answerIndex": 1,
-    "explanation": "The effect re-runs when any dependency value changes between renders."
-  },
-  {
-    "id": "react_week06_20",
-    "question": "What does `useEffect(() => { ... }, [])` mean?",
-    "choices": [
-      "The effect runs only once on mount (and cleanup on unmount)",
-      "The effect runs after every render",
-      "The effect runs before rendering",
-      "The effect never runs"
+      "A reusable piece of UI defined by markup and optional logic",
+      "A CSS style rule",
+      "A built-in browser API",
+      "A server-rendered HTML fragment"
     ],
     "answerIndex": 0,
-    "explanation": "An empty dependency array means “run on mount”."
+    "explanation": "Components encapsulate markup and behavior, making UI reusable and modular."
   },
   {
-    "id": "react_week06_21",
-    "question": "Why might an effect return a function (cleanup) like `return () => disconnect()`?",
+    "id": "w6_4",
+    "question": "What does JSX allow you to do?",
+    "code": "",
     "choices": [
-      "To render extra JSX",
-      "To clean up resources when dependencies change or when unmounting",
-      "To make state updates synchronous",
-      "To rename component props"
+      "Write SQL inside JavaScript",
+      "Write XML directly to the browser",
+      "Write HTML-like syntax inside JavaScript",
+      "Replace JavaScript entirely"
+    ],
+    "answerIndex": 2,
+    "explanation": "JSX is a syntax extension that lets developers embed HTML-like markup in JavaScript."
+  },
+  {
+    "id": "w6_5",
+    "question": "What will the following component render?",
+    "code": "function Hello() {\n  return <h1>Hello World</h1>;\n}\n\nexport default Hello;",
+    "choices": [
+      "Nothing, because JSX cannot contain h1 elements",
+      "<h1>Hello</h1>",
+      "<h1>Hello World</h1>",
+      "A runtime error"
+    ],
+    "answerIndex": 2,
+    "explanation": "The component returns an h1 element containing 'Hello World'."
+  },
+  {
+    "id": "w6_6",
+    "question": "Which attribute should be used in JSX instead of the HTML 'class' attribute?",
+    "code": "",
+    "choices": ["classname", "className", "class_value", "cssClass"],
+    "answerIndex": 1,
+    "explanation": "React uses 'className' to avoid clashing with JavaScript's reserved 'class' keyword."
+  },
+  {
+    "id": "w6_7",
+    "question": "What does the following code do?",
+    "code": "const element = <button disabled>Click Me</button>;",
+    "choices": [
+      "Creates a button that is clickable",
+      "Creates a disabled button",
+      "Throws an error because disabled is not valid in JSX",
+      "Compiles into a <button> with no attributes"
     ],
     "answerIndex": 1,
-    "explanation": "Cleanup functions are used to unsubscribe/disconnect/clear timers to avoid leaks."
+    "explanation": "JSX supports boolean attributes; 'disabled' evaluates to true."
   },
   {
-    "id": "react_week06_22",
-    "question": "In the lecture’s counter example, why write to `localStorage` inside a `useEffect` with `[counter]`?",
+    "id": "w6_8",
+    "question": "What is the correct way to embed a JavaScript expression in JSX?",
+    "code": "",
     "choices": [
-      "So it writes only when `counter` changes",
-      "So it runs before the first render",
-      "So it disables rerenders",
-      "So it converts numbers to strings automatically everywhere"
+      "{{ expression }}",
+      "[[ expression ]]",
+      "{ expression }",
+      "( expression )"
     ],
-    "answerIndex": 0,
-    "explanation": "The effect runs whenever `counter` changes, so the stored value stays in sync."
+    "answerIndex": 2,
+    "explanation": "JSX uses curly braces to insert JavaScript expressions."
   },
   {
-    "id": "react_week06_23",
-    "question": "Which set of scripts is commonly used to try React + JSX in a plain HTML file (without build tools)?",
+    "id": "w6_9",
+    "question": "What will the following JSX render?",
+    "code": "const name = \"Alice\";\nconst element = <p>Hello, {name}</p>;",
     "choices": [
-      "React, ReactDOM, and Babel (standalone) to transform JSX in the browser",
-      "Only jQuery",
-      "Only TypeScript compiler in the browser",
-      "Only CSS frameworks"
+      "<p>Hello, name</p>",
+      "<p>Hello, {name}</p>",
+      "<p>Hello, Alice</p>",
+      "Nothing"
     ],
-    "answerIndex": 0,
-    "explanation": "The quick-start approach loads UMD builds of React/ReactDOM and Babel to handle JSX."
+    "answerIndex": 2,
+    "explanation": "JSX evaluates expressions inside {} and substitutes their values."
   },
   {
-    "id": "react_week06_24",
-    "question": "What is the main reason the quick-start HTML example uses `<script type=\"text/babel\">`?",
+    "id": "w6_10",
+    "question": "Which of the following is TRUE about JSX?",
+    "code": "",
     "choices": [
-      "To enable CSS modules",
-      "To allow Babel to transform JSX inside the browser",
-      "To enable HTTP caching",
-      "To force strict typing"
+      "Browsers can run JSX natively",
+      "It must be compiled into React.createElement() calls",
+      "It is valid HTML",
+      "It is optional and React will not work without it"
     ],
     "answerIndex": 1,
-    "explanation": "Babel processes scripts marked for transformation so JSX can run in the browser."
+    "explanation": "JSX is not understood by browsers and must be compiled, typically by Babel."
   },
   {
-    "id": "react_week06_25",
-    "question": "Which statement best describes the difference between Parcel and Vite (as presented in the notes)?",
+    "id": "w6_11",
+    "question": "What will this JavaScript expression inside JSX evaluate to?",
+    "code": "{ 5 > 2 ? \"Yes\" : \"No\" }",
     "choices": [
-      "Parcel is suggested for quick starts; Vite is suggested for larger/complex projects",
-      "Vite is only for back-end projects",
-      "Parcel requires no JavaScript",
-      "They are databases used by React"
+      "Nothing, conditional expressions are not allowed",
+      "\"No\"",
+      "\"Yes\"",
+      "An error"
+    ],
+    "answerIndex": 2,
+    "explanation": "The condition evaluates to true, so 'Yes' is returned."
+  },
+  {
+    "id": "w6_12",
+    "question": "What is the main purpose of React props?",
+    "code": "",
+    "choices": [
+      "To store mutable data",
+      "To pass data from parent to child components",
+      "To update the DOM",
+      "To handle side effects"
+    ],
+    "answerIndex": 1,
+    "explanation": "Props provide a one-way data flow from parent to child components."
+  },
+  {
+    "id": "w6_13",
+    "question": "What is wrong with the following code?",
+    "code": "function Hello(props) {\n  props.name = \"John\";\n  return <p>Hello {props.name}</p>;\n}",
+    "choices": [
+      "The function must be an arrow function",
+      "JSX must return a div",
+      "Props are read-only and cannot be reassigned",
+      "Nothing is wrong"
+    ],
+    "answerIndex": 2,
+    "explanation": "Props are immutable; changing them directly violates React's data flow rules."
+  },
+  {
+    "id": "w6_14",
+    "question": "What does this component receive?",
+    "code": "function Welcome({ user }) {\n  return <p>Welcome {user}</p>;\n}",
+    "choices": [
+      "A single prop called user",
+      "No props",
+      "All props stored in an array",
+      "Props are ignored"
     ],
     "answerIndex": 0,
-    "explanation": "The notes suggest Parcel as simple for quick starts and Vite as powerful for larger apps."
+    "explanation": "The component uses object destructuring, pulling out the 'user' prop."
+  },
+  {
+    "id": "w6_15",
+    "question": "What will this render?",
+    "code": "<Welcome user=\"Sam\" />",
+    "choices": [
+      "Welcome user",
+      "Welcome Sam",
+      "Error: user must be a number",
+      "Nothing"
+    ],
+    "answerIndex": 1,
+    "explanation": "The 'user' prop is passed the string 'Sam'."
+  },
+  {
+    "id": "w6_16",
+    "question": "What is the purpose of a key when rendering lists?",
+    "code": "",
+    "choices": [
+      "To display the index next to each item",
+      "To help React identify which items changed, were added, or removed",
+      "To encrypt list items",
+      "To enforce type checking"
+    ],
+    "answerIndex": 1,
+    "explanation": "Keys help React optimize re-renders by uniquely identifying list elements."
+  },
+  {
+    "id": "w6_17",
+    "question": "What will the following code render?",
+    "code": "const items = [\"A\", \"B\", \"C\"];\n<ul>\n  {items.map(item => <li key={item}>{item}</li>)}\n</ul>",
+    "choices": [
+      "<ul></ul>",
+      "Three list items: A, B, C",
+      "An error due to missing indexes",
+      "Only the last item"
+    ],
+    "answerIndex": 1,
+    "explanation": "map() returns <li> elements for each item, each with a key."
+  },
+  {
+    "id": "w6_18",
+    "question": "Which hook is used to store component state?",
+    "code": "",
+    "choices": ["useState", "useEffect", "useMemo", "useRef"],
+    "answerIndex": 0,
+    "explanation": "useState creates component-level state."
+  },
+  {
+    "id": "w6_19",
+    "question": "What will the following code do?",
+    "code": "const [count, setCount] = useState(0);\nsetCount(count + 1);",
+    "choices": [
+      "Immediately increments count synchronously",
+      "Updates state and triggers a re-render",
+      "Throws an error",
+      "Does nothing"
+    ],
+    "answerIndex": 1,
+    "explanation": "setState triggers a re-render with the updated value."
+  },
+  {
+    "id": "w6_20",
+    "question": "What happens if you call a state setter (setState) inside the render body?",
+    "code": "",
+    "choices": [
+      "React optimizes it automatically",
+      "The component enters an infinite re-render loop",
+      "JSX does not compile",
+      "Props get overwritten"
+    ],
+    "answerIndex": 1,
+    "explanation": "Calling setState during render causes re-renders that never finish."
+  },
+  {
+    "id": "w6_21",
+    "question": "Which hook is used for side effects in React?",
+    "code": "",
+    "choices": ["useState", "useCallback", "useEffect", "useHistory"],
+    "answerIndex": 2,
+    "explanation": "useEffect handles side effects like data fetching and event listeners."
+  },
+  {
+    "id": "w6_22",
+    "question": "When does useEffect run by default?",
+    "code": "useEffect(() => {\n  console.log(\"Run\");\n});",
+    "choices": [
+      "Only once at mount time",
+      "Once every 10 seconds",
+      "After every render",
+      "Never"
+    ],
+    "answerIndex": 2,
+    "explanation": "Without a dependency array, useEffect runs after every render."
+  },
+  {
+    "id": "w6_23",
+    "question": "What does an empty dependency array mean for useEffect?",
+    "code": "useEffect(() => {\n  console.log(\"Mounted\");\n}, []);",
+    "choices": [
+      "Run only on mount",
+      "Run after every render",
+      "Run only on unmount",
+      "Never run"
+    ],
+    "answerIndex": 0,
+    "explanation": "An empty array means the effect runs once on mount."
+  },
+  {
+    "id": "w6_24",
+    "question": "How do you conditionally render a component in React?",
+    "code": "",
+    "choices": [
+      "Using if statements inside return",
+      "Using ternary expressions or logical &&",
+      "Using only CSS",
+      "React cannot render conditionally"
+    ],
+    "answerIndex": 1,
+    "explanation": "React uses expressions like x && <Component /> or condition ? A : B."
+  },
+  {
+    "id": "w6_25",
+    "question": "What does this code render when isLoggedIn is false?",
+    "code": "const isLoggedIn = false;\nreturn <div>{isLoggedIn && <p>Welcome</p>}</div>;",
+    "choices": [
+      "<p>Welcome</p>",
+      "Nothing",
+      "false",
+      "An error"
+    ],
+    "answerIndex": 1,
+    "explanation": "false && <p>...</p> evaluates to false, which React renders as nothing."
+  },
+  {
+    "id": "w6_26",
+    "question": "Which event handler is correct in React?",
+    "code": "",
+    "choices": [
+      "<button onclick=\"doSomething()\">",
+      "<button OnClick={doSomething}>",
+      "<button onClick={doSomething}>",
+      "<button onClick=\"doSomething()\">"
+    ],
+    "answerIndex": 2,
+    "explanation": "React uses camelCase and expects a function reference."
+  },
+  {
+    "id": "w6_27",
+    "question": "What does the following event handler do?",
+    "code": "<button onClick={() => console.log(\"Clicked\")}>Press</button>",
+    "choices": [
+      "Logs 'Clicked' when the component mounts",
+      "Logs 'Clicked' when the button is clicked",
+      "Throws an error because arrow functions are not allowed",
+      "Does nothing"
+    ],
+    "answerIndex": 1,
+    "explanation": "The arrow function runs only when the button is clicked."
+  },
+  {
+    "id": "w6_28",
+    "question": "Why must components start with an uppercase letter?",
+    "code": "",
+    "choices": [
+      "To satisfy JavaScript naming rules",
+      "React treats lowercase tags as built-in HTML elements",
+      "It prevents conflicts with CSS",
+      "It has no reason"
+    ],
+    "answerIndex": 1,
+    "explanation": "React interprets lowercase names as HTML tags (e.g., div)."
+  },
+  {
+    "id": "w6_29",
+    "question": "What is the purpose of React Fragments?",
+    "code": "",
+    "choices": [
+      "To style multiple elements",
+      "To group elements without adding extra DOM nodes",
+      "To manage state",
+      "To fetch data"
+    ],
+    "answerIndex": 1,
+    "explanation": "Fragments allow returning multiple elements without a wrapper div."
+  },
+  {
+    "id": "w6_30",
+    "question": "What will this component render?",
+    "code": "function App() {\n  const show = true;\n  return <>{show ? <p>Yes</p> : <p>No</p>}</>;\n}",
+    "choices": ["Yes", "No", "Nothing", "Error"],
+    "answerIndex": 0,
+    "explanation": "The ternary expression evaluates to <p>Yes</p> because show is true."
   }
 ]

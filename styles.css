@@ -185,6 +185,28 @@ hr{
   padding: 12px;
 }
 
+.reviewItem{ cursor: pointer; }
+.reviewItem:focus{ outline: 2px solid rgba(124,92,255,0.25); }
+
+.reviewDetail{ margin-top: 12px; }
+.code-block.small{ font-size: 13px; padding: 10px 12px; }
+
+/* Back-to-top floating button for results */
+.backToTop{
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 1200;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(124,92,255,0.35), rgba(124,92,255,0.18));
+  border: 1px solid rgba(124,92,255,0.55);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+.backToTop[hidden]{ display: none; }
+
 .reviewItem .top{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
 .reviewItem .top .qno{font-family: var(--mono); font-size:12px; color: var(--muted);}
 
@@ -212,24 +234,18 @@ hr{
   color: rgba(255,205,214,0.95);
 }
 
-.question-container {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-}
+.question-container { /* removed: code now appears under the question */ }
 
 .code-block {
-  flex: 1;
   background: #23272e !important;
   color: #d4d4d4 !important;
   border: 2px solid #7c5cff !important;
   padding: 14px 16px;
   border-radius: 8px;
-  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Liberation Mono', monospace;
+  font-family: var(--mono);
   font-size: 15px;
   overflow-x: auto;
-  min-width: 220px;
-  max-width: 100%;
+  width: 100%;
   box-sizing: border-box;
   line-height: 1.6;
   position: relative;
@@ -257,12 +273,7 @@ hr{
 }
 
 @media (max-width: 700px) {
-  .question-container {
-    flex-direction: column;
-    gap: 10px;
-  }
   .code-block {
-    min-width: 0;
     width: 100%;
   }
 }
